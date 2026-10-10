@@ -1,0 +1,2953 @@
+{
+  "protocol": {
+    "source_file": "/content/DINOv3_sessions/20261006T204801_022252Z/recovered/20261001T181030_523202Z/topk_comparison_50_20261006T223417_739370Z/results.json",
+    "sample_selection": "first 20 development records",
+    "random_seed": 42,
+    "overlap_threshold": 0.3,
+    "overlap_measure": "box IoU on entropy map",
+    "target_coverage": "fraction of GT target-class pixels inside crop union; diagnostic only, GT not used for selection",
+    "manual_review_status": "pending"
+  },
+  "records": [
+    {
+      "image_index": 9,
+      "image_id": "2007_000346",
+      "target_class": 5,
+      "target_class_name": "bottle",
+      "figure": "01_index_9.png",
+      "metrics": {
+        "adaptive_k1": {
+          "valid_union_area_fraction": 0.24268610387450806,
+          "target_class_pixel_coverage": 0.8320261883652731,
+          "maximum_map_box_iou": 0.0,
+          "maximum_local_coverage": 1
+        },
+        "adaptive_k3": {
+          "valid_union_area_fraction": 0.5421595255251926,
+          "target_class_pixel_coverage": 1.0,
+          "maximum_map_box_iou": 0.23076923076923078,
+          "maximum_local_coverage": 3
+        },
+        "random_42_k3": {
+          "valid_union_area_fraction": 0.6856936976885982,
+          "target_class_pixel_coverage": 1.0,
+          "maximum_map_box_iou": 0.14285714285714285,
+          "maximum_local_coverage": 2
+        }
+      },
+      "regions": {
+        "adaptive_k1": [
+          {
+            "rank": 1,
+            "map_box": [
+              0,
+              112,
+              112,
+              224
+            ],
+            "original_box": [
+              0,
+              187,
+              250,
+              375
+            ],
+            "entropy_score": 0.2605162560939789
+          }
+        ],
+        "adaptive_k3": [
+          {
+            "rank": 1,
+            "map_box": [
+              0,
+              112,
+              112,
+              224
+            ],
+            "original_box": [
+              0,
+              187,
+              250,
+              375
+            ],
+            "entropy_score": 0.2605162560939789
+          },
+          {
+            "rank": 2,
+            "map_box": [
+              56,
+              84,
+              168,
+              196
+            ],
+            "original_box": [
+              125,
+              140,
+              375,
+              329
+            ],
+            "entropy_score": 0.20228657126426697
+          },
+          {
+            "rank": 3,
+            "map_box": [
+              28,
+              28,
+              140,
+              140
+            ],
+            "original_box": [
+              62,
+              46,
+              313,
+              235
+            ],
+            "entropy_score": 0.1494355946779251
+          }
+        ],
+        "random_42_k3": [
+          {
+            "rank": 1,
+            "map_box": [
+              112,
+              56,
+              224,
+              168
+            ],
+            "original_box": [
+              250,
+              93,
+              500,
+              282
+            ],
+            "entropy_score": 0.09922310709953308
+          },
+          {
+            "rank": 2,
+            "map_box": [
+              0,
+              112,
+              112,
+              224
+            ],
+            "original_box": [
+              0,
+              187,
+              250,
+              375
+            ],
+            "entropy_score": 0.2605162560939789
+          },
+          {
+            "rank": 3,
+            "map_box": [
+              0,
+              28,
+              112,
+              140
+            ],
+            "original_box": [
+              0,
+              46,
+              250,
+              235
+            ],
+            "entropy_score": 0.1343906670808792
+          }
+        ]
+      }
+    },
+    {
+      "image_index": 10,
+      "image_id": "2007_000452",
+      "target_class": 9,
+      "target_class_name": "chair",
+      "figure": "02_index_10.png",
+      "metrics": {
+        "adaptive_k1": {
+          "valid_union_area_fraction": 0.24732617396819842,
+          "target_class_pixel_coverage": 0.0,
+          "maximum_map_box_iou": 0.0,
+          "maximum_local_coverage": 1
+        },
+        "adaptive_k3": {
+          "valid_union_area_fraction": 0.5485827081647383,
+          "target_class_pixel_coverage": 0.0,
+          "maximum_map_box_iou": 0.23076923076923078,
+          "maximum_local_coverage": 3
+        },
+        "random_42_k3": {
+          "valid_union_area_fraction": 0.6456278296625183,
+          "target_class_pixel_coverage": 0.728968405024743,
+          "maximum_map_box_iou": 0.23076923076923078,
+          "maximum_local_coverage": 2
+        }
+      },
+      "regions": {
+        "adaptive_k1": [
+          {
+            "rank": 1,
+            "map_box": [
+              28,
+              84,
+              140,
+              196
+            ],
+            "original_box": [
+              62,
+              140,
+              313,
+              329
+            ],
+            "entropy_score": 0.3251873850822449
+          }
+        ],
+        "adaptive_k3": [
+          {
+            "rank": 1,
+            "map_box": [
+              28,
+              84,
+              140,
+              196
+            ],
+            "original_box": [
+              62,
+              140,
+              313,
+              329
+            ],
+            "entropy_score": 0.3251873850822449
+          },
+          {
+            "rank": 2,
+            "map_box": [
+              0,
+              28,
+              112,
+              140
+            ],
+            "original_box": [
+              0,
+              46,
+              250,
+              235
+            ],
+            "entropy_score": 0.21060505509376526
+          },
+          {
+            "rank": 3,
+            "map_box": [
+              84,
+              56,
+              196,
+              168
+            ],
+            "original_box": [
+              187,
+              93,
+              438,
+              282
+            ],
+            "entropy_score": 0.15117782354354858
+          }
+        ],
+        "random_42_k3": [
+          {
+            "rank": 1,
+            "map_box": [
+              84,
+              84,
+              196,
+              196
+            ],
+            "original_box": [
+              187,
+              140,
+              438,
+              329
+            ],
+            "entropy_score": 0.17027628421783447
+          },
+          {
+            "rank": 2,
+            "map_box": [
+              0,
+              0,
+              112,
+              112
+            ],
+            "original_box": [
+              0,
+              0,
+              250,
+              188
+            ],
+            "entropy_score": 0.13904635608196259
+          },
+          {
+            "rank": 3,
+            "map_box": [
+              112,
+              28,
+              224,
+              140
+            ],
+            "original_box": [
+              250,
+              46,
+              500,
+              235
+            ],
+            "entropy_score": 0.08685421198606491
+          }
+        ]
+      }
+    },
+    {
+      "image_index": 11,
+      "image_id": "2007_000464",
+      "target_class": 10,
+      "target_class_name": "cow",
+      "figure": "03_index_11.png",
+      "metrics": {
+        "adaptive_k1": {
+          "valid_union_area_fraction": 0.2376440642013717,
+          "target_class_pixel_coverage": 0.9992644655116051,
+          "maximum_map_box_iou": 0.0,
+          "maximum_local_coverage": 1
+        },
+        "adaptive_k3": {
+          "valid_union_area_fraction": 0.5424102165246194,
+          "target_class_pixel_coverage": 1.0,
+          "maximum_map_box_iou": 0.23076923076923078,
+          "maximum_local_coverage": 3
+        },
+        "random_42_k3": {
+          "valid_union_area_fraction": 0.6040226477898825,
+          "target_class_pixel_coverage": 1.0,
+          "maximum_map_box_iou": 0.23076923076923078,
+          "maximum_local_coverage": 3
+        }
+      },
+      "regions": {
+        "adaptive_k1": [
+          {
+            "rank": 1,
+            "map_box": [
+              28,
+              56,
+              140,
+              168
+            ],
+            "original_box": [
+              46,
+              125,
+              235,
+              375
+            ],
+            "entropy_score": 0.21662917733192444
+          }
+        ],
+        "adaptive_k3": [
+          {
+            "rank": 1,
+            "map_box": [
+              28,
+              56,
+              140,
+              168
+            ],
+            "original_box": [
+              46,
+              125,
+              235,
+              375
+            ],
+            "entropy_score": 0.21662917733192444
+          },
+          {
+            "rank": 2,
+            "map_box": [
+              84,
+              28,
+              196,
+              140
+            ],
+            "original_box": [
+              140,
+              62,
+              329,
+              313
+            ],
+            "entropy_score": 0.12441501766443253
+          },
+          {
+            "rank": 3,
+            "map_box": [
+              56,
+              112,
+              168,
+              224
+            ],
+            "original_box": [
+              93,
+              250,
+              282,
+              500
+            ],
+            "entropy_score": 0.10429008305072784
+          }
+        ],
+        "random_42_k3": [
+          {
+            "rank": 1,
+            "map_box": [
+              84,
+              56,
+              196,
+              168
+            ],
+            "original_box": [
+              140,
+              125,
+              329,
+              375
+            ],
+            "entropy_score": 0.12579448521137238
+          },
+          {
+            "rank": 2,
+            "map_box": [
+              112,
+              112,
+              224,
+              224
+            ],
+            "original_box": [
+              187,
+              250,
+              375,
+              500
+            ],
+            "entropy_score": 0.03882959485054016
+          },
+          {
+            "rank": 3,
+            "map_box": [
+              0,
+              28,
+              112,
+              140
+            ],
+            "original_box": [
+              0,
+              62,
+              188,
+              313
+            ],
+            "entropy_score": 0.16249622404575348
+          }
+        ]
+      }
+    },
+    {
+      "image_index": 13,
+      "image_id": "2007_000529",
+      "target_class": 4,
+      "target_class_name": "boat",
+      "figure": "04_index_13.png",
+      "metrics": {
+        "adaptive_k1": {
+          "valid_union_area_fraction": 0.2987895704451214,
+          "target_class_pixel_coverage": 0.8993721510277801,
+          "maximum_map_box_iou": 0.0,
+          "maximum_local_coverage": 1
+        },
+        "adaptive_k3": {
+          "valid_union_area_fraction": 0.6647499295481689,
+          "target_class_pixel_coverage": 1.0,
+          "maximum_map_box_iou": 0.23076923076923078,
+          "maximum_local_coverage": 3
+        },
+        "random_42_k3": {
+          "valid_union_area_fraction": 0.7354500194581248,
+          "target_class_pixel_coverage": 0.8993721510277801,
+          "maximum_map_box_iou": 0.14285714285714285,
+          "maximum_local_coverage": 2
+        }
+      },
+      "regions": {
+        "adaptive_k1": [
+          {
+            "rank": 1,
+            "map_box": [
+              112,
+              28,
+              224,
+              140
+            ],
+            "original_box": [
+              250,
+              46,
+              500,
+              235
+            ],
+            "entropy_score": 0.09121859818696976
+          }
+        ],
+        "adaptive_k3": [
+          {
+            "rank": 1,
+            "map_box": [
+              112,
+              28,
+              224,
+              140
+            ],
+            "original_box": [
+              250,
+              46,
+              500,
+              235
+            ],
+            "entropy_score": 0.09121859818696976
+          },
+          {
+            "rank": 2,
+            "map_box": [
+              112,
+              112,
+              224,
+              224
+            ],
+            "original_box": [
+              250,
+              187,
+              500,
+              375
+            ],
+            "entropy_score": 0.07108394801616669
+          },
+          {
+            "rank": 3,
+            "map_box": [
+              56,
+              0,
+              168,
+              112
+            ],
+            "original_box": [
+              125,
+              0,
+              375,
+              188
+            ],
+            "entropy_score": 0.053782619535923004
+          }
+        ],
+        "random_42_k3": [
+          {
+            "rank": 1,
+            "map_box": [
+              112,
+              28,
+              224,
+              140
+            ],
+            "original_box": [
+              250,
+              46,
+              500,
+              235
+            ],
+            "entropy_score": 0.09121859818696976
+          },
+          {
+            "rank": 2,
+            "map_box": [
+              0,
+              84,
+              112,
+              196
+            ],
+            "original_box": [
+              0,
+              140,
+              250,
+              329
+            ],
+            "entropy_score": 0.03267781063914299
+          },
+          {
+            "rank": 3,
+            "map_box": [
+              0,
+              0,
+              112,
+              112
+            ],
+            "original_box": [
+              0,
+              0,
+              250,
+              188
+            ],
+            "entropy_score": 0.03925616666674614
+          }
+        ]
+      }
+    },
+    {
+      "image_index": 14,
+      "image_id": "2007_000559",
+      "target_class": 5,
+      "target_class_name": "bottle",
+      "figure": "05_index_14.png",
+      "metrics": {
+        "adaptive_k1": {
+          "valid_union_area_fraction": 0.2509607054799085,
+          "target_class_pixel_coverage": 0.0,
+          "maximum_map_box_iou": 0.0,
+          "maximum_local_coverage": 1
+        },
+        "adaptive_k3": {
+          "valid_union_area_fraction": 0.5598358470867856,
+          "target_class_pixel_coverage": 0.2532773990561091,
+          "maximum_map_box_iou": 0.23076923076923078,
+          "maximum_local_coverage": 3
+        },
+        "random_42_k3": {
+          "valid_union_area_fraction": 0.6285623847708746,
+          "target_class_pixel_coverage": 0.35605663345568955,
+          "maximum_map_box_iou": 0.14285714285714285,
+          "maximum_local_coverage": 3
+        }
+      },
+      "regions": {
+        "adaptive_k1": [
+          {
+            "rank": 1,
+            "map_box": [
+              84,
+              28,
+              196,
+              140
+            ],
+            "original_box": [
+              187,
+              46,
+              438,
+              232
+            ],
+            "entropy_score": 0.4156692922115326
+          }
+        ],
+        "adaptive_k3": [
+          {
+            "rank": 1,
+            "map_box": [
+              84,
+              28,
+              196,
+              140
+            ],
+            "original_box": [
+              187,
+              46,
+              438,
+              232
+            ],
+            "entropy_score": 0.4156692922115326
+          },
+          {
+            "rank": 2,
+            "map_box": [
+              28,
+              0,
+              140,
+              112
+            ],
+            "original_box": [
+              62,
+              0,
+              313,
+              185
+            ],
+            "entropy_score": 0.3593481481075287
+          },
+          {
+            "rank": 3,
+            "map_box": [
+              28,
+              84,
+              140,
+              196
+            ],
+            "original_box": [
+              62,
+              138,
+              313,
+              324
+            ],
+            "entropy_score": 0.2562465965747833
+          }
+        ],
+        "random_42_k3": [
+          {
+            "rank": 1,
+            "map_box": [
+              84,
+              28,
+              196,
+              140
+            ],
+            "original_box": [
+              187,
+              46,
+              438,
+              232
+            ],
+            "entropy_score": 0.4156692922115326
+          },
+          {
+            "rank": 2,
+            "map_box": [
+              28,
+              112,
+              140,
+              224
+            ],
+            "original_box": [
+              62,
+              185,
+              313,
+              370
+            ],
+            "entropy_score": 0.20941676199436188
+          },
+          {
+            "rank": 3,
+            "map_box": [
+              112,
+              112,
+              224,
+              224
+            ],
+            "original_box": [
+              250,
+              185,
+              500,
+              370
+            ],
+            "entropy_score": 0.1944955587387085
+          }
+        ]
+      }
+    },
+    {
+      "image_index": 18,
+      "image_id": "2007_000661",
+      "target_class": 16,
+      "target_class_name": "pottedplant",
+      "figure": "06_index_18.png",
+      "metrics": {
+        "adaptive_k1": {
+          "valid_union_area_fraction": 0.2493252809485886,
+          "target_class_pixel_coverage": 0.1334688346883469,
+          "maximum_map_box_iou": 0.0,
+          "maximum_local_coverage": 1
+        },
+        "adaptive_k3": {
+          "valid_union_area_fraction": 0.5339350499955756,
+          "target_class_pixel_coverage": 1.0,
+          "maximum_map_box_iou": 0.23076923076923078,
+          "maximum_local_coverage": 3
+        },
+        "random_42_k3": {
+          "valid_union_area_fraction": 0.6358729315989735,
+          "target_class_pixel_coverage": 0.1334688346883469,
+          "maximum_map_box_iou": 0.14285714285714285,
+          "maximum_local_coverage": 3
+        }
+      },
+      "regions": {
+        "adaptive_k1": [
+          {
+            "rank": 1,
+            "map_box": [
+              28,
+              112,
+              140,
+              224
+            ],
+            "original_box": [
+              62,
+              187,
+              313,
+              375
+            ],
+            "entropy_score": 0.3290901184082031
+          }
+        ],
+        "adaptive_k3": [
+          {
+            "rank": 1,
+            "map_box": [
+              28,
+              112,
+              140,
+              224
+            ],
+            "original_box": [
+              62,
+              187,
+              313,
+              375
+            ],
+            "entropy_score": 0.3290901184082031
+          },
+          {
+            "rank": 2,
+            "map_box": [
+              0,
+              56,
+              112,
+              168
+            ],
+            "original_box": [
+              0,
+              93,
+              250,
+              282
+            ],
+            "entropy_score": 0.23868152499198914
+          },
+          {
+            "rank": 3,
+            "map_box": [
+              84,
+              84,
+              196,
+              196
+            ],
+            "original_box": [
+              187,
+              140,
+              438,
+              329
+            ],
+            "entropy_score": 0.1936032474040985
+          }
+        ],
+        "random_42_k3": [
+          {
+            "rank": 1,
+            "map_box": [
+              112,
+              28,
+              224,
+              140
+            ],
+            "original_box": [
+              250,
+              46,
+              500,
+              235
+            ],
+            "entropy_score": 0.06113991513848305
+          },
+          {
+            "rank": 2,
+            "map_box": [
+              28,
+              112,
+              140,
+              224
+            ],
+            "original_box": [
+              62,
+              187,
+              313,
+              375
+            ],
+            "entropy_score": 0.3290901184082031
+          },
+          {
+            "rank": 3,
+            "map_box": [
+              112,
+              112,
+              224,
+              224
+            ],
+            "original_box": [
+              250,
+              187,
+              500,
+              375
+            ],
+            "entropy_score": 0.15323475003242493
+          }
+        ]
+      }
+    },
+    {
+      "image_index": 21,
+      "image_id": "2007_000727",
+      "target_class": 6,
+      "target_class_name": "bus",
+      "figure": "07_index_21.png",
+      "metrics": {
+        "adaptive_k1": {
+          "valid_union_area_fraction": 0.25891254736002484,
+          "target_class_pixel_coverage": 0.0,
+          "maximum_map_box_iou": 0.0,
+          "maximum_local_coverage": 1
+        },
+        "adaptive_k3": {
+          "valid_union_area_fraction": 0.5649635521680367,
+          "target_class_pixel_coverage": 0.9231638418079096,
+          "maximum_map_box_iou": 0.23076923076923078,
+          "maximum_local_coverage": 3
+        },
+        "random_42_k3": {
+          "valid_union_area_fraction": 0.6990450446458245,
+          "target_class_pixel_coverage": 0.9879472693032015,
+          "maximum_map_box_iou": 0.06666666666666667,
+          "maximum_local_coverage": 3
+        }
+      },
+      "regions": {
+        "adaptive_k1": [
+          {
+            "rank": 1,
+            "map_box": [
+              28,
+              0,
+              140,
+              112
+            ],
+            "original_box": [
+              46,
+              0,
+              235,
+              250
+            ],
+            "entropy_score": 0.28379401564598083
+          }
+        ],
+        "adaptive_k3": [
+          {
+            "rank": 1,
+            "map_box": [
+              28,
+              0,
+              140,
+              112
+            ],
+            "original_box": [
+              46,
+              0,
+              235,
+              250
+            ],
+            "entropy_score": 0.28379401564598083
+          },
+          {
+            "rank": 2,
+            "map_box": [
+              28,
+              84,
+              140,
+              196
+            ],
+            "original_box": [
+              46,
+              187,
+              235,
+              438
+            ],
+            "entropy_score": 0.25824907422065735
+          },
+          {
+            "rank": 3,
+            "map_box": [
+              84,
+              56,
+              196,
+              168
+            ],
+            "original_box": [
+              140,
+              125,
+              329,
+              375
+            ],
+            "entropy_score": 0.19366136193275452
+          }
+        ],
+        "random_42_k3": [
+          {
+            "rank": 1,
+            "map_box": [
+              0,
+              0,
+              112,
+              112
+            ],
+            "original_box": [
+              0,
+              0,
+              188,
+              250
+            ],
+            "entropy_score": 0.2451135516166687
+          },
+          {
+            "rank": 2,
+            "map_box": [
+              112,
+              0,
+              224,
+              112
+            ],
+            "original_box": [
+              187,
+              0,
+              375,
+              250
+            ],
+            "entropy_score": 0.10214217007160187
+          },
+          {
+            "rank": 3,
+            "map_box": [
+              56,
+              84,
+              168,
+              196
+            ],
+            "original_box": [
+              93,
+              187,
+              282,
+              438
+            ],
+            "entropy_score": 0.24928641319274902
+          }
+        ]
+      }
+    },
+    {
+      "image_index": 22,
+      "image_id": "2007_000762",
+      "target_class": 5,
+      "target_class_name": "bottle",
+      "figure": "08_index_22.png",
+      "metrics": {
+        "adaptive_k1": {
+          "valid_union_area_fraction": 0.2310246258189372,
+          "target_class_pixel_coverage": 0.5158671586715867,
+          "maximum_map_box_iou": 0.0,
+          "maximum_local_coverage": 1
+        },
+        "adaptive_k3": {
+          "valid_union_area_fraction": 0.5555930377761601,
+          "target_class_pixel_coverage": 0.5881247903388125,
+          "maximum_map_box_iou": 0.23076923076923078,
+          "maximum_local_coverage": 3
+        },
+        "random_42_k3": {
+          "valid_union_area_fraction": 0.6447750770851458,
+          "target_class_pixel_coverage": 0.07346528010734653,
+          "maximum_map_box_iou": 0.23076923076923078,
+          "maximum_local_coverage": 2
+        }
+      },
+      "regions": {
+        "adaptive_k1": [
+          {
+            "rank": 1,
+            "map_box": [
+              28,
+              84,
+              140,
+              196
+            ],
+            "original_box": [
+              62,
+              140,
+              313,
+              329
+            ],
+            "entropy_score": 0.32837170362472534
+          }
+        ],
+        "adaptive_k3": [
+          {
+            "rank": 1,
+            "map_box": [
+              28,
+              84,
+              140,
+              196
+            ],
+            "original_box": [
+              62,
+              140,
+              313,
+              329
+            ],
+            "entropy_score": 0.32837170362472534
+          },
+          {
+            "rank": 2,
+            "map_box": [
+              84,
+              112,
+              196,
+              224
+            ],
+            "original_box": [
+              187,
+              187,
+              438,
+              375
+            ],
+            "entropy_score": 0.2650889456272125
+          },
+          {
+            "rank": 3,
+            "map_box": [
+              0,
+              28,
+              112,
+              140
+            ],
+            "original_box": [
+              0,
+              46,
+              250,
+              235
+            ],
+            "entropy_score": 0.23552051186561584
+          }
+        ],
+        "random_42_k3": [
+          {
+            "rank": 1,
+            "map_box": [
+              84,
+              84,
+              196,
+              196
+            ],
+            "original_box": [
+              187,
+              140,
+              438,
+              329
+            ],
+            "entropy_score": 0.2733685076236725
+          },
+          {
+            "rank": 2,
+            "map_box": [
+              0,
+              0,
+              112,
+              112
+            ],
+            "original_box": [
+              0,
+              0,
+              250,
+              188
+            ],
+            "entropy_score": 0.17193782329559326
+          },
+          {
+            "rank": 3,
+            "map_box": [
+              112,
+              28,
+              224,
+              140
+            ],
+            "original_box": [
+              250,
+              46,
+              500,
+              235
+            ],
+            "entropy_score": 0.1807914823293686
+          }
+        ]
+      }
+    },
+    {
+      "image_index": 23,
+      "image_id": "2007_000783",
+      "target_class": 15,
+      "target_class_name": "person",
+      "figure": "09_index_23.png",
+      "metrics": {
+        "adaptive_k1": {
+          "valid_union_area_fraction": 0.23680807035695808,
+          "target_class_pixel_coverage": 0.7505261453780152,
+          "maximum_map_box_iou": 0.0,
+          "maximum_local_coverage": 1
+        },
+        "adaptive_k3": {
+          "valid_union_area_fraction": 0.5468233913008874,
+          "target_class_pixel_coverage": 1.0,
+          "maximum_map_box_iou": 0.23076923076923078,
+          "maximum_local_coverage": 3
+        },
+        "random_42_k3": {
+          "valid_union_area_fraction": 0.647573520633531,
+          "target_class_pixel_coverage": 0.9839728023312287,
+          "maximum_map_box_iou": 0.14285714285714285,
+          "maximum_local_coverage": 2
+        }
+      },
+      "regions": {
+        "adaptive_k1": [
+          {
+            "rank": 1,
+            "map_box": [
+              56,
+              56,
+              168,
+              168
+            ],
+            "original_box": [
+              120,
+              109,
+              360,
+              328
+            ],
+            "entropy_score": 0.21042107045650482
+          }
+        ],
+        "adaptive_k3": [
+          {
+            "rank": 1,
+            "map_box": [
+              56,
+              56,
+              168,
+              168
+            ],
+            "original_box": [
+              120,
+              109,
+              360,
+              328
+            ],
+            "entropy_score": 0.21042107045650482
+          },
+          {
+            "rank": 2,
+            "map_box": [
+              112,
+              84,
+              224,
+              196
+            ],
+            "original_box": [
+              240,
+              163,
+              480,
+              383
+            ],
+            "entropy_score": 0.1598449945449829
+          },
+          {
+            "rank": 3,
+            "map_box": [
+              28,
+              0,
+              140,
+              112
+            ],
+            "original_box": [
+              60,
+              0,
+              300,
+              219
+            ],
+            "entropy_score": 0.12344197928905487
+          }
+        ],
+        "random_42_k3": [
+          {
+            "rank": 1,
+            "map_box": [
+              112,
+              56,
+              224,
+              168
+            ],
+            "original_box": [
+              240,
+              109,
+              480,
+              328
+            ],
+            "entropy_score": 0.16465716063976288
+          },
+          {
+            "rank": 2,
+            "map_box": [
+              56,
+              112,
+              168,
+              224
+            ],
+            "original_box": [
+              120,
+              218,
+              360,
+              437
+            ],
+            "entropy_score": 0.1342373937368393
+          },
+          {
+            "rank": 3,
+            "map_box": [
+              0,
+              28,
+              112,
+              140
+            ],
+            "original_box": [
+              0,
+              54,
+              240,
+              274
+            ],
+            "entropy_score": 0.11085106432437897
+          }
+        ]
+      }
+    },
+    {
+      "image_index": 27,
+      "image_id": "2007_000837",
+      "target_class": 4,
+      "target_class_name": "boat",
+      "figure": "10_index_27.png",
+      "metrics": {
+        "adaptive_k1": {
+          "valid_union_area_fraction": 0.2478977960050748,
+          "target_class_pixel_coverage": 0.9249867934495509,
+          "maximum_map_box_iou": 0.0,
+          "maximum_local_coverage": 1
+        },
+        "adaptive_k3": {
+          "valid_union_area_fraction": 0.5432095122886732,
+          "target_class_pixel_coverage": 1.0,
+          "maximum_map_box_iou": 0.23076923076923078,
+          "maximum_local_coverage": 3
+        },
+        "random_42_k3": {
+          "valid_union_area_fraction": 0.6237128610627564,
+          "target_class_pixel_coverage": 1.0,
+          "maximum_map_box_iou": 0.23076923076923078,
+          "maximum_local_coverage": 2
+        }
+      },
+      "regions": {
+        "adaptive_k1": [
+          {
+            "rank": 1,
+            "map_box": [
+              112,
+              112,
+              224,
+              224
+            ],
+            "original_box": [
+              250,
+              137,
+              500,
+              275
+            ],
+            "entropy_score": 0.03492758423089981
+          }
+        ],
+        "adaptive_k3": [
+          {
+            "rank": 1,
+            "map_box": [
+              112,
+              112,
+              224,
+              224
+            ],
+            "original_box": [
+              250,
+              137,
+              500,
+              275
+            ],
+            "entropy_score": 0.03492758423089981
+          },
+          {
+            "rank": 2,
+            "map_box": [
+              56,
+              84,
+              168,
+              196
+            ],
+            "original_box": [
+              125,
+              103,
+              375,
+              241
+            ],
+            "entropy_score": 0.03404894098639488
+          },
+          {
+            "rank": 3,
+            "map_box": [
+              84,
+              28,
+              196,
+              140
+            ],
+            "original_box": [
+              187,
+              34,
+              438,
+              172
+            ],
+            "entropy_score": 0.030589554458856583
+          }
+        ],
+        "random_42_k3": [
+          {
+            "rank": 1,
+            "map_box": [
+              28,
+              84,
+              140,
+              196
+            ],
+            "original_box": [
+              62,
+              103,
+              313,
+              241
+            ],
+            "entropy_score": 0.02530711330473423
+          },
+          {
+            "rank": 2,
+            "map_box": [
+              112,
+              28,
+              224,
+              140
+            ],
+            "original_box": [
+              250,
+              34,
+              500,
+              172
+            ],
+            "entropy_score": 0.029965557157993317
+          },
+          {
+            "rank": 3,
+            "map_box": [
+              0,
+              28,
+              112,
+              140
+            ],
+            "original_box": [
+              0,
+              34,
+              250,
+              172
+            ],
+            "entropy_score": 0.013147441670298576
+          }
+        ]
+      }
+    },
+    {
+      "image_index": 31,
+      "image_id": "2007_000999",
+      "target_class": 5,
+      "target_class_name": "bottle",
+      "figure": "11_index_31.png",
+      "metrics": {
+        "adaptive_k1": {
+          "valid_union_area_fraction": 0.24434546286445097,
+          "target_class_pixel_coverage": 0.0,
+          "maximum_map_box_iou": 0.0,
+          "maximum_local_coverage": 1
+        },
+        "adaptive_k3": {
+          "valid_union_area_fraction": 0.5875647040015877,
+          "target_class_pixel_coverage": 1.0,
+          "maximum_map_box_iou": 0.23076923076923078,
+          "maximum_local_coverage": 2
+        },
+        "random_42_k3": {
+          "valid_union_area_fraction": 0.6859478619427463,
+          "target_class_pixel_coverage": 0.9704933148916551,
+          "maximum_map_box_iou": 0.06666666666666667,
+          "maximum_local_coverage": 3
+        }
+      },
+      "regions": {
+        "adaptive_k1": [
+          {
+            "rank": 1,
+            "map_box": [
+              56,
+              0,
+              168,
+              112
+            ],
+            "original_box": [
+              93,
+              0,
+              282,
+              250
+            ],
+            "entropy_score": 0.1932748556137085
+          }
+        ],
+        "adaptive_k3": [
+          {
+            "rank": 1,
+            "map_box": [
+              56,
+              0,
+              168,
+              112
+            ],
+            "original_box": [
+              93,
+              0,
+              282,
+              250
+            ],
+            "entropy_score": 0.1932748556137085
+          },
+          {
+            "rank": 2,
+            "map_box": [
+              84,
+              112,
+              196,
+              224
+            ],
+            "original_box": [
+              140,
+              250,
+              329,
+              500
+            ],
+            "entropy_score": 0.16078273952007294
+          },
+          {
+            "rank": 3,
+            "map_box": [
+              28,
+              56,
+              140,
+              168
+            ],
+            "original_box": [
+              46,
+              125,
+              235,
+              375
+            ],
+            "entropy_score": 0.12645898759365082
+          }
+        ],
+        "random_42_k3": [
+          {
+            "rank": 1,
+            "map_box": [
+              56,
+              84,
+              168,
+              196
+            ],
+            "original_box": [
+              93,
+              187,
+              282,
+              438
+            ],
+            "entropy_score": 0.15210561454296112
+          },
+          {
+            "rank": 2,
+            "map_box": [
+              0,
+              0,
+              112,
+              112
+            ],
+            "original_box": [
+              0,
+              0,
+              188,
+              250
+            ],
+            "entropy_score": 0.12174543738365173
+          },
+          {
+            "rank": 3,
+            "map_box": [
+              112,
+              0,
+              224,
+              112
+            ],
+            "original_box": [
+              187,
+              0,
+              375,
+              250
+            ],
+            "entropy_score": 0.11004548519849777
+          }
+        ]
+      }
+    },
+    {
+      "image_index": 33,
+      "image_id": "2007_001175",
+      "target_class": 20,
+      "target_class_name": "tvmonitor",
+      "figure": "12_index_33.png",
+      "metrics": {
+        "adaptive_k1": {
+          "valid_union_area_fraction": 0.16605097279631514,
+          "target_class_pixel_coverage": 0.0,
+          "maximum_map_box_iou": 0.0,
+          "maximum_local_coverage": 1
+        },
+        "adaptive_k3": {
+          "valid_union_area_fraction": 0.48854143786151216,
+          "target_class_pixel_coverage": 0.4874776386404293,
+          "maximum_map_box_iou": 0.23076923076923078,
+          "maximum_local_coverage": 2
+        },
+        "random_42_k3": {
+          "valid_union_area_fraction": 0.5424163155547568,
+          "target_class_pixel_coverage": 0.46153846153846156,
+          "maximum_map_box_iou": 0.14285714285714285,
+          "maximum_local_coverage": 3
+        }
+      },
+      "regions": {
+        "adaptive_k1": [
+          {
+            "rank": 1,
+            "map_box": [
+              56,
+              112,
+              168,
+              224
+            ],
+            "original_box": [
+              125,
+              187,
+              375,
+              375
+            ],
+            "entropy_score": 0.43307340145111084
+          }
+        ],
+        "adaptive_k3": [
+          {
+            "rank": 1,
+            "map_box": [
+              56,
+              112,
+              168,
+              224
+            ],
+            "original_box": [
+              125,
+              187,
+              375,
+              375
+            ],
+            "entropy_score": 0.43307340145111084
+          },
+          {
+            "rank": 2,
+            "map_box": [
+              112,
+              84,
+              224,
+              196
+            ],
+            "original_box": [
+              250,
+              140,
+              500,
+              329
+            ],
+            "entropy_score": 0.398196816444397
+          },
+          {
+            "rank": 3,
+            "map_box": [
+              0,
+              84,
+              112,
+              196
+            ],
+            "original_box": [
+              0,
+              140,
+              250,
+              329
+            ],
+            "entropy_score": 0.3452509343624115
+          }
+        ],
+        "random_42_k3": [
+          {
+            "rank": 1,
+            "map_box": [
+              84,
+              84,
+              196,
+              196
+            ],
+            "original_box": [
+              187,
+              140,
+              438,
+              329
+            ],
+            "entropy_score": 0.3990638256072998
+          },
+          {
+            "rank": 2,
+            "map_box": [
+              0,
+              28,
+              112,
+              140
+            ],
+            "original_box": [
+              0,
+              46,
+              250,
+              235
+            ],
+            "entropy_score": 0.23337873816490173
+          },
+          {
+            "rank": 3,
+            "map_box": [
+              0,
+              112,
+              112,
+              224
+            ],
+            "original_box": [
+              0,
+              187,
+              250,
+              375
+            ],
+            "entropy_score": 0.37833094596862793
+          }
+        ]
+      }
+    },
+    {
+      "image_index": 37,
+      "image_id": "2007_001289",
+      "target_class": 3,
+      "target_class_name": "bird",
+      "figure": "13_index_37.png",
+      "metrics": {
+        "adaptive_k1": {
+          "valid_union_area_fraction": 0.23775960719871705,
+          "target_class_pixel_coverage": 1.0,
+          "maximum_map_box_iou": 0.0,
+          "maximum_local_coverage": 1
+        },
+        "adaptive_k3": {
+          "valid_union_area_fraction": 0.5407353144984062,
+          "target_class_pixel_coverage": 1.0,
+          "maximum_map_box_iou": 0.23076923076923078,
+          "maximum_local_coverage": 3
+        },
+        "random_42_k3": {
+          "valid_union_area_fraction": 0.5583493370818402,
+          "target_class_pixel_coverage": 1.0,
+          "maximum_map_box_iou": 0.23076923076923078,
+          "maximum_local_coverage": 3
+        }
+      },
+      "regions": {
+        "adaptive_k1": [
+          {
+            "rank": 1,
+            "map_box": [
+              56,
+              28,
+              168,
+              140
+            ],
+            "original_box": [
+              125,
+              38,
+              375,
+              194
+            ],
+            "entropy_score": 0.1628839671611786
+          }
+        ],
+        "adaptive_k3": [
+          {
+            "rank": 1,
+            "map_box": [
+              56,
+              28,
+              168,
+              140
+            ],
+            "original_box": [
+              125,
+              38,
+              375,
+              194
+            ],
+            "entropy_score": 0.1628839671611786
+          },
+          {
+            "rank": 2,
+            "map_box": [
+              84,
+              84,
+              196,
+              196
+            ],
+            "original_box": [
+              187,
+              115,
+              438,
+              271
+            ],
+            "entropy_score": 0.10661023110151291
+          },
+          {
+            "rank": 3,
+            "map_box": [
+              112,
+              0,
+              224,
+              112
+            ],
+            "original_box": [
+              250,
+              0,
+              500,
+              155
+            ],
+            "entropy_score": 0.10308749228715897
+          }
+        ],
+        "random_42_k3": [
+          {
+            "rank": 1,
+            "map_box": [
+              56,
+              84,
+              168,
+              196
+            ],
+            "original_box": [
+              125,
+              115,
+              375,
+              271
+            ],
+            "entropy_score": 0.11099117994308472
+          },
+          {
+            "rank": 2,
+            "map_box": [
+              84,
+              28,
+              196,
+              140
+            ],
+            "original_box": [
+              187,
+              38,
+              438,
+              194
+            ],
+            "entropy_score": 0.15325134992599487
+          },
+          {
+            "rank": 3,
+            "map_box": [
+              0,
+              28,
+              112,
+              140
+            ],
+            "original_box": [
+              0,
+              38,
+              250,
+              194
+            ],
+            "entropy_score": 0.09548766165971756
+          }
+        ]
+      }
+    },
+    {
+      "image_index": 42,
+      "image_id": "2007_001408",
+      "target_class": 16,
+      "target_class_name": "pottedplant",
+      "figure": "14_index_42.png",
+      "metrics": {
+        "adaptive_k1": {
+          "valid_union_area_fraction": 0.25510380678285505,
+          "target_class_pixel_coverage": 0.0,
+          "maximum_map_box_iou": 0.0,
+          "maximum_local_coverage": 1
+        },
+        "adaptive_k3": {
+          "valid_union_area_fraction": 0.6312054919204415,
+          "target_class_pixel_coverage": 0.5347712904425437,
+          "maximum_map_box_iou": 0.14285714285714285,
+          "maximum_local_coverage": 3
+        },
+        "random_42_k3": {
+          "valid_union_area_fraction": 0.6172769868791304,
+          "target_class_pixel_coverage": 0.7169951654890294,
+          "maximum_map_box_iou": 0.23076923076923078,
+          "maximum_local_coverage": 3
+        }
+      },
+      "regions": {
+        "adaptive_k1": [
+          {
+            "rank": 1,
+            "map_box": [
+              0,
+              112,
+              112,
+              224
+            ],
+            "original_box": [
+              0,
+              250,
+              167,
+              500
+            ],
+            "entropy_score": 0.26943662762641907
+          }
+        ],
+        "adaptive_k3": [
+          {
+            "rank": 1,
+            "map_box": [
+              0,
+              112,
+              112,
+              224
+            ],
+            "original_box": [
+              0,
+              250,
+              167,
+              500
+            ],
+            "entropy_score": 0.26943662762641907
+          },
+          {
+            "rank": 2,
+            "map_box": [
+              84,
+              112,
+              196,
+              224
+            ],
+            "original_box": [
+              124,
+              250,
+              292,
+              500
+            ],
+            "entropy_score": 0.24842774868011475
+          },
+          {
+            "rank": 3,
+            "map_box": [
+              0,
+              28,
+              112,
+              140
+            ],
+            "original_box": [
+              0,
+              62,
+              167,
+              313
+            ],
+            "entropy_score": 0.17085298895835876
+          }
+        ],
+        "random_42_k3": [
+          {
+            "rank": 1,
+            "map_box": [
+              0,
+              84,
+              112,
+              196
+            ],
+            "original_box": [
+              0,
+              187,
+              167,
+              438
+            ],
+            "entropy_score": 0.2168348878622055
+          },
+          {
+            "rank": 2,
+            "map_box": [
+              28,
+              28,
+              140,
+              140
+            ],
+            "original_box": [
+              41,
+              62,
+              209,
+              313
+            ],
+            "entropy_score": 0.15219630300998688
+          },
+          {
+            "rank": 3,
+            "map_box": [
+              112,
+              56,
+              224,
+              168
+            ],
+            "original_box": [
+              166,
+              125,
+              333,
+              375
+            ],
+            "entropy_score": 0.11264228820800781
+          }
+        ]
+      }
+    },
+    {
+      "image_index": 44,
+      "image_id": "2007_001430",
+      "target_class": 20,
+      "target_class_name": "tvmonitor",
+      "figure": "15_index_44.png",
+      "metrics": {
+        "adaptive_k1": {
+          "valid_union_area_fraction": 0.246268991925975,
+          "target_class_pixel_coverage": 0.0,
+          "maximum_map_box_iou": 0.0,
+          "maximum_local_coverage": 1
+        },
+        "adaptive_k3": {
+          "valid_union_area_fraction": 0.556905593423993,
+          "target_class_pixel_coverage": 0.0,
+          "maximum_map_box_iou": 0.23076923076923078,
+          "maximum_local_coverage": 2
+        },
+        "random_42_k3": {
+          "valid_union_area_fraction": 0.5589774398939933,
+          "target_class_pixel_coverage": 0.5850328670150008,
+          "maximum_map_box_iou": 0.23076923076923078,
+          "maximum_local_coverage": 3
+        }
+      },
+      "regions": {
+        "adaptive_k1": [
+          {
+            "rank": 1,
+            "map_box": [
+              0,
+              112,
+              112,
+              224
+            ],
+            "original_box": [
+              0,
+              187,
+              250,
+              375
+            ],
+            "entropy_score": 0.2112763524055481
+          }
+        ],
+        "adaptive_k3": [
+          {
+            "rank": 1,
+            "map_box": [
+              0,
+              112,
+              112,
+              224
+            ],
+            "original_box": [
+              0,
+              187,
+              250,
+              375
+            ],
+            "entropy_score": 0.2112763524055481
+          },
+          {
+            "rank": 2,
+            "map_box": [
+              56,
+              84,
+              168,
+              196
+            ],
+            "original_box": [
+              125,
+              140,
+              375,
+              329
+            ],
+            "entropy_score": 0.12906059622764587
+          },
+          {
+            "rank": 3,
+            "map_box": [
+              112,
+              112,
+              224,
+              224
+            ],
+            "original_box": [
+              250,
+              187,
+              500,
+              375
+            ],
+            "entropy_score": 0.10525722801685333
+          }
+        ],
+        "random_42_k3": [
+          {
+            "rank": 1,
+            "map_box": [
+              0,
+              56,
+              112,
+              168
+            ],
+            "original_box": [
+              0,
+              93,
+              250,
+              282
+            ],
+            "entropy_score": 0.12311684340238571
+          },
+          {
+            "rank": 2,
+            "map_box": [
+              56,
+              84,
+              168,
+              196
+            ],
+            "original_box": [
+              125,
+              140,
+              375,
+              329
+            ],
+            "entropy_score": 0.12906059622764587
+          },
+          {
+            "rank": 3,
+            "map_box": [
+              56,
+              0,
+              168,
+              112
+            ],
+            "original_box": [
+              125,
+              0,
+              375,
+              188
+            ],
+            "entropy_score": 0.07981780171394348
+          }
+        ]
+      }
+    },
+    {
+      "image_index": 45,
+      "image_id": "2007_001457",
+      "target_class": 9,
+      "target_class_name": "chair",
+      "figure": "16_index_45.png",
+      "metrics": {
+        "adaptive_k1": {
+          "valid_union_area_fraction": 0.24424119798435076,
+          "target_class_pixel_coverage": 0.0,
+          "maximum_map_box_iou": 0.0,
+          "maximum_local_coverage": 1
+        },
+        "adaptive_k3": {
+          "valid_union_area_fraction": 0.5417249263871297,
+          "target_class_pixel_coverage": 0.9299694189602447,
+          "maximum_map_box_iou": 0.23076923076923078,
+          "maximum_local_coverage": 3
+        },
+        "random_42_k3": {
+          "valid_union_area_fraction": 0.6844214878298871,
+          "target_class_pixel_coverage": 1.0,
+          "maximum_map_box_iou": 0.14285714285714285,
+          "maximum_local_coverage": 2
+        }
+      },
+      "regions": {
+        "adaptive_k1": [
+          {
+            "rank": 1,
+            "map_box": [
+              56,
+              56,
+              168,
+              168
+            ],
+            "original_box": [
+              125,
+              93,
+              375,
+              282
+            ],
+            "entropy_score": 0.24763458967208862
+          }
+        ],
+        "adaptive_k3": [
+          {
+            "rank": 1,
+            "map_box": [
+              56,
+              56,
+              168,
+              168
+            ],
+            "original_box": [
+              125,
+              93,
+              375,
+              282
+            ],
+            "entropy_score": 0.24763458967208862
+          },
+          {
+            "rank": 2,
+            "map_box": [
+              112,
+              84,
+              224,
+              196
+            ],
+            "original_box": [
+              250,
+              140,
+              500,
+              329
+            ],
+            "entropy_score": 0.18725475668907166
+          },
+          {
+            "rank": 3,
+            "map_box": [
+              28,
+              112,
+              140,
+              224
+            ],
+            "original_box": [
+              62,
+              187,
+              313,
+              375
+            ],
+            "entropy_score": 0.170659139752388
+          }
+        ],
+        "random_42_k3": [
+          {
+            "rank": 1,
+            "map_box": [
+              112,
+              112,
+              224,
+              224
+            ],
+            "original_box": [
+              250,
+              187,
+              500,
+              375
+            ],
+            "entropy_score": 0.15772871673107147
+          },
+          {
+            "rank": 2,
+            "map_box": [
+              0,
+              112,
+              112,
+              224
+            ],
+            "original_box": [
+              0,
+              187,
+              250,
+              375
+            ],
+            "entropy_score": 0.13689231872558594
+          },
+          {
+            "rank": 3,
+            "map_box": [
+              112,
+              28,
+              224,
+              140
+            ],
+            "original_box": [
+              250,
+              46,
+              500,
+              235
+            ],
+            "entropy_score": 0.16727308928966522
+          }
+        ]
+      }
+    },
+    {
+      "image_index": 49,
+      "image_id": "2007_001585",
+      "target_class": 15,
+      "target_class_name": "person",
+      "figure": "17_index_49.png",
+      "metrics": {
+        "adaptive_k1": {
+          "valid_union_area_fraction": 0.23844154341022092,
+          "target_class_pixel_coverage": 0.9018726039516367,
+          "maximum_map_box_iou": 0.0,
+          "maximum_local_coverage": 1
+        },
+        "adaptive_k3": {
+          "valid_union_area_fraction": 0.5291306381685869,
+          "target_class_pixel_coverage": 1.0,
+          "maximum_map_box_iou": 0.23076923076923078,
+          "maximum_local_coverage": 3
+        },
+        "random_42_k3": {
+          "valid_union_area_fraction": 0.597596439026037,
+          "target_class_pixel_coverage": 0.985549985255087,
+          "maximum_map_box_iou": 0.14285714285714285,
+          "maximum_local_coverage": 3
+        }
+      },
+      "regions": {
+        "adaptive_k1": [
+          {
+            "rank": 1,
+            "map_box": [
+              28,
+              56,
+              140,
+              168
+            ],
+            "original_box": [
+              62,
+              108,
+              313,
+              326
+            ],
+            "entropy_score": 0.28884226083755493
+          }
+        ],
+        "adaptive_k3": [
+          {
+            "rank": 1,
+            "map_box": [
+              28,
+              56,
+              140,
+              168
+            ],
+            "original_box": [
+              62,
+              108,
+              313,
+              326
+            ],
+            "entropy_score": 0.28884226083755493
+          },
+          {
+            "rank": 2,
+            "map_box": [
+              84,
+              84,
+              196,
+              196
+            ],
+            "original_box": [
+              187,
+              162,
+              438,
+              380
+            ],
+            "entropy_score": 0.26113200187683105
+          },
+          {
+            "rank": 3,
+            "map_box": [
+              0,
+              112,
+              112,
+              224
+            ],
+            "original_box": [
+              0,
+              217,
+              250,
+              434
+            ],
+            "entropy_score": 0.22256630659103394
+          }
+        ],
+        "random_42_k3": [
+          {
+            "rank": 1,
+            "map_box": [
+              28,
+              112,
+              140,
+              224
+            ],
+            "original_box": [
+              62,
+              217,
+              313,
+              434
+            ],
+            "entropy_score": 0.2307293564081192
+          },
+          {
+            "rank": 2,
+            "map_box": [
+              84,
+              56,
+              196,
+              168
+            ],
+            "original_box": [
+              187,
+              108,
+              438,
+              326
+            ],
+            "entropy_score": 0.2628666162490845
+          },
+          {
+            "rank": 3,
+            "map_box": [
+              0,
+              28,
+              112,
+              140
+            ],
+            "original_box": [
+              0,
+              54,
+              250,
+              272
+            ],
+            "entropy_score": 0.21952687203884125
+          }
+        ]
+      }
+    },
+    {
+      "image_index": 50,
+      "image_id": "2007_001586",
+      "target_class": 15,
+      "target_class_name": "person",
+      "figure": "18_index_50.png",
+      "metrics": {
+        "adaptive_k1": {
+          "valid_union_area_fraction": 0.2267175950642017,
+          "target_class_pixel_coverage": 0.9856719367588933,
+          "maximum_map_box_iou": 0.0,
+          "maximum_local_coverage": 1
+        },
+        "adaptive_k3": {
+          "valid_union_area_fraction": 0.5314183815557011,
+          "target_class_pixel_coverage": 0.9856719367588933,
+          "maximum_map_box_iou": 0.23076923076923078,
+          "maximum_local_coverage": 3
+        },
+        "random_42_k3": {
+          "valid_union_area_fraction": 0.6142449076188956,
+          "target_class_pixel_coverage": 0.3496376811594203,
+          "maximum_map_box_iou": 0.23076923076923078,
+          "maximum_local_coverage": 2
+        }
+      },
+      "regions": {
+        "adaptive_k1": [
+          {
+            "rank": 1,
+            "map_box": [
+              84,
+              28,
+              196,
+              140
+            ],
+            "original_box": [
+              180,
+              49,
+              420,
+              249
+            ],
+            "entropy_score": 0.23648890852928162
+          }
+        ],
+        "adaptive_k3": [
+          {
+            "rank": 1,
+            "map_box": [
+              84,
+              28,
+              196,
+              140
+            ],
+            "original_box": [
+              180,
+              49,
+              420,
+              249
+            ],
+            "entropy_score": 0.23648890852928162
+          },
+          {
+            "rank": 2,
+            "map_box": [
+              28,
+              56,
+              140,
+              168
+            ],
+            "original_box": [
+              60,
+              99,
+              300,
+              299
+            ],
+            "entropy_score": 0.20677140355110168
+          },
+          {
+            "rank": 3,
+            "map_box": [
+              112,
+              84,
+              224,
+              196
+            ],
+            "original_box": [
+              240,
+              149,
+              480,
+              349
+            ],
+            "entropy_score": 0.12496423721313477
+          }
+        ],
+        "random_42_k3": [
+          {
+            "rank": 1,
+            "map_box": [
+              112,
+              112,
+              224,
+              224
+            ],
+            "original_box": [
+              240,
+              199,
+              480,
+              398
+            ],
+            "entropy_score": 0.08611513674259186
+          },
+          {
+            "rank": 2,
+            "map_box": [
+              0,
+              28,
+              112,
+              140
+            ],
+            "original_box": [
+              0,
+              49,
+              240,
+              249
+            ],
+            "entropy_score": 0.11861211061477661
+          },
+          {
+            "rank": 3,
+            "map_box": [
+              28,
+              84,
+              140,
+              196
+            ],
+            "original_box": [
+              60,
+              149,
+              300,
+              349
+            ],
+            "entropy_score": 0.19176077842712402
+          }
+        ]
+      }
+    },
+    {
+      "image_index": 51,
+      "image_id": "2007_001587",
+      "target_class": 2,
+      "target_class_name": "bicycle",
+      "figure": "19_index_51.png",
+      "metrics": {
+        "adaptive_k1": {
+          "valid_union_area_fraction": 0.2537399651242516,
+          "target_class_pixel_coverage": 0.0,
+          "maximum_map_box_iou": 0.0,
+          "maximum_local_coverage": 1
+        },
+        "adaptive_k3": {
+          "valid_union_area_fraction": 0.5709149215295661,
+          "target_class_pixel_coverage": 0.0,
+          "maximum_map_box_iou": 0.23076923076923078,
+          "maximum_local_coverage": 2
+        },
+        "random_42_k3": {
+          "valid_union_area_fraction": 0.6280064136825227,
+          "target_class_pixel_coverage": 0.5953991880920162,
+          "maximum_map_box_iou": 0.23076923076923078,
+          "maximum_local_coverage": 2
+        }
+      },
+      "regions": {
+        "adaptive_k1": [
+          {
+            "rank": 1,
+            "map_box": [
+              0,
+              0,
+              112,
+              112
+            ],
+            "original_box": [
+              0,
+              0,
+              250,
+              188
+            ],
+            "entropy_score": 0.20768579840660095
+          }
+        ],
+        "adaptive_k3": [
+          {
+            "rank": 1,
+            "map_box": [
+              0,
+              0,
+              112,
+              112
+            ],
+            "original_box": [
+              0,
+              0,
+              250,
+              188
+            ],
+            "entropy_score": 0.20768579840660095
+          },
+          {
+            "rank": 2,
+            "map_box": [
+              56,
+              28,
+              168,
+              140
+            ],
+            "original_box": [
+              125,
+              46,
+              375,
+              235
+            ],
+            "entropy_score": 0.1713980883359909
+          },
+          {
+            "rank": 3,
+            "map_box": [
+              112,
+              0,
+              224,
+              112
+            ],
+            "original_box": [
+              250,
+              0,
+              500,
+              188
+            ],
+            "entropy_score": 0.1403043270111084
+          }
+        ],
+        "random_42_k3": [
+          {
+            "rank": 1,
+            "map_box": [
+              0,
+              56,
+              112,
+              168
+            ],
+            "original_box": [
+              0,
+              93,
+              250,
+              282
+            ],
+            "entropy_score": 0.15237551927566528
+          },
+          {
+            "rank": 2,
+            "map_box": [
+              56,
+              28,
+              168,
+              140
+            ],
+            "original_box": [
+              125,
+              46,
+              375,
+              235
+            ],
+            "entropy_score": 0.1713980883359909
+          },
+          {
+            "rank": 3,
+            "map_box": [
+              112,
+              112,
+              224,
+              224
+            ],
+            "original_box": [
+              250,
+              187,
+              500,
+              375
+            ],
+            "entropy_score": 0.09519151598215103
+          }
+        ]
+      }
+    },
+    {
+      "image_index": 52,
+      "image_id": "2007_001594",
+      "target_class": 12,
+      "target_class_name": "dog",
+      "figure": "20_index_52.png",
+      "metrics": {
+        "adaptive_k1": {
+          "valid_union_area_fraction": 0.22543846518474167,
+          "target_class_pixel_coverage": 1.0,
+          "maximum_map_box_iou": 0.0,
+          "maximum_local_coverage": 1
+        },
+        "adaptive_k3": {
+          "valid_union_area_fraction": 0.5495721378140359,
+          "target_class_pixel_coverage": 1.0,
+          "maximum_map_box_iou": 0.23076923076923078,
+          "maximum_local_coverage": 2
+        },
+        "random_42_k3": {
+          "valid_union_area_fraction": 0.6537809046229075,
+          "target_class_pixel_coverage": 1.0,
+          "maximum_map_box_iou": 0.10344827586206896,
+          "maximum_local_coverage": 3
+        }
+      },
+      "regions": {
+        "adaptive_k1": [
+          {
+            "rank": 1,
+            "map_box": [
+              56,
+              56,
+              168,
+              168
+            ],
+            "original_box": [
+              125,
+              83,
+              375,
+              250
+            ],
+            "entropy_score": 0.19007296860218048
+          }
+        ],
+        "adaptive_k3": [
+          {
+            "rank": 1,
+            "map_box": [
+              56,
+              56,
+              168,
+              168
+            ],
+            "original_box": [
+              125,
+              83,
+              375,
+              250
+            ],
+            "entropy_score": 0.19007296860218048
+          },
+          {
+            "rank": 2,
+            "map_box": [
+              0,
+              28,
+              112,
+              140
+            ],
+            "original_box": [
+              0,
+              41,
+              250,
+              209
+            ],
+            "entropy_score": 0.1159214973449707
+          },
+          {
+            "rank": 3,
+            "map_box": [
+              112,
+              28,
+              224,
+              140
+            ],
+            "original_box": [
+              250,
+              41,
+              500,
+              209
+            ],
+            "entropy_score": 0.11075888574123383
+          }
+        ],
+        "random_42_k3": [
+          {
+            "rank": 1,
+            "map_box": [
+              28,
+              112,
+              140,
+              224
+            ],
+            "original_box": [
+              62,
+              166,
+              313,
+              333
+            ],
+            "entropy_score": 0.1075986921787262
+          },
+          {
+            "rank": 2,
+            "map_box": [
+              0,
+              28,
+              112,
+              140
+            ],
+            "original_box": [
+              0,
+              41,
+              250,
+              209
+            ],
+            "entropy_score": 0.1159214973449707
+          },
+          {
+            "rank": 3,
+            "map_box": [
+              84,
+              0,
+              196,
+              112
+            ],
+            "original_box": [
+              187,
+              0,
+              438,
+              167
+            ],
+            "entropy_score": 0.09883715212345123
+          }
+        ]
+      }
+    }
+  ]
+}

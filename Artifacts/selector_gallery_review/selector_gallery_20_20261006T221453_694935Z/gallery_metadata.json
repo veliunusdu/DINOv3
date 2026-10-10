@@ -1,0 +1,852 @@
+{
+  "protocol": {
+    "source_file": "/content/DINOv3_sessions/20261006T204801_022252Z/recovered/20261001T181030_523202Z/adaptive_random_50_20261006T204801_022252Z.json",
+    "sample_selection": "first 20 saved development records",
+    "random_seed": 42,
+    "oracle_definition": "reconstructed target-class GT bounding box with 20% padding per side, clamped to image",
+    "oracle_comparison": "visual reference; crop area is not matched to other methods",
+    "manual_review_status": "pending"
+  },
+  "records": [
+    {
+      "image_index": 9,
+      "image_id": "2007_000346",
+      "target_class": 5,
+      "target_class_name": "bottle",
+      "figure": "01_index_9.png",
+      "metrics": {
+        "adaptive": {
+          "box": [
+            0,
+            187,
+            250,
+            375
+          ],
+          "error_coverage": 0.5854442712392829,
+          "error_density": 0.13724504944841606,
+          "valid_area_fraction": 0.24268610387450806
+        },
+        "random_42": {
+          "box": [
+            125,
+            0,
+            375,
+            188
+          ],
+          "error_coverage": 0.14253702260327358,
+          "error_density": 0.03242105263157895,
+          "valid_area_fraction": 0.25012471592483787
+        },
+        "oracle_gt_padded": {
+          "box": [
+            107,
+            62,
+            245,
+            375
+          ],
+          "error_coverage": 0.5966484801247077,
+          "error_density": 0.1552384090851479,
+          "valid_area_fraction": 0.21866304528573804
+        }
+      }
+    },
+    {
+      "image_index": 10,
+      "image_id": "2007_000452",
+      "target_class": 9,
+      "target_class_name": "chair",
+      "figure": "02_index_10.png",
+      "metrics": {
+        "adaptive": {
+          "box": [
+            62,
+            140,
+            313,
+            329
+          ],
+          "error_coverage": 0.7693972615630734,
+          "error_density": 0.36151397240891403,
+          "valid_area_fraction": 0.24732617396819842
+        },
+        "random_42": {
+          "box": [
+            250,
+            93,
+            500,
+            282
+          ],
+          "error_coverage": 0.22133345880581565,
+          "error_density": 0.10298850574712644,
+          "valid_area_fraction": 0.2497484744428162
+        },
+        "oracle_gt_padded": {
+          "box": [
+            471,
+            111,
+            500,
+            312
+          ],
+          "error_coverage": 0.12195925281136781,
+          "error_density": 0.5281173594132029,
+          "valid_area_fraction": 0.026836683362131186
+        }
+      }
+    },
+    {
+      "image_index": 11,
+      "image_id": "2007_000464",
+      "target_class": 10,
+      "target_class_name": "cow",
+      "figure": "03_index_11.png",
+      "metrics": {
+        "adaptive": {
+          "box": [
+            46,
+            125,
+            235,
+            375
+          ],
+          "error_coverage": 0.9972972972972973,
+          "error_density": 0.07600759847115099,
+          "valid_area_fraction": 0.2376440642013717
+        },
+        "random_42": {
+          "box": [
+            140,
+            125,
+            329,
+            375
+          ],
+          "error_coverage": 0.6015015015015015,
+          "error_density": 0.04399200544683842,
+          "valid_area_fraction": 0.24764085522057663
+        },
+        "oracle_gt_padded": {
+          "box": [
+            27,
+            181,
+            272,
+            333
+          ],
+          "error_coverage": 1.0,
+          "error_density": 0.09911009256227864,
+          "valid_area_fraction": 0.18274329785324625
+        }
+      }
+    },
+    {
+      "image_index": 13,
+      "image_id": "2007_000529",
+      "target_class": 4,
+      "target_class_name": "boat",
+      "figure": "04_index_13.png",
+      "metrics": {
+        "adaptive": {
+          "box": [
+            250,
+            46,
+            500,
+            235
+          ],
+          "error_coverage": 0.8700391047508113,
+          "error_density": 0.23482517796591137,
+          "valid_area_fraction": 0.2987895704451214
+        },
+        "random_42": {
+          "box": [
+            187,
+            46,
+            438,
+            235
+          ],
+          "error_coverage": 0.5792495215908146,
+          "error_density": 0.1533784230354035,
+          "valid_area_fraction": 0.30455991089520795
+        },
+        "oracle_gt_padded": {
+          "box": [
+            249,
+            122,
+            500,
+            269
+          ],
+          "error_coverage": 1.0,
+          "error_density": 0.36361711139347735,
+          "valid_area_fraction": 0.22178236422925696
+        }
+      }
+    },
+    {
+      "image_index": 14,
+      "image_id": "2007_000559",
+      "target_class": 5,
+      "target_class_name": "bottle",
+      "figure": "05_index_14.png",
+      "metrics": {
+        "adaptive": {
+          "box": [
+            187,
+            46,
+            438,
+            232
+          ],
+          "error_coverage": 0.5976260106657492,
+          "error_density": 0.3074880509824748,
+          "valid_area_fraction": 0.2509607054799085
+        },
+        "random_42": {
+          "box": [
+            250,
+            0,
+            500,
+            185
+          ],
+          "error_coverage": 0.45148804403922244,
+          "error_density": 0.2326220390436305,
+          "valid_area_fraction": 0.2506108531953175
+        },
+        "oracle_gt_padded": {
+          "box": [
+            27,
+            229,
+            88,
+            370
+          ],
+          "error_coverage": 0.16402890073972132,
+          "error_density": 0.5147793224456741,
+          "valid_area_fraction": 0.04114373931006908
+        }
+      }
+    },
+    {
+      "image_index": 18,
+      "image_id": "2007_000661",
+      "target_class": 16,
+      "target_class_name": "pottedplant",
+      "figure": "06_index_18.png",
+      "metrics": {
+        "adaptive": {
+          "box": [
+            62,
+            187,
+            313,
+            375
+          ],
+          "error_coverage": 0.6959588537839824,
+          "error_density": 0.10505301450689854,
+          "valid_area_fraction": 0.2493252809485886
+        },
+        "random_42": {
+          "box": [
+            187,
+            93,
+            438,
+            282
+          ],
+          "error_coverage": 0.43776634827332844,
+          "error_density": 0.06552869492532061,
+          "valid_area_fraction": 0.25142133439518627
+        },
+        "oracle_gt_padded": {
+          "box": [
+            42,
+            72,
+            187,
+            216
+          ],
+          "error_coverage": 0.3231447465099192,
+          "error_density": 0.13185034176759802,
+          "valid_area_fraction": 0.09223741261835236
+        }
+      }
+    },
+    {
+      "image_index": 21,
+      "image_id": "2007_000727",
+      "target_class": 6,
+      "target_class_name": "bus",
+      "figure": "07_index_21.png",
+      "metrics": {
+        "adaptive": {
+          "box": [
+            46,
+            0,
+            235,
+            250
+          ],
+          "error_coverage": 0.04015425108649079,
+          "error_density": 0.014034487184972829,
+          "valid_area_fraction": 0.25891254736002484
+        },
+        "random_42": {
+          "box": [
+            187,
+            0,
+            375,
+            250
+          ],
+          "error_coverage": 0.0,
+          "error_density": 0.0,
+          "valid_area_fraction": 0.2603416568807746
+        },
+        "oracle_gt_padded": {
+          "box": [
+            51,
+            303,
+            308,
+            448
+          ],
+          "error_coverage": 0.7108404235783804,
+          "error_density": 0.3480593436235576,
+          "valid_area_fraction": 0.1848148804644052
+        }
+      }
+    },
+    {
+      "image_index": 22,
+      "image_id": "2007_000762",
+      "target_class": 5,
+      "target_class_name": "bottle",
+      "figure": "08_index_22.png",
+      "metrics": {
+        "adaptive": {
+          "box": [
+            62,
+            140,
+            313,
+            329
+          ],
+          "error_coverage": 0.6505727012408526,
+          "error_density": 0.4190490828978379,
+          "valid_area_fraction": 0.2310246258189372
+        },
+        "random_42": {
+          "box": [
+            0,
+            187,
+            250,
+            375
+          ],
+          "error_coverage": 0.5888084632516704,
+          "error_density": 0.3650057937427578,
+          "valid_area_fraction": 0.2400499499908267
+        },
+        "oracle_gt_padded": {
+          "box": [
+            14,
+            111,
+            133,
+            375
+          ],
+          "error_coverage": 0.26085746102449886,
+          "error_density": 0.24381086908036578,
+          "valid_area_fraction": 0.15921263663748972
+        }
+      }
+    },
+    {
+      "image_index": 23,
+      "image_id": "2007_000783",
+      "target_class": 15,
+      "target_class_name": "person",
+      "figure": "09_index_23.png",
+      "metrics": {
+        "adaptive": {
+          "box": [
+            120,
+            109,
+            360,
+            328
+          ],
+          "error_coverage": 0.6008570234113713,
+          "error_density": 0.12076208881233458,
+          "valid_area_fraction": 0.23680807035695808
+        },
+        "random_42": {
+          "box": [
+            60,
+            54,
+            300,
+            274
+          ],
+          "error_coverage": 0.5173494983277592,
+          "error_density": 0.101338901854809,
+          "valid_area_fraction": 0.24297624258824466
+        },
+        "oracle_gt_padded": {
+          "box": [
+            176,
+            18,
+            348,
+            296
+          ],
+          "error_coverage": 0.5058528428093646,
+          "error_density": 0.10939830929885629,
+          "valid_area_fraction": 0.220074416013371
+        }
+      }
+    },
+    {
+      "image_index": 27,
+      "image_id": "2007_000837",
+      "target_class": 4,
+      "target_class_name": "boat",
+      "figure": "10_index_27.png",
+      "metrics": {
+        "adaptive": {
+          "box": [
+            250,
+            137,
+            500,
+            275
+          ],
+          "error_coverage": 0.9058355437665783,
+          "error_density": 0.040645084503689595,
+          "valid_area_fraction": 0.2478977960050748
+        },
+        "random_42": {
+          "box": [
+            62,
+            103,
+            313,
+            241
+          ],
+          "error_coverage": 0.503315649867374,
+          "error_density": 0.02246226694288251,
+          "valid_area_fraction": 0.24924025610007966
+        },
+        "oracle_gt_padded": {
+          "box": [
+            241,
+            47,
+            384,
+            176
+          ],
+          "error_coverage": 1.0,
+          "error_density": 0.08928888625732725,
+          "valid_area_fraction": 0.12457587112383088
+        }
+      }
+    },
+    {
+      "image_index": 31,
+      "image_id": "2007_000999",
+      "target_class": 5,
+      "target_class_name": "bottle",
+      "figure": "11_index_31.png",
+      "metrics": {
+        "adaptive": {
+          "box": [
+            93,
+            0,
+            282,
+            250
+          ],
+          "error_coverage": 0.7617079889807162,
+          "error_density": 0.19961646926113932,
+          "valid_area_fraction": 0.24434546286445097
+        },
+        "random_42": {
+          "box": [
+            140,
+            125,
+            329,
+            375
+          ],
+          "error_coverage": 0.09891528925619834,
+          "error_density": 0.025382168419192365,
+          "valid_area_fraction": 0.24954383334343974
+        },
+        "oracle_gt_padded": {
+          "box": [
+            221,
+            300,
+            298,
+            419
+          ],
+          "error_coverage": 0.12775482093663912,
+          "error_density": 0.1931285788651744,
+          "valid_area_fraction": 0.04235872615116619
+        }
+      }
+    },
+    {
+      "image_index": 33,
+      "image_id": "2007_001175",
+      "target_class": 20,
+      "target_class_name": "tvmonitor",
+      "figure": "12_index_33.png",
+      "metrics": {
+        "adaptive": {
+          "box": [
+            125,
+            187,
+            375,
+            375
+          ],
+          "error_coverage": 0.4217586848635236,
+          "error_density": 0.2180222070790075,
+          "valid_area_fraction": 0.16605097279631514
+        },
+        "random_42": {
+          "box": [
+            62,
+            140,
+            313,
+            329
+          ],
+          "error_coverage": 0.40004652605459057,
+          "error_density": 0.24329167649139355,
+          "valid_area_fraction": 0.14114365968436537
+        },
+        "oracle_gt_padded": {
+          "box": [
+            341,
+            100,
+            465,
+            194
+          ],
+          "error_coverage": 0.12980769230769232,
+          "error_density": 0.1656441717791411,
+          "valid_area_fraction": 0.06726705139213376
+        }
+      }
+    },
+    {
+      "image_index": 37,
+      "image_id": "2007_001289",
+      "target_class": 3,
+      "target_class_name": "bird",
+      "figure": "13_index_37.png",
+      "metrics": {
+        "adaptive": {
+          "box": [
+            125,
+            38,
+            375,
+            194
+          ],
+          "error_coverage": 1.0,
+          "error_density": 0.035889749354650675,
+          "valid_area_fraction": 0.23775960719871705
+        },
+        "random_42": {
+          "box": [
+            125,
+            115,
+            375,
+            271
+          ],
+          "error_coverage": 0.5320959010054138,
+          "error_density": 0.01878241878241878,
+          "valid_area_fraction": 0.24173909600269258
+        },
+        "oracle_gt_padded": {
+          "box": [
+            118,
+            86,
+            389,
+            205
+          ],
+          "error_coverage": 1.0,
+          "error_density": 0.04416586965432436,
+          "valid_area_fraction": 0.19320649125238407
+        }
+      }
+    },
+    {
+      "image_index": 42,
+      "image_id": "2007_001408",
+      "target_class": 16,
+      "target_class_name": "pottedplant",
+      "figure": "14_index_42.png",
+      "metrics": {
+        "adaptive": {
+          "box": [
+            0,
+            250,
+            167,
+            500
+          ],
+          "error_coverage": 0.11719555504639707,
+          "error_density": 0.05140832684238297,
+          "valid_area_fraction": 0.25510380678285505
+        },
+        "random_42": {
+          "box": [
+            41,
+            250,
+            209,
+            500
+          ],
+          "error_coverage": 0.14486195440485738,
+          "error_density": 0.06432659290347195,
+          "valid_area_fraction": 0.2520014614354116
+        },
+        "oracle_gt_padded": {
+          "box": [
+            108,
+            0,
+            195,
+            155
+          ],
+          "error_coverage": 0.15597433841218925,
+          "error_density": 0.25737240075614365,
+          "valid_area_fraction": 0.06781573094204896
+        }
+      }
+    },
+    {
+      "image_index": 44,
+      "image_id": "2007_001430",
+      "target_class": 20,
+      "target_class_name": "tvmonitor",
+      "figure": "15_index_44.png",
+      "metrics": {
+        "adaptive": {
+          "box": [
+            0,
+            187,
+            250,
+            375
+          ],
+          "error_coverage": 0.23958333333333334,
+          "error_density": 0.09124278972207656,
+          "valid_area_fraction": 0.246268991925975
+        },
+        "random_42": {
+          "box": [
+            250,
+            187,
+            500,
+            375
+          ],
+          "error_coverage": 0.08267480842911877,
+          "error_density": 0.030491709169592193,
+          "valid_area_fraction": 0.2542980988422365
+        },
+        "oracle_gt_padded": {
+          "box": [
+            300,
+            0,
+            432,
+            96
+          ],
+          "error_coverage": 0.3530890804597701,
+          "error_density": 0.5199224259520452,
+          "valid_area_fraction": 0.06369383836228677
+        }
+      }
+    },
+    {
+      "image_index": 45,
+      "image_id": "2007_001457",
+      "target_class": 9,
+      "target_class_name": "chair",
+      "figure": "16_index_45.png",
+      "metrics": {
+        "adaptive": {
+          "box": [
+            125,
+            93,
+            375,
+            282
+          ],
+          "error_coverage": 0.3768408311478717,
+          "error_density": 0.04193700469209528,
+          "valid_area_fraction": 0.24424119798435076
+        },
+        "random_42": {
+          "box": [
+            125,
+            187,
+            375,
+            375
+          ],
+          "error_coverage": 0.22775872503530362,
+          "error_density": 0.024743578504427106,
+          "valid_area_fraction": 0.25019054355633785
+        },
+        "oracle_gt_padded": {
+          "box": [
+            418,
+            181,
+            500,
+            375
+          ],
+          "error_coverage": 0.6231591688521283,
+          "error_density": 0.22901838671411626,
+          "valid_area_fraction": 0.07395831619812143
+        }
+      }
+    },
+    {
+      "image_index": 49,
+      "image_id": "2007_001585",
+      "target_class": 15,
+      "target_class_name": "person",
+      "figure": "17_index_49.png",
+      "metrics": {
+        "adaptive": {
+          "box": [
+            62,
+            108,
+            313,
+            326
+          ],
+          "error_coverage": 0.6087127932190025,
+          "error_density": 0.18736727140343426,
+          "valid_area_fraction": 0.23844154341022092
+        },
+        "random_42": {
+          "box": [
+            125,
+            217,
+            375,
+            434
+          ],
+          "error_coverage": 0.32544845259215455,
+          "error_density": 0.09723394648501149,
+          "valid_area_fraction": 0.2456560843754069
+        },
+        "oracle_gt_padded": {
+          "box": [
+            168,
+            65,
+            350,
+            404
+          ],
+          "error_coverage": 0.4280833169064985,
+          "error_density": 0.11237408582861874,
+          "valid_area_fraction": 0.27959239772568345
+        }
+      }
+    },
+    {
+      "image_index": 50,
+      "image_id": "2007_001586",
+      "target_class": 15,
+      "target_class_name": "person",
+      "figure": "18_index_50.png",
+      "metrics": {
+        "adaptive": {
+          "box": [
+            180,
+            49,
+            420,
+            249
+          ],
+          "error_coverage": 0.7982719417917236,
+          "error_density": 0.21307018182700943,
+          "valid_area_fraction": 0.2267175950642017
+        },
+        "random_42": {
+          "box": [
+            120,
+            199,
+            360,
+            398
+          ],
+          "error_coverage": 0.17007730786721237,
+          "error_density": 0.040865384615384616,
+          "valid_area_fraction": 0.2518534010666344
+        },
+        "oracle_gt_padded": {
+          "box": [
+            189,
+            5,
+            339,
+            276
+          ],
+          "error_coverage": 0.5600727603456116,
+          "error_density": 0.16787982879419863,
+          "valid_area_fraction": 0.20188449747651258
+        }
+      }
+    },
+    {
+      "image_index": 51,
+      "image_id": "2007_001587",
+      "target_class": 2,
+      "target_class_name": "bicycle",
+      "figure": "19_index_51.png",
+      "metrics": {
+        "adaptive": {
+          "box": [
+            0,
+            0,
+            250,
+            188
+          ],
+          "error_coverage": 0.0,
+          "error_density": 0.0,
+          "valid_area_fraction": 0.2537399651242516
+        },
+        "random_42": {
+          "box": [
+            125,
+            93,
+            375,
+            282
+          ],
+          "error_coverage": 0.39918809201623817,
+          "error_density": 0.012740779131035674,
+          "valid_area_fraction": 0.2500040490419967
+        },
+        "oracle_gt_padded": {
+          "box": [
+            188,
+            242,
+            290,
+            337
+          ],
+          "error_coverage": 1.0,
+          "error_density": 0.1992182234802534,
+          "valid_area_fraction": 0.04005312343099623
+        }
+      }
+    },
+    {
+      "image_index": 52,
+      "image_id": "2007_001594",
+      "target_class": 12,
+      "target_class_name": "dog",
+      "figure": "20_index_52.png",
+      "metrics": {
+        "adaptive": {
+          "box": [
+            125,
+            83,
+            375,
+            250
+          ],
+          "error_coverage": 0.9648318042813455,
+          "error_density": 0.2094895559551805,
+          "valid_area_fraction": 0.22543846518474167
+        },
+        "random_42": {
+          "box": [
+            62,
+            124,
+            313,
+            292
+          ],
+          "error_coverage": 0.751401630988787,
+          "error_density": 0.1541900902078703,
+          "valid_area_fraction": 0.2385362872040516
+        },
+        "oracle_gt_padded": {
+          "box": [
+            251,
+            167,
+            307,
+            244
+          ],
+          "error_coverage": 0.25140163098878693,
+          "error_density": 0.633183568677792,
+          "valid_area_fraction": 0.019434673053414165
+        }
+      }
+    }
+  ]
+}

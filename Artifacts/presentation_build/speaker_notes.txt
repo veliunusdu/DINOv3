@@ -1,0 +1,49 @@
+SLAYT 1
+Süre: 45 saniye. Semantik segmentasyonun her piksele bir sınıf atadığını açıklayın. Araştırmanın amacı tüm görüntüyü yoğun biçimde işlemeye alternatif olarak belirsiz bölgeleri seçmektir. DINOv3 yeniden eğitilmedi, yalnızca segmentation head gözetimli eğitildi. Kaynak: https://arxiv.org/abs/2508.10104 ve https://github.com/facebookresearch/dinov3
+
+Deney kaynağı: Docs/DINOv3_Final_Deney_Raporu_TR.md ve Docs/DINOv3_Tez_Yontem_ve_Sonuclar_Taslagi_TR.md. Sonuçlar bu proje deneylerine aittir.
+
+SLAYT 2
+Süre: 60 saniye. Tek global geçiş, küçük yapılar ve sınırlar için sınırlı temsil sağlar. Sliding-window birçok crop ile görüntünün tamamını işler. Biz sınırlı crop bütçesini belirsizlik sinyaliyle yönlendiriyoruz. Araştırma sorusu hem eş bütçeli random karşılaştırması hem yoğun işleme karşısındaki maliyet dengesidir.
+
+Deney kaynağı: Docs/DINOv3_Final_Deney_Raporu_TR.md ve Docs/DINOv3_Tez_Yontem_ve_Sonuclar_Taslagi_TR.md. Sonuçlar bu proje deneylerine aittir.
+
+SLAYT 3
+Süre: 90 saniye. Model ViT-S/16, 384 özellik ve dört register token kullanır. CLS ve register çıkarılınca 224 girişte 14×14 grid elde edilir. Head 21 kanallı 1×1 convolutiondur. Entropy softmax üzerinden log(21) ile normalize edilir. 25 adayın ortalama entropy skoru kullanılır. Kutular orijinal RGB görüntüye taşınır. Crop tekrar 224 yapılır ve aynı model çalışır. Yerel logits orijinal boyuta döner, overlap alanında yerel logits ortalaması kullanılır. Crop dışı global logits korunur. GT seçim akışında kullanılmaz.
+
+Deney kaynağı: Docs/DINOv3_Final_Deney_Raporu_TR.md ve Docs/DINOv3_Tez_Yontem_ve_Sonuclar_Taslagi_TR.md. Sonuçlar bu proje deneylerine aittir.
+
+SLAYT 4
+Süre: 75 saniye. VOC2012 20 nesne sınıfı ve background içerir. 1464 train ile head beş epoch eğitildi. Development 50 görüntü GT ile küçük hedef açısından seçildi ve bias içerir. Ana 1399, 1449 validation eksi developmenttır. Pilot100 bu1399 içindedir, daha önce incelendiğinden untouched test demiyoruz. Pooled confusion üzerinden 21 sınıf mIoU, native çözünürlük, ignore255. Random aynı grid NMS ve fusion, aynı geçiş sayısı, ancak crop birleşim alanı eşitlenmedi. Kaynak: https://www.robots.ox.ac.uk/~vgg/projects/pascal/VOC/voc2012/htmldoc/index.html
+
+Deney kaynağı: Docs/DINOv3_Final_Deney_Raporu_TR.md ve Docs/DINOv3_Tez_Yontem_ve_Sonuclar_Taslagi_TR.md. Sonuçlar bu proje deneylerine aittir.
+
+SLAYT 5
+Süre: 65 saniye. 50 development görüntüsünde K1 adaptive crop, yaklaşık aynı alanlı random crop ile karşılaştırıldı. Hata coverage crop içindeki yanlış piksellerin tüm yanlış piksellere oranıdır. Density crop içindeki yanlışların crop valid piksellerine oranıdır. +16.97 puan coverage selectorın anlamlı sinyalini gösterir. Bu development kanıtıdır ve ikinci inference düzeltme garantisi vermez. Oracle GT kullanır ve değişken kutu alanları nedeniyle eş bütçeli kontrol veya kesin üst sınır değildir.
+
+Deney kaynağı: Docs/DINOv3_Final_Deney_Raporu_TR.md ve Docs/DINOv3_Tez_Yontem_ve_Sonuclar_Taslagi_TR.md. Sonuçlar bu proje deneylerine aittir.
+
+SLAYT 6
+Süre: 90 saniye. Ana 1399 pooled değerleri: baseline0.7133, K10.7124, K30.7220, randomK3mean0.7140, sliding0.7325. Random ortalaması ensemble değil üç seed mIoU ortalamasıdır. Paired bootstrap5000 aynı görüntüleri yeniden örnekler. Baseline farkı güven aralığı sıfır içerir. Random farkı pozitif ve bu protokol için katkı desteklenir. Sliding doğrulukta üstündür. Seedler sabittir, aralık image uncertaintyyi temsil eder.
+
+Deney kaynağı: Docs/DINOv3_Final_Deney_Raporu_TR.md ve Docs/DINOv3_Tez_Yontem_ve_Sonuclar_Taslagi_TR.md. Sonuçlar bu proje deneylerine aittir.
+
+SLAYT 7
+Süre: 75 saniye. En güncel aynı oturum yedi yöntem benchmarkından dört yöntem gösteriliyor. 100 görüntü kalitesi ana1399dan ayrı. RandomK3mean147.8ms, adaptive147.5ms, hız farkı belirgin değil. Süre preprocessing, forward, transfer, entropy, selector, resize, fusion, argmax dahil, disk decode ve metrics hariç. Sliding seri ve optimize edilmemiştir. Bootstrap oran ortalama sürelerin oranıdır. Aynısessionimagebelirsizliği, GPUoturumlararasıvaryasyon değil. Equalpeak98.3MB nedeniyle bellekavantajıiddiaedilmiyor.
+
+Deney kaynağı: Docs/DINOv3_Final_Deney_Raporu_TR.md ve Docs/DINOv3_Tez_Yontem_ve_Sonuclar_Taslagi_TR.md. Sonuçlar bu proje deneylerine aittir.
+
+SLAYT 8
+Süre: 60 saniye. VOC index9 2007_000346. Ground truth, global prediction, entropy ve seçilmiş crop’ları gösterin. Yerel tahminlerin global koordinatlara birleşmesiyle şişe ve kişi sınırları bu örnekte iyileşiyor. Bu tekörnek genelperformanskanıtı değil. Kaynak görüntü: kullanıcının proje notebook çıktısı, Artifacts/Thesis_Figures/voc_index9_success_k3.png.
+
+Deney kaynağı: Docs/DINOv3_Final_Deney_Raporu_TR.md ve Docs/DINOv3_Tez_Yontem_ve_Sonuclar_Taslagi_TR.md. Sonuçlar bu proje deneylerine aittir.
+
+SLAYT 9
+Süre: 65 saniye. Index10 crop’lar yüksek entropy sofa alanında yoğunlaşıyor. Yerel predictions sofa chair ve başka sınıf bölgelerini karıştırıyor. Fusion bu yerel hataları global tahmine taşıyor. K3 −14.50 puan. Context ve scale kaybı olası açıklamalar, izole nedenseldeneylekanıtlanmadı. Crop sınırları keskin geometrik geçişler oluşturabilir. Kaynak: kullanıcının notebook çıktısı, Artifacts/Thesis_Figures/voc_index10_failure_k3.png.
+
+Deney kaynağı: Docs/DINOv3_Final_Deney_Raporu_TR.md ve Docs/DINOv3_Tez_Yontem_ve_Sonuclar_Taslagi_TR.md. Sonuçlar bu proje deneylerine aittir.
+
+SLAYT 10
+Süre: 75 saniye. Ana mesaj üç parçalı. Otomatik entropy selector ve second pass fusion uygulanmıştır. Aynıbütçeli random karşısında K3 katkısı desteklenir. Sliding daha doğru, adaptive daha hızlı. Baseline genel üstünlüğü içinCI0içerir. Yeni çalışmada kalitekapısı, bağlamkoruyanrefinement önerilebilir ancak tamamlanan proje içineyeni sonuç gibi sunulmaz. Resmî untouchedtest ve tekrarlıoturumsüreölçümü gelecektest. Toplam hedef10–12dakika.
+
+Deney kaynağı: Docs/DINOv3_Final_Deney_Raporu_TR.md ve Docs/DINOv3_Tez_Yontem_ve_Sonuclar_Taslagi_TR.md. Sonuçlar bu proje deneylerine aittir.

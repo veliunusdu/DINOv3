@@ -1,0 +1,107 @@
+{
+  "protocol": {
+    "source_file": "/content/DINOv3_sessions/20261006T204801_022252Z/recovered/20261001T181030_523202Z/adaptive_random_50_20261006T204801_022252Z.json",
+    "indices": [
+      10,
+      14
+    ],
+    "fusion": "full replacement inside saved adaptive box",
+    "padding": 0,
+    "evaluation_resolution": "native",
+    "ignore_label": 255,
+    "image_miou_classes": "positive union separately per method"
+  },
+  "records": [
+    {
+      "image_index": 10,
+      "image_id": "2007_000452",
+      "box": [
+        62,
+        140,
+        313,
+        329
+      ],
+      "baseline_miou": 0.4658147988040741,
+      "adaptive_miou": 0.3095348058829207,
+      "miou_change_points": -15.62799929211534,
+      "corrected_pixels": 6010,
+      "new_error_pixels": 11697,
+      "wrong_to_other_wrong_pixels": 1664,
+      "baseline_wrong_pixels": 21253,
+      "adaptive_wrong_pixels": 26940,
+      "class_scores": [
+        {
+          "class_id": 0,
+          "class_name": "background",
+          "gt_pixels": 149334,
+          "baseline_iou": 0.8755237722777809,
+          "adaptive_iou": 0.9041040074720894
+        },
+        {
+          "class_id": 8,
+          "class_name": "cat",
+          "gt_pixels": 0,
+          "baseline_iou": null,
+          "adaptive_iou": 0.0
+        },
+        {
+          "class_id": 9,
+          "class_name": "chair",
+          "gt_pixels": 2627,
+          "baseline_iou": 0.013323182337266844,
+          "adaptive_iou": 0.0026782981328435872
+        },
+        {
+          "class_id": 18,
+          "class_name": "sofa",
+          "gt_pixels": 30923,
+          "baseline_iou": 0.5085974417971746,
+          "adaptive_iou": 0.3313569179267497
+        }
+      ],
+      "figure": "index_10_refinement.png"
+    },
+    {
+      "image_index": 14,
+      "image_id": "2007_000559",
+      "box": [
+        187,
+        46,
+        438,
+        232
+      ],
+      "baseline_miou": 0.4551665329827177,
+      "adaptive_miou": 0.3428680854951322,
+      "miou_change_points": -11.22984474875855,
+      "corrected_pixels": 844,
+      "new_error_pixels": 12992,
+      "wrong_to_other_wrong_pixels": 4750,
+      "baseline_wrong_pixels": 23252,
+      "adaptive_wrong_pixels": 35400,
+      "class_scores": [
+        {
+          "class_id": 0,
+          "class_name": "background",
+          "gt_pixels": 136663,
+          "baseline_iou": 0.8544566850275414,
+          "adaptive_iou": 0.8231406553383422
+        },
+        {
+          "class_id": 5,
+          "class_name": "bottle",
+          "gt_pixels": 3814,
+          "baseline_iou": 0.0,
+          "adaptive_iou": 0.0
+        },
+        {
+          "class_id": 20,
+          "class_name": "tvmonitor",
+          "gt_pixels": 39599,
+          "baseline_iou": 0.5110429139206117,
+          "adaptive_iou": 0.2054636011470544
+        }
+      ],
+      "figure": "index_14_refinement.png"
+    }
+  ]
+}
