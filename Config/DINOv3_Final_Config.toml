@@ -1,0 +1,102 @@
+# DINOv3 Adaptive Zoom — final parametre kaydı (11 Ekim 2026)
+# Mevcut final notebook, helper ve deney protokollerinin açıklamalı snapshot'ı.
+# Final notebook bu config'in oluşturma anındaki kopyasını içerir; Colab'da
+# /content/DINOv3_Final_Config.toml dosyasını okuyup doğrular. Özel dosyanı
+# bu yola yükleyebilir, selector değişikliğinden sonra demo hücresini çalıştırabilirsin.
+# Göreli dosya yollarının tabanı DINOv3 proje köküdür.
+config_version = 1
+
+[model]
+# Hugging Face backbone kimliği. Global görüntü ve tüm crop'lar aynı modeli kullanır.
+id = "facebook/dinov3-vits16-pretrain-lvd1689m"
+# Sabit commit revision: model ve image processor bu revision ile yüklenir.
+revision = "114c1379950215c8b35dfcd4e90a5c251dde0d32"
+# Her global/crop girdisi RGB olarak 224 x 224 piksele bicubic ile resize edilir.
+input_size = 224
+input_resize = "bicubic"
+# Normalizasyon sabitleri sabit revision'daki image processor'dan alınır.
+normalization = "processor.image_mean_and_image_std"
+# VOC2012: background dahil 21 sınıf; backbone dondurulmuş, inference eval modunda.
+num_classes = 21
+backbone_frozen = true
+inference_mode = "eval"
+
+[checkpoint]
+# Beşinci epoch'taki eğitimli 1 x 1 convolution segmentation head.
+head_type = "conv1x1"
+epoch = 5
+# Checkpoint aşağıdaki ZIP'in içindedir; member değeri yerel çıkarılmış dosya yolu değildir.
+archive = "Downloads/DINOv3_complete_20261008T122013_722899Z.zip"
+member = "20261001T181030_523202Z/head_epoch_05.pth"
+# SHA-256, ZIP'ten okunan ham checkpoint baytlarının hash'idir.
+sha256 = "3f82a4f13c35b58ce0541cb12357e72bf58c1bbaa4e3758226820f3fbe945e6f"
+
+[selector]
+# K, seçilebilecek maksimum crop sayısıdır; IoU filtresi sonucu daha az seçilebilir.
+k = 3
+# Crop kenarı ve tarama adımı, 224 x 224 entropy haritasındaki PİKSEL birimindedir.
+# Bunlar orijinal görüntü pikseli veya patch sayısı değildir; 5 x 5 = 25 aday oluşur.
+crop_size = 112
+stride = 28
+# Ortalama normalize crop entropy'sinin alt sınırı. 0, entropy filtresini etkisiz kılar.
+# Helper minimum_entropy argümanını okur; 0 tüm adayları değerlendiren eski davranışı korur.
+minimum_entropy = 0.0
+# Her seçilmiş kutuyla IoU <= 0.30 olmalıdır; > 0.30 olan aday elenir.
+# Bu kutu IoU'sudur: kesişim alanı / birleşim alanı; segmentation mIoU değildir.
+overlap_iou = 0.30
+# Crop kenarına ek bağlam payı: 0 piksel, kutu genişletilmez; helper'da sabittir.
+padding = 0
+# Entropy = -sum(p * log(p)) / log(21); p sınıf softmax olasılıklarıdır.
+# Piksel entropy'si [0, 1]'e sınırlandırılır; aday skoru crop içindeki ortalamadır.
+entropy = "normalized_softmax_class_entropy"
+score = "mean_crop_entropy"
+# Azalan skor sırası ve greedy IoU filtresi. Eşit skorlar mevcut aday sırasını korur
+# (önce y, sonra x); entropy selector rastgele seçim yapmaz ve GT kullanmaz.
+selection = "descending_entropy_greedy_iou"
+# Kutular [x1, y1, x2, y2], bitişler hariç. Orijinal görüntüye ölçeklemede
+# başlangıç floor, bitiş ceil ile hesaplanır ve görüntü sınırlarına kırpılır.
+coordinate_mapping = "floor_start_ceil_end_clip_to_image"
+# Seçilen crop orijinal RGB görüntüden alınır, sonra model giriş boyutuna resize edilir.
+crop_source = "original_rgb_image"
+# Seçim boşsa global baseline korunur; geçiş sayısı 1 + gerçekten seçilen crop sayısıdır.
+empty_selection = "keep_global_baseline"
+
+[fusion]
+# Crop birleşimi içinde yalnızca yerel LOGITS kullanılır: örtüşen n crop için
+# fused(c, x, y) = sum(local_logits_i(c, x, y)) / n.
+# Crop birleşimi dışında fused = global_logits. İçeride global logits karıştırılmaz.
+mode = "mean_local_logits_global_outside"
+# Global ve yerel logits orijinal görüntü / crop boyutuna bu yöntemle taşınır.
+logit_resize = "bilinear"
+align_corners = false
+# Sınıf maskesi, logits fusion tamamlandıktan sonra sınıf ekseninde argmax ile üretilir.
+prediction = "argmax_after_fusion"
+
+[seeds]
+# Ana seed: notebook Python random, NumPy, torch ve tüm CUDA RNG'lerine 42 uygular.
+# Sabit seed tek başına her GPU/kitaplık sürümünde bit düzeyinde eşitlik garantisi değildir.
+base = 42
+# Karşılaştırma deneylerindeki üç bağımsız random crop seçimi; adaptive seed'leri değildir.
+# Sonuçlar ayrı hesaplanır; üç seed'in mIoU ortalaması prediction ensemble'ı değildir.
+random_comparison = [42, 43, 44]
+# Random kontrolünde görüntüye özel seed; image_index protokoldeki görüntü indeksidir.
+random_seed_formula = "seed + image_index * 1000003"
+
+[evaluation]
+# Final metrikler orijinal görüntü çözünürlüğünde hesaplanır; void etiketler hariçtir.
+resolution = "native"
+ignore_index = 255
+include_background = true
+
+[provenance]
+# Yukarıdaki model/revision/base seed değerlerinin arşiv içi kaynağı.
+model_config_member = "20261001T181030_523202Z/config.json"
+# Final selector eşikleri: bu protokolün configurations içindeki reference kaydı.
+selector_protocol_member = "20261001T181030_523202Z/selector_threshold_ablation_dev50_v1/protocol.json"
+# Random seed listesi ve görüntüye özel seed formülünün kaynakları.
+random_seeds_protocol_member = "20261001T181030_523202Z/full_voc_topk3_v1/protocol.json"
+random_formula_archive = "Downloads/benchmark_all_k3_100_20261007T194714_806084Z.zip"
+random_formula_protocol_member = "benchmark_all_k3_100_20261007T194714_806084Z/protocol.json"
+helper = "Notebooks/adaptive_zoom_demo.py"
+notebook = "Notebooks/DINOv3_Adaptive_Zoom_Final_Demo.ipynb"
+report = "Docs/DINOv3_Final_Deney_Raporu_TR.md"

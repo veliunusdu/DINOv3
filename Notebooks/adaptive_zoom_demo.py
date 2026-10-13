@@ -66,13 +66,14 @@ def box_iou(box_a, box_b):
 
 
 def select_entropy_topk(entropy_map, k=3, crop_size=112, stride=28,
-                        overlap_threshold=0.30):
+                        overlap_threshold=0.30, minimum_entropy=0.0):
     entropy_map = torch.as_tensor(entropy_map).detach().float().cpu()
     assert entropy_map.ndim == 2 and torch.isfinite(entropy_map).all()
     assert isinstance(k, int) and k > 0
     assert isinstance(crop_size, int) and crop_size > 0
     assert isinstance(stride, int) and stride > 0
     assert 0 <= overlap_threshold <= 1
+    assert 0 <= minimum_entropy <= 1
     height, width = entropy_map.shape
     assert height > 0 and width > 0
     crop_h, crop_w = min(crop_size, height), min(crop_size, width)
@@ -93,6 +94,8 @@ def select_entropy_topk(entropy_map, k=3, crop_size=112, stride=28,
     ranked = sorted(candidates, key=lambda region: region["score"], reverse=True)
     selected = []
     for candidate in ranked:
+        if candidate["score"] < minimum_entropy:
+            continue
         if all(box_iou(candidate["box"], previous["box"]) <= overlap_threshold
                for previous in selected):
             selected.append({"rank": len(selected) + 1,
@@ -117,7 +120,7 @@ def topk_box_to_original(box, image_size, map_size=(224, 224)):
 
 
 def run_adaptive_zoom(image, k=3, crop_size=112, stride=28,
-                      overlap_threshold=0.30):
+                      overlap_threshold=0.30, minimum_entropy=0.0):
     """No GT is accepted: selection and fusion depend only on the image."""
     image = image.convert("RGB")
     width, height = image.size
@@ -126,7 +129,7 @@ def run_adaptive_zoom(image, k=3, crop_size=112, stride=28,
                                   mode="bilinear", align_corners=False)
     entropy = normalized_entropy(low)[0]
     regions, candidates = select_entropy_topk(
-        entropy, k, crop_size, stride, overlap_threshold)
+        entropy, k, crop_size, stride, overlap_threshold, minimum_entropy)
     local_sum = torch.zeros_like(global_logits)
     coverage = torch.zeros((height, width), dtype=torch.int32)
     local_outputs = []
@@ -154,7 +157,8 @@ def run_adaptive_zoom(image, k=3, crop_size=112, stride=28,
             "locals": local_outputs, "coverage": coverage,
             "parameters": {"k_requested": k, "k_selected": len(regions),
                            "crop_size": crop_size, "stride": stride,
-                           "overlap_threshold": overlap_threshold, "padding": 0}}
+                           "overlap_threshold": overlap_threshold,
+                           "minimum_entropy": minimum_entropy, "padding": 0}}
 
 
 def voc_palette():

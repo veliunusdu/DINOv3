@@ -40,6 +40,7 @@ Tam protokol, ablation, sınıf sonuçları ve sınırlılıklar: [final deney r
 1. [Final demo notebook'unu](Notebooks/DINOv3_Adaptive_Zoom_Final_Demo.ipynb) indir ve Google Colab'da **Dosya → Notebook yükle** ile aç.
 2. Çalışma zamanı türünü **T4 GPU** olarak seç.
 3. Hücreleri sırayla çalıştır: bağımlılıklar, deney ZIP'ini geri yükleme, Hugging Face giriş işlemi ve model yükleme.
+   Bağımlılıklardan sonra **1b Final config** hücresini çalıştır. [Açıklamalı TOML](Config/DINOv3_Final_Config.toml) notebook'a gömülüdür; kendi config'in için dosyayı `/content/DINOv3_Final_Config.toml` yoluna yükle. K, crop size, stride, minimum entropy ve overlap eşiği bu dosyadan okunur. Kullanılan config çıktı ZIP'lerine eklenir; checkpoint hash'i ve model revision doğrulanır.
 4. VOC örneği için veri hücresini çalıştır. Kendi JPG/PNG görüntün için demo hücresinde `SOURCE="upload"` seç.
 5. Demo hücresini çalıştır ve üretilen sonuç ZIP'ini indir. Oturum sonunda tam yedek hücresini de çalıştır.
 
