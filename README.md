@@ -76,9 +76,11 @@ Ayrıntılı hücre sırası ve çıktı tanımları: [demo kullanım kılavuzu]
 | Final ve temiz-test notebook kod hücrelerinin derlenmesi | Yerelde geçti |
 | 1.399 görüntü pooled mIoU'nun kayıtlı matrislerden yeniden hesabı | Summary, final rapor ve CSV ile eşleşti |
 | Aynı 100 görüntüde kalite–maliyet kaynak kontrolü | Yedi yöntemin ham kayıtları özetle eşleşti |
-| Config bağlantılı sürümün yeni Colab GPU oturumunda index 9/10 testi | **Bekliyor; yeni GPU çıktısı henüz doğrulanmadı** |
+| Config bağlantılı sürümün yeni Colab GPU oturumunda index 9/10 testi | **20 Ekim: PASS; iki örnek, ortam/config ve çıktı hash'leri doğrulandı** |
 
-Önceki index 9/10 demo çıktıları yeni config bağlantılı sürümün clean-run kanıtı değildir. [Kayıtlı mIoU doğrulama raporu](Reproducibility/metrics_verification_TR.md) ve [makine-okunur rapor](Reproducibility/metrics_verification.json).
+20 Ekim temiz testinde index 9: **0,8301 → 0,9512**, index 10: **0,4658 → 0,3208**; her ikisi de kayıtlı referansla eşleşti. ZIP CRC ve 32 çıktı hash'i, config anlamı, checkpoint kimliği ve pipeline hücre hash'leri kontrol edildi. Skorlar export edilmiş maskelerden ayrıca yeniden hesaplandı. Ortam: Python 3.13.15, Torch 2.11.0+cu130, Transformers 5.17.0, Tesla T4. Bu iki görüntülük test, eğitim veya büyük benchmark tekrarını ifade etmez. [Temiz Colab test raporu](Reproducibility/clean_colab_verification_2026-10-20_TR.md), [makine-okunur kanıt](Reproducibility/clean_colab_verification_2026-10-20.json).
+
+[Kayıtlı mIoU doğrulama raporu](Reproducibility/metrics_verification_TR.md) ve [makine-okunur rapor](Reproducibility/metrics_verification.json).
 
 ## Görsel örnekler
 

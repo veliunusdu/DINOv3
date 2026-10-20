@@ -1,5 +1,9 @@
 # Deney manifest’i
 
+## 20 Ekim güncel inference doğrulaması
+
+Config bağlantılı temiz Colab testi index 9 ve 10 için PASS olarak doğrulandı. Ortam, config/checkpoint, kaynak hücre hash'leri ve 32 çıktı hash'i denetlendi; skorlar maskelerden yeniden hesaplandı. [Yeni test raporu](clean_colab_verification_2026-10-20_TR.md) ve [JSON kanıtı](clean_colab_verification_2026-10-20.json). Aşağıdaki manifest ve code_snapshot eski oluşturulma anını korur; güncel test bunlara ek kanıttır.
+
 `experiment_manifest.json`, kayıtlı deneylerin checkpoint, veri, sonuç ve kod kaynaklarını birleştirir. Yeni inference yapılmadı.
 
 ## İçerik

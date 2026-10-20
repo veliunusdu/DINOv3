@@ -1,0 +1,114 @@
+{
+  "created_utc": "20261020T073625_596320Z",
+  "status": "PASS",
+  "stage": "complete",
+  "examples": [
+    {
+      "image_index": 9,
+      "image_id": "2007_000346",
+      "scores": {
+        "baseline": 0.83006642774669,
+        "final": 0.9512478779867622
+      },
+      "expected": {
+        "baseline": 0.83006642774669,
+        "final": 0.9512478779867622
+      },
+      "tolerance": 0.0001,
+      "selected_k": 3,
+      "output_files": {
+        "index_9/baseline_color.png": "fb8242369f676a4252f84c59c6c983bb053549c45f874d87f15873ae487efab6",
+        "index_9/baseline_labels.png": "360223e8297ac2e7106f5c950d3441ef47d1daea40387e7f6032e072a2219f7a",
+        "index_9/crop_01.png": "5d0b6daad468d34cfcf54ab63abf08f57b904cad93118f61fa7acc2024ba1935",
+        "index_9/crop_01_output.npz": "ea4db6a75a00cf312540d3af54e5e1a07811b087bc51e47d9e7bf96c05b0b9f6",
+        "index_9/crop_02.png": "1102da8c6c650cca6b48bb5a2675e8cc447fa59b82878de144723a3507f5fcfa",
+        "index_9/crop_02_output.npz": "7b72aad35b04be199725128f069146ce1d331a1fe43e2f80a5a75e1226188099",
+        "index_9/crop_03.png": "6bf666024d108c7c7e9910492a35ba264a48666fdaf121166514354bb6cc80fb",
+        "index_9/crop_03_output.npz": "cfbc49bffa685fb373fd37b8f933e9fa0c45dfa8acc8e47ca385c8edc17069dd",
+        "index_9/demo_7_panels.png": "d88e8b8f0f0a8137b994db1b03b32d12135746c4a3ffd4b0e217d4f3100bbb09",
+        "index_9/final_color.png": "322a263fd5713a577eb7952d0e87489a2fc9aa97a4e7a7e14f0ac97dad6f6945",
+        "index_9/final_labels.png": "3ca95f21633656749e07df29241be2e947d1790bf45b7bcdc07d5e99b5f175c8",
+        "index_9/global_output.npz": "2f0355ff4a0f78e2dddae7d01f4386e89520f01ca26572729be520e3ba2e1daa",
+        "index_9/ground_truth.png": "0b7e10d67e0791c67766792e9e35dafd11c38a947a47a1135de7ab02867aa0b5",
+        "index_9/local_predictions.png": "cb6c15fd5625c397783bb131c3d99aea001848994dd0e0700ddce06379b1e01c",
+        "index_9/original.png": "baec9755b222916d603130c2c27559a87ed1a4baee0a19cb86545575e965ced1",
+        "index_9/results.json": "8270dbe24e9e6e0c62826550bb441dab5a2b36a06cad8923df5bcfda45a225f9"
+      },
+      "status": "PASS"
+    },
+    {
+      "image_index": 10,
+      "image_id": "2007_000452",
+      "scores": {
+        "baseline": 0.4658147988040741,
+        "final": 0.32078564141285404
+      },
+      "expected": {
+        "baseline": 0.4658147988040741,
+        "final": 0.32078564141285404
+      },
+      "tolerance": 0.0001,
+      "selected_k": 3,
+      "output_files": {
+        "index_10/baseline_color.png": "9500e69e851b92dec601ba4fff50f27b3b9426fee5edc4d6184e980c2fef0766",
+        "index_10/baseline_labels.png": "4cf87e72ffd3095dfe313ba1a51bfa786a3a6488aae5d2c06ffa9f09b91f6d76",
+        "index_10/crop_01.png": "19f893b6cf2565befec3ee5c26cab369350d463684e553f6bf0b7f61cd23b045",
+        "index_10/crop_01_output.npz": "75f9297cf723186f94461dce39b9ff472b1e0c0682c6bbbe4eb3daf54b9d9a9a",
+        "index_10/crop_02.png": "925d8cacad9c6a57ac5b8a225078a3b1800b1bed7c2f4da5c539ee97e9179be1",
+        "index_10/crop_02_output.npz": "03063ded846c73cff5a9b12b7866646d0376dbeda89b9febe77478d004185d75",
+        "index_10/crop_03.png": "240d02c20ee16ee7c3f760e60ef917818d78b0a26a95580473142536b41b81dd",
+        "index_10/crop_03_output.npz": "66053a3c450c7803b80131ad9c99f2473bd8eb95034b824d111fc491bcd0759d",
+        "index_10/demo_7_panels.png": "145b2b324bec3ff39358030e8bc088f8eacd8c3fe1eb3907b88c14bc03815121",
+        "index_10/final_color.png": "ba7a0ee9a6cddee711e494b1789c1ac6249628e661ffb0574385c259dcce0aa1",
+        "index_10/final_labels.png": "46c239a08927ebb94fa4e205cbf1f7de55696434e8a654a8d6ac1773669b3c24",
+        "index_10/global_output.npz": "722ab69081cb231e183d1a22f08edebe0a8e8b42979591f455550e90aef2d77e",
+        "index_10/ground_truth.png": "4d4929d5ff9ce21951253bbe9766b9c9ddaa21256529671f918c37cf6d2e3b3d",
+        "index_10/local_predictions.png": "6d499b901044f5129fee9f1775fde2616b3eb2b656487b5d8ad16ace074067d6",
+        "index_10/original.png": "69e49e19372a0070120868ce53170dc8afca4351bf075225182dc8e863a272be",
+        "index_10/results.json": "aa45547c22adc15cd67c95627aa26c346debdeadb37d7a2b561956d0c65a5b5d"
+      },
+      "status": "PASS"
+    }
+  ],
+  "source_identity": {
+    "final_notebook_sha256": "0b221554b51201ef04b5fea4b74fd0537d4925920a617963e804049c09432f69",
+    "pipeline_cells_sha256": {
+      "setup": "689e60c00b5d8a639181df78fc7aa1a48778d3b62523c643d01838dbf899862a",
+      "final-config": "ac4278981d85d092b76d5300a5a91c1803e68777cf64ea2d6ffd3907475d540c",
+      "recover": "b5b4c39a53c9694f18e5f0e8bc1f09dcb9f94dfe872bfb740b9ed486bd63b444",
+      "model": "c5fb18f1d6f5014fd9b7ca88c1c7da5775e2c4fa8863b88e884ab140598583ef",
+      "data": "5f0f2724323c065545bc1676a1f0283dc3468f68849610393c9bf2d348a6286e",
+      "demo-helpers": "a5df815c65a94307089bdd0408dbdaa42a723db1a3b964bc0752c56d3d5895c6",
+      "export": "2cf4ff3baca509231c3bdf01f032b7ebd9cfaf27ec9241980667f0a537f5a65f"
+    }
+  },
+  "fresh_runtime": "User must start this notebook in a new GPU runtime; freshness is not automatically certified.",
+  "scope": "Two reference demos only; no training, full evaluation, or timing benchmark.",
+  "checkpoint_sha256": "3f82a4f13c35b58ce0541cb12357e72bf58c1bbaa4e3758226820f3fbe945e6f",
+  "model": {
+    "id": "facebook/dinov3-vits16-pretrain-lvd1689m",
+    "revision": "114c1379950215c8b35dfcd4e90a5c251dde0d32",
+    "input_size": 224,
+    "input_resize": "bicubic",
+    "normalization": "processor.image_mean_and_image_std",
+    "num_classes": 21,
+    "backbone_frozen": true,
+    "inference_mode": "eval"
+  },
+  "config_sha256": "0bc21782f458806a169a3b4ffd200f51d52acfda80e7fce6344b797a5686eac5",
+  "environment": {
+    "python": "3.13.15",
+    "torch": "2.11.0+cu130",
+    "cuda_runtime": "13.0",
+    "cudnn": 92700,
+    "gpu": "Tesla T4",
+    "packages": {
+      "transformers": "5.17.0",
+      "huggingface_hub": "1.33.0",
+      "torchvision": "0.26.0+cu130",
+      "numpy": "2.1.3",
+      "Pillow": "11.3.0",
+      "matplotlib": "3.10.0"
+    }
+  }
+}

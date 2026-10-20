@@ -1,0 +1,55 @@
+{
+  "status": "PASS",
+  "source_archive": "Downloads/DINOv3_clean_smoke_20261020T073625_596320Z.zip",
+  "source_archive_sha256": "ac041bbdfc9350d3f7e3b6a9ecd8d0a206c34702985768dd4fe821b5a98466ae",
+  "source_report_member": "DINOv3_clean_smoke_20261020T073625_596320Z/smoke_report.json",
+  "source_report_sha256": "1e88704975f14e0b2a2ef37ac73d39863578456ab688977be790c7199b183491",
+  "checkpoint_sha256": "3f82a4f13c35b58ce0541cb12357e72bf58c1bbaa4e3758226820f3fbe945e6f",
+  "runtime_config_sha256": "0bc21782f458806a169a3b4ffd200f51d52acfda80e7fce6344b797a5686eac5",
+  "config_semantically_matches_local": true,
+  "pipeline_cells_match_local": true,
+  "zip_crc_passed": true,
+  "environment": {
+    "python": "3.13.15",
+    "torch": "2.11.0+cu130",
+    "cuda_runtime": "13.0",
+    "cudnn": 92700,
+    "gpu": "Tesla T4",
+    "packages": {
+      "transformers": "5.17.0",
+      "huggingface_hub": "1.33.0",
+      "torchvision": "0.26.0+cu130",
+      "numpy": "2.1.3",
+      "Pillow": "11.3.0",
+      "matplotlib": "3.10.0"
+    }
+  },
+  "examples": [
+    {
+      "image_index": 9,
+      "image_id": "2007_000346",
+      "scores_recomputed_from_png": {
+        "baseline": 0.83006642774669,
+        "final": 0.9512478779867622
+      },
+      "output_hashes_verified": 16,
+      "passes": 4,
+      "crop_outside_preserved": true,
+      "figure": "Deliverables/Clean_Colab_Test_2026-10-20/index_9_7_panels.png"
+    },
+    {
+      "image_index": 10,
+      "image_id": "2007_000452",
+      "scores_recomputed_from_png": {
+        "baseline": 0.4658147988040741,
+        "final": 0.32078564141285404
+      },
+      "output_hashes_verified": 16,
+      "passes": 4,
+      "crop_outside_preserved": true,
+      "figure": "Deliverables/Clean_Colab_Test_2026-10-20/index_10_7_panels.png"
+    }
+  ],
+  "fresh_runtime_evidence": "User reported a new empty GPU runtime and shared setup/config/recovery/model/dataset logs before exporting this ZIP.",
+  "scope": "Two reference images; not training reproduction or a rerun of full quality/latency benchmarks."
+}
