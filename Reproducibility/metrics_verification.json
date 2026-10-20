@@ -1,0 +1,163 @@
+{
+  "status": "PASS",
+  "created_at": "2026-10-20T10:16:55.127116+03:00",
+  "images": 1399,
+  "classes": 21,
+  "metric": "sum image confusion matrices, class IoU mean, background included",
+  "full_precision_tolerance": 1e-12,
+  "display_rounding_tolerance": 5.0000001e-05,
+  "pooled_miou": {
+    "baseline": 0.7132528530872816,
+    "adaptive_k1": 0.7123846722129334,
+    "random_42": 0.7115512354915468,
+    "random_43": 0.7123122975137678,
+    "random_44": 0.715029801823621,
+    "sliding": 0.7324650975120519,
+    "adaptive_k3": 0.7219864665208329,
+    "random_42_k3": 0.7147672956439441,
+    "random_43_k3": 0.7115173819118081,
+    "random_44_k3": 0.7157299539037537,
+    "random_k3_mean": 0.7140048771531687
+  },
+  "summary_comparisons": [
+    {
+      "method": "baseline",
+      "source": "fixed_summary",
+      "recorded": 0.7132528530872814,
+      "recomputed": 0.7132528530872816,
+      "difference": 2.220446049250313e-16
+    },
+    {
+      "method": "adaptive_k1",
+      "source": "fixed_summary",
+      "recorded": 0.7123846722129336,
+      "recomputed": 0.7123846722129334,
+      "difference": -1.1102230246251565e-16
+    },
+    {
+      "method": "random_42",
+      "source": "fixed_summary",
+      "recorded": 0.7115512354915466,
+      "recomputed": 0.7115512354915468,
+      "difference": 1.1102230246251565e-16
+    },
+    {
+      "method": "random_43",
+      "source": "fixed_summary",
+      "recorded": 0.7123122975137678,
+      "recomputed": 0.7123122975137678,
+      "difference": 0.0
+    },
+    {
+      "method": "random_44",
+      "source": "fixed_summary",
+      "recorded": 0.715029801823621,
+      "recomputed": 0.715029801823621,
+      "difference": 0.0
+    },
+    {
+      "method": "sliding",
+      "source": "fixed_summary",
+      "recorded": 0.7324650975120518,
+      "recomputed": 0.7324650975120519,
+      "difference": 1.1102230246251565e-16
+    },
+    {
+      "method": "baseline",
+      "source": "k3_summary",
+      "recorded": 0.7132528530872814,
+      "recomputed": 0.7132528530872816,
+      "difference": 2.220446049250313e-16
+    },
+    {
+      "method": "adaptive_k1",
+      "source": "k3_summary",
+      "recorded": 0.7123846722129336,
+      "recomputed": 0.7123846722129334,
+      "difference": -1.1102230246251565e-16
+    },
+    {
+      "method": "sliding",
+      "source": "k3_summary",
+      "recorded": 0.7324650975120518,
+      "recomputed": 0.7324650975120519,
+      "difference": 1.1102230246251565e-16
+    },
+    {
+      "method": "adaptive_k3",
+      "source": "k3_summary",
+      "recorded": 0.7219864665208329,
+      "recomputed": 0.7219864665208329,
+      "difference": 0.0
+    },
+    {
+      "method": "random_42_k3",
+      "source": "k3_summary",
+      "recorded": 0.7147672956439441,
+      "recomputed": 0.7147672956439441,
+      "difference": 0.0
+    },
+    {
+      "method": "random_43_k3",
+      "source": "k3_summary",
+      "recorded": 0.7115173819118082,
+      "recomputed": 0.7115173819118081,
+      "difference": -1.1102230246251565e-16
+    },
+    {
+      "method": "random_44_k3",
+      "source": "k3_summary",
+      "recorded": 0.7157299539037537,
+      "recomputed": 0.7157299539037537,
+      "difference": 0.0
+    }
+  ],
+  "source_members": [
+    {
+      "archive": "Downloads/DINOv3_complete_20261008T122013_722899Z.zip",
+      "member": "20261001T181030_523202Z/full_voc_fixed_v1/protocol.json",
+      "sha256": "d84b11c0000cfa9600496b323d6f2c92aafd07f14a19c20c8fbfeb2ddd9e91c3"
+    },
+    {
+      "archive": "Downloads/DINOv3_complete_20261008T122013_722899Z.zip",
+      "member": "20261001T181030_523202Z/full_voc_topk3_v1/protocol.json",
+      "sha256": "51c1a7421e11c6012e283f55d34f522b9026ad919669ab7a6e8468246f8aa22f"
+    },
+    {
+      "archive": "Downloads/DINOv3_complete_20261008T122013_722899Z.zip",
+      "member": "20261001T181030_523202Z/full_voc_fixed_v1/summary.json",
+      "sha256": "7b121bef417773c400bf4964ac61c9e8fa2d511c5ab259b699acf2993bd35a26"
+    },
+    {
+      "archive": "Downloads/DINOv3_complete_20261008T122013_722899Z.zip",
+      "member": "20261001T181030_523202Z/full_voc_topk3_v1/summary.json",
+      "sha256": "4b100d2c88fc788d68825690ee15d2995ac9f1a389401f2e1a82b42683681623"
+    },
+    {
+      "archive": "Downloads/DINOv3_complete_20261008T122013_722899Z.zip",
+      "member": "20261001T181030_523202Z/full_voc_fixed_v1/per_image_state.npz",
+      "sha256": "c4fe939f59d8e61872d0ffa41241dc3625cfe6d7f642640b030a07516b4dd5b4"
+    },
+    {
+      "archive": "Downloads/DINOv3_complete_20261008T122013_722899Z.zip",
+      "member": "20261001T181030_523202Z/full_voc_topk3_v1/per_image_state.npz",
+      "sha256": "a87c27df29b36dae3bccd9855181912281345f0afa5f0bb7c913c9e777c15871"
+    }
+  ],
+  "archive_sha256": "5d8a3dd4b9fa1e39120e185ecb572382bb904d6045e81831c1c6a3e7d2555685",
+  "script_sha256": "beea8534b865120f375980c5e3749df560b41733af8fc53ace5dc5b9d152df83",
+  "checks": {
+    "same_ordered_image_indices": true,
+    "same_image_ids": true,
+    "all_completed": true,
+    "same_valid_pixel_counts": true,
+    "archive_summary_exact_match": true,
+    "report_rounded_match": true,
+    "csv_rounded_match": true
+  },
+  "limits": [
+    "No GPU inference or bootstrap rerun.",
+    "Native resolution and ignore=255 verified as protocol metadata; raw masks not reloaded.",
+    "0.7104 belongs to a separate 1449-image 224x224 evaluation, not this native-resolution comparison."
+  ]
+}

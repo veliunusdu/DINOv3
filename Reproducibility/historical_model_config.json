@@ -1,0 +1,27 @@
+{
+  "model_name": "facebook/dinov3-vits16-pretrain-lvd1689m",
+  "revision": "114c1379950215c8b35dfcd4e90a5c251dde0d32",
+  "seed": 42,
+  "input_size": 224,
+  "num_classes": 21,
+  "head": "Conv2d(384, 21, kernel_size=1)",
+  "image_resize": "bicubic",
+  "mask_resize": "nearest",
+  "logit_upsampling": "bilinear, align_corners=False",
+  "image_mean": [
+    0.485,
+    0.456,
+    0.406
+  ],
+  "image_std": [
+    0.229,
+    0.224,
+    0.225
+  ],
+  "dataset": "VOC2012",
+  "batch_size": 8,
+  "epochs": 5,
+  "learning_rate": 0.001,
+  "weight_decay": 0.0001,
+  "ignore_index": 255
+}

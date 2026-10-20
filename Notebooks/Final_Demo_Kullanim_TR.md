@@ -2,6 +2,12 @@
 
 Dosya: `DINOv3_Adaptive_Zoom_Final_Demo.ipynb`.
 
+## Temiz oturum kabul testi
+
+İki referans örneğini tek seferde sınamak için `DINOv3_Clean_Colab_Test.ipynb` dosyasını yeni GPU runtime'da aç. Sıra: 1, 1b, 2, 3, 4, 5, 6. Son hücre index 9 ve 10 için inference/export yapar; ortam sürümlerini, config/checkpoint hash'lerini ve referans skor karşılaştırmalarını ZIP'e kaydeder. `smoke_report.json` PASS olmadan yeni GPU testi tamamlandı sayılmaz. FAIL halinde aşama ve traceback kaydedilir; önceki kurulum hücresi hata verdiyse orijinal çıktıyı ayrıca sakla.
+
+20 Ekim itibarıyla temiz-test notebook'u yerelde derlendi; canlı Colab çıktısı henüz alınmadı.
+
 ## Yeni Colab oturumu
 
 1. Notebook'u PC'ye kaydet, Colab'da Dosya → Notebook yükle ile aç; T4 GPU seç.

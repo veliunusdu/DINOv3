@@ -1,0 +1,407 @@
+{
+  "dataset": "VOC2012 validation",
+  "index_base": 0,
+  "origin": "Explicit latest 7-method timing protocol; same IDs as saved holdout split.",
+  "records": [
+    {
+      "image_index": 5,
+      "image_id": "2007_000175"
+    },
+    {
+      "image_index": 26,
+      "image_id": "2007_000830"
+    },
+    {
+      "image_index": 55,
+      "image_id": "2007_001678"
+    },
+    {
+      "image_index": 154,
+      "image_id": "2007_004649"
+    },
+    {
+      "image_index": 158,
+      "image_id": "2007_004866"
+    },
+    {
+      "image_index": 172,
+      "image_id": "2007_005354"
+    },
+    {
+      "image_index": 179,
+      "image_id": "2007_005600"
+    },
+    {
+      "image_index": 196,
+      "image_id": "2007_006035"
+    },
+    {
+      "image_index": 206,
+      "image_id": "2007_006364"
+    },
+    {
+      "image_index": 245,
+      "image_id": "2007_007651"
+    },
+    {
+      "image_index": 260,
+      "image_id": "2007_008204"
+    },
+    {
+      "image_index": 266,
+      "image_id": "2007_008415"
+    },
+    {
+      "image_index": 268,
+      "image_id": "2007_008543"
+    },
+    {
+      "image_index": 273,
+      "image_id": "2007_008708"
+    },
+    {
+      "image_index": 282,
+      "image_id": "2007_008980"
+    },
+    {
+      "image_index": 283,
+      "image_id": "2007_009015"
+    },
+    {
+      "image_index": 313,
+      "image_id": "2007_009764"
+    },
+    {
+      "image_index": 314,
+      "image_id": "2007_009794"
+    },
+    {
+      "image_index": 332,
+      "image_id": "2008_000215"
+    },
+    {
+      "image_index": 335,
+      "image_id": "2008_000234"
+    },
+    {
+      "image_index": 353,
+      "image_id": "2008_000630"
+    },
+    {
+      "image_index": 366,
+      "image_id": "2008_000811"
+    },
+    {
+      "image_index": 412,
+      "image_id": "2008_001971"
+    },
+    {
+      "image_index": 413,
+      "image_id": "2008_001992"
+    },
+    {
+      "image_index": 421,
+      "image_id": "2008_002269"
+    },
+    {
+      "image_index": 424,
+      "image_id": "2008_002379"
+    },
+    {
+      "image_index": 443,
+      "image_id": "2008_002900"
+    },
+    {
+      "image_index": 457,
+      "image_id": "2008_003141"
+    },
+    {
+      "image_index": 484,
+      "image_id": "2008_003874"
+    },
+    {
+      "image_index": 490,
+      "image_id": "2008_004069"
+    },
+    {
+      "image_index": 492,
+      "image_id": "2008_004140"
+    },
+    {
+      "image_index": 502,
+      "image_id": "2008_004399"
+    },
+    {
+      "image_index": 514,
+      "image_id": "2008_004687"
+    },
+    {
+      "image_index": 522,
+      "image_id": "2008_004995"
+    },
+    {
+      "image_index": 526,
+      "image_id": "2008_005105"
+    },
+    {
+      "image_index": 534,
+      "image_id": "2008_005338"
+    },
+    {
+      "image_index": 543,
+      "image_id": "2008_005633"
+    },
+    {
+      "image_index": 613,
+      "image_id": "2008_007945"
+    },
+    {
+      "image_index": 619,
+      "image_id": "2008_008252"
+    },
+    {
+      "image_index": 627,
+      "image_id": "2008_008421"
+    },
+    {
+      "image_index": 628,
+      "image_id": "2008_008434"
+    },
+    {
+      "image_index": 640,
+      "image_id": "2009_000074"
+    },
+    {
+      "image_index": 643,
+      "image_id": "2009_000096"
+    },
+    {
+      "image_index": 645,
+      "image_id": "2009_000136"
+    },
+    {
+      "image_index": 647,
+      "image_id": "2009_000156"
+    },
+    {
+      "image_index": 653,
+      "image_id": "2009_000318"
+    },
+    {
+      "image_index": 659,
+      "image_id": "2009_000412"
+    },
+    {
+      "image_index": 663,
+      "image_id": "2009_000440"
+    },
+    {
+      "image_index": 677,
+      "image_id": "2009_000704"
+    },
+    {
+      "image_index": 684,
+      "image_id": "2009_000731"
+    },
+    {
+      "image_index": 696,
+      "image_id": "2009_000931"
+    },
+    {
+      "image_index": 708,
+      "image_id": "2009_001255"
+    },
+    {
+      "image_index": 734,
+      "image_id": "2009_001804"
+    },
+    {
+      "image_index": 735,
+      "image_id": "2009_001816"
+    },
+    {
+      "image_index": 755,
+      "image_id": "2009_002202"
+    },
+    {
+      "image_index": 772,
+      "image_id": "2009_002487"
+    },
+    {
+      "image_index": 800,
+      "image_id": "2009_002928"
+    },
+    {
+      "image_index": 817,
+      "image_id": "2009_003217"
+    },
+    {
+      "image_index": 823,
+      "image_id": "2009_003304"
+    },
+    {
+      "image_index": 851,
+      "image_id": "2009_003703"
+    },
+    {
+      "image_index": 856,
+      "image_id": "2009_003804"
+    },
+    {
+      "image_index": 857,
+      "image_id": "2009_003806"
+    },
+    {
+      "image_index": 867,
+      "image_id": "2009_003971"
+    },
+    {
+      "image_index": 879,
+      "image_id": "2009_004221"
+    },
+    {
+      "image_index": 883,
+      "image_id": "2009_004298"
+    },
+    {
+      "image_index": 891,
+      "image_id": "2009_004540"
+    },
+    {
+      "image_index": 892,
+      "image_id": "2009_004568"
+    },
+    {
+      "image_index": 907,
+      "image_id": "2009_004799"
+    },
+    {
+      "image_index": 909,
+      "image_id": "2009_004848"
+    },
+    {
+      "image_index": 923,
+      "image_id": "2009_005089"
+    },
+    {
+      "image_index": 941,
+      "image_id": "2010_000084"
+    },
+    {
+      "image_index": 950,
+      "image_id": "2010_000241"
+    },
+    {
+      "image_index": 974,
+      "image_id": "2010_000682"
+    },
+    {
+      "image_index": 997,
+      "image_id": "2010_001036"
+    },
+    {
+      "image_index": 1011,
+      "image_id": "2010_001264"
+    },
+    {
+      "image_index": 1012,
+      "image_id": "2010_001292"
+    },
+    {
+      "image_index": 1022,
+      "image_id": "2010_001522"
+    },
+    {
+      "image_index": 1048,
+      "image_id": "2010_002017"
+    },
+    {
+      "image_index": 1071,
+      "image_id": "2010_002450"
+    },
+    {
+      "image_index": 1086,
+      "image_id": "2010_002900"
+    },
+    {
+      "image_index": 1138,
+      "image_id": "2010_003854"
+    },
+    {
+      "image_index": 1140,
+      "image_id": "2010_003915"
+    },
+    {
+      "image_index": 1149,
+      "image_id": "2010_004120"
+    },
+    {
+      "image_index": 1157,
+      "image_id": "2010_004322"
+    },
+    {
+      "image_index": 1167,
+      "image_id": "2010_004519"
+    },
+    {
+      "image_index": 1179,
+      "image_id": "2010_004757"
+    },
+    {
+      "image_index": 1194,
+      "image_id": "2010_004980"
+    },
+    {
+      "image_index": 1238,
+      "image_id": "2010_005762"
+    },
+    {
+      "image_index": 1242,
+      "image_id": "2010_005877"
+    },
+    {
+      "image_index": 1266,
+      "image_id": "2011_000283"
+    },
+    {
+      "image_index": 1289,
+      "image_id": "2011_000585"
+    },
+    {
+      "image_index": 1323,
+      "image_id": "2011_001161"
+    },
+    {
+      "image_index": 1327,
+      "image_id": "2011_001276"
+    },
+    {
+      "image_index": 1348,
+      "image_id": "2011_001601"
+    },
+    {
+      "image_index": 1355,
+      "image_id": "2011_001665"
+    },
+    {
+      "image_index": 1362,
+      "image_id": "2011_001726"
+    },
+    {
+      "image_index": 1387,
+      "image_id": "2011_002156"
+    },
+    {
+      "image_index": 1409,
+      "image_id": "2011_002535"
+    },
+    {
+      "image_index": 1414,
+      "image_id": "2011_002592"
+    },
+    {
+      "image_index": 1443,
+      "image_id": "2011_003182"
+    }
+  ]
+}

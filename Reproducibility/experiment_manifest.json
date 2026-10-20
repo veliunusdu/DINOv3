@@ -1,0 +1,714 @@
+{
+  "schema_version": 1,
+  "created_at": "2026-10-13T11:51:32.936731+03:00",
+  "scope": "Saved experiment provenance plus current demo snapshot; no GPU inference or retraining performed.",
+  "model": {
+    "id": "facebook/dinov3-vits16-pretrain-lvd1689m",
+    "revision": "114c1379950215c8b35dfcd4e90a5c251dde0d32",
+    "input_size": 224,
+    "input_resize": "bicubic",
+    "normalization": "processor.image_mean_and_image_std",
+    "num_classes": 21,
+    "backbone_frozen": true,
+    "inference_mode": "eval"
+  },
+  "checkpoint": {
+    "head_type": "conv1x1",
+    "epoch": 5,
+    "archive": "Downloads/DINOv3_complete_20261008T122013_722899Z.zip",
+    "member": "20261001T181030_523202Z/head_epoch_05.pth",
+    "sha256": "3f82a4f13c35b58ce0541cb12357e72bf58c1bbaa4e3758226820f3fbe945e6f",
+    "verified_against_archive": true
+  },
+  "config": {
+    "path": "Config/DINOv3_Final_Config.toml",
+    "size_bytes": 5584,
+    "sha256": "2588dfd2391f05335a3d9f37822d3653d64af4ece8706243e8913429d6a0403b"
+  },
+  "code": {
+    "git_head_at_manifest_creation": "221a1d5fa9dc0cf57bd70babe2acbab8eb6b89e8",
+    "historical_experiment_git_commit": null,
+    "historical_commit_note": "Experiments preceded Git initialization; current HEAD is not their original execution commit.",
+    "current_code_status": "Config-connected demo has uncommitted changes; exact files preserved by SHA-256 and code_snapshot.",
+    "files": [
+      {
+        "path": "Notebooks/DINOv3_Adaptive_Zoom_Final_Demo.ipynb",
+        "size_bytes": 44668,
+        "sha256": "0b221554b51201ef04b5fea4b74fd0537d4925920a617963e804049c09432f69",
+        "snapshot_path": "Reproducibility/code_snapshot/Notebooks/DINOv3_Adaptive_Zoom_Final_Demo.ipynb"
+      },
+      {
+        "path": "Notebooks/adaptive_zoom_demo.py",
+        "size_bytes": 12500,
+        "sha256": "a5df815c65a94307089bdd0408dbdaa42a723db1a3b964bc0752c56d3d5895c6",
+        "snapshot_path": "Reproducibility/code_snapshot/Notebooks/adaptive_zoom_demo.py"
+      },
+      {
+        "path": "Notebooks/build_final_demo_notebook.py",
+        "size_bytes": 10924,
+        "sha256": "b50b9d62c5a4fbb171e75dacf8e32b21f2d6969ec7c8e0c214a21c0263d0a415",
+        "snapshot_path": "Reproducibility/code_snapshot/Notebooks/build_final_demo_notebook.py"
+      },
+      {
+        "path": "Notebooks/final_config.py",
+        "size_bytes": 3063,
+        "sha256": "a1db7ec825dc91a333f960e075b18ada487f5562c2bad52a87fb369137908935",
+        "snapshot_path": "Reproducibility/code_snapshot/Notebooks/final_config.py"
+      },
+      {
+        "path": "Notebooks/verify_final_config.py",
+        "size_bytes": 2860,
+        "sha256": "2f9b89d72756d9ba493c5f32ed91e9f09bb1c8aa5ca958b4b29bfeacbbc6a6ba",
+        "snapshot_path": "Reproducibility/code_snapshot/Notebooks/verify_final_config.py"
+      },
+      {
+        "path": "Notebooks/build_experiment_manifest.py",
+        "size_bytes": 13709,
+        "sha256": "30b1bf28ac1ef6c100f74eb3922c6eb3a9d08f0c7082a32d6b4b64a3e93db92a",
+        "snapshot_path": "Reproducibility/code_snapshot/Notebooks/build_experiment_manifest.py"
+      },
+      {
+        "path": "Config/DINOv3_Final_Config.toml",
+        "size_bytes": 5584,
+        "sha256": "2588dfd2391f05335a3d9f37822d3653d64af4ece8706243e8913429d6a0403b",
+        "snapshot_path": "Reproducibility/code_snapshot/Config/DINOv3_Final_Config.toml"
+      },
+      {
+        "path": "README.md",
+        "size_bytes": 7328,
+        "sha256": "425e9b89038aabe85adb2708245a417389a502ccc032cc9327a0fa5f6e99e48a",
+        "snapshot_path": "Reproducibility/code_snapshot/README.md"
+      },
+      {
+        "path": "Notebooks/Final_Demo_Kullanim_TR.md",
+        "size_bytes": 4645,
+        "sha256": "d2de180a6b8301d0df2aa1793586cbc324d7d3ee101ff29550d1c1578397b434",
+        "snapshot_path": "Reproducibility/code_snapshot/Notebooks/Final_Demo_Kullanim_TR.md"
+      }
+    ],
+    "historical_notebook": "Downloads/DINOv3.ipynb; archived code, not certified as a clean sequential reproduction of all original runs."
+  },
+  "dataset": {
+    "name": "VOC2012",
+    "splits": {
+      "validation_1449": {
+        "count": 1449,
+        "origin": "Reconstructed union of explicitly recorded evaluation and development index/ID pairs.",
+        "records": {
+          "path": "Reproducibility/splits/validation_1449.json",
+          "size_bytes": 109198,
+          "sha256": "cec8cd98c526e38103d137360dcd1e651c920919dfdbe4d27da5025cd887abee"
+        },
+        "ids": {
+          "path": "Reproducibility/splits/validation_1449_ids.txt",
+          "size_bytes": 18837,
+          "sha256": "8fe3c8ccb47eb4fdabb293cf3a66d6cbe45251f6fe76839230190fbfe2531731"
+        }
+      },
+      "development_50": {
+        "count": 50,
+        "origin": "Explicit adaptive_random_50 records; excluded from main evaluation.",
+        "records": {
+          "path": "Reproducibility/splits/development_50.json",
+          "size_bytes": 3873,
+          "sha256": "368b4e9ca0fef43d3437f2596f7bf580934148fc5ddbbea332e205e8b8ecf8fa"
+        },
+        "ids": {
+          "path": "Reproducibility/splits/development_50_ids.txt",
+          "size_bytes": 650,
+          "sha256": "56b93c68b3297563bc5c3fb3a876353693f9ca16994a7267fade3ba84e43da5c"
+        }
+      },
+      "evaluation_1399": {
+        "count": 1399,
+        "origin": "Indices from full_voc_topk3_v1 and image IDs from full_voc_fixed_v1; ordered NPZ indices cross-checked.",
+        "records": {
+          "path": "Reproducibility/splits/evaluation_1399.json",
+          "size_bytes": 105509,
+          "sha256": "b0cf6cb1d1f2a5826d528aedac861e0e6660927539e202784776a6864d86d9c9"
+        },
+        "ids": {
+          "path": "Reproducibility/splits/evaluation_1399_ids.txt",
+          "size_bytes": 18187,
+          "sha256": "136042722d70d4476c72ff7821a101e26a0761f1d422722cd97957362789825c"
+        }
+      },
+      "latency_100": {
+        "count": 100,
+        "origin": "Explicit latest 7-method timing protocol; same IDs as saved holdout split.",
+        "records": {
+          "path": "Reproducibility/splits/latency_100.json",
+          "size_bytes": 7695,
+          "sha256": "c4f9232e459d70eca0a0d691b22c870c24b548d991f12fc14c7f9b96bb8f4551"
+        },
+        "ids": {
+          "path": "Reproducibility/splits/latency_100_ids.txt",
+          "size_bytes": 1300,
+          "sha256": "cb1e20eed145c976aeb1a2998d45e6fbe0d33fc658652802f5db77f33fe24aea"
+        }
+      },
+      "training_1464": {
+        "count_reported": 1464,
+        "ids": null,
+        "status": "Exact training ID list not found in inspected archives; not reconstructed from assumptions."
+      }
+    },
+    "scope_note": "Development is GT-selected. Latency pilot is part of previously seen evaluation_1399, not an untouched test."
+  },
+  "seeds": {
+    "base": {
+      "value": 42,
+      "source": "20261001T181030_523202Z/config.json"
+    },
+    "random_k3": {
+      "values": [
+        42,
+        43,
+        44
+      ],
+      "selection_rule": "shuffled candidates with greedy NMS; retry until three crops; seed + image_index * 1000003"
+    },
+    "pilot_selection": {
+      "value": 2026,
+      "source": "20261001T181030_523202Z/holdout_split_100_20261006T212410_602431Z.json"
+    },
+    "quality_bootstrap": {
+      "seed": 2026,
+      "bootstrap_samples": 5000,
+      "source": "Downloads/paired_bootstrap_k3_1399_20261006T230527_678459Z.json"
+    },
+    "latency_bootstrap": {
+      "seed": 2026,
+      "bootstrap_samples": 5000
+    }
+  },
+  "environments": {
+    "historical_latency_recorded": {
+      "gpu": "Tesla T4",
+      "torch": "2.11.0+cu130",
+      "transformers": "5.17.0"
+    },
+    "historical_missing": [
+      "Python version",
+      "CUDA runtime version",
+      "torchvision version",
+      "complete pip freeze",
+      "original training environment"
+    ],
+    "source": {
+      "archive": "Downloads/benchmark_all_k3_100_20261007T194714_806084Z (1).zip",
+      "member": "benchmark_all_k3_100_20261007T194714_806084Z/protocol.json"
+    },
+    "manifest_builder_only": {
+      "python": "3.12.14",
+      "numpy": "2.3.5",
+      "platform": "Windows-11-10.0.26200-SP0"
+    },
+    "note": "Local builder versions are not the Colab experiment environment. No new clean GPU run is claimed."
+  },
+  "results": {
+    "main_quality": {
+      "archive": "Downloads/DINOv3_complete_20261008T122013_722899Z.zip",
+      "members": [
+        "20261001T181030_523202Z/full_voc_fixed_v1/summary.json",
+        "20261001T181030_523202Z/full_voc_topk3_v1/summary.json"
+      ],
+      "baseline_k1_sliding": {
+        "completed_images": 1399,
+        "total_images": 1399,
+        "status": "complete",
+        "class_ids": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20
+        ],
+        "pooled_miou": {
+          "baseline": 0.7132528530872814,
+          "adaptive": 0.7123846722129336,
+          "random_42": 0.7115512354915466,
+          "random_43": 0.7123122975137678,
+          "random_44": 0.715029801823621,
+          "sliding": 0.7324650975120518
+        }
+      },
+      "k3": {
+        "status": "complete",
+        "completed": 1399,
+        "total": 1399,
+        "summary": {
+          "baseline": 0.7132528530872814,
+          "adaptive_k1": 0.7123846722129336,
+          "sliding": 0.7324650975120518,
+          "adaptive_k3": 0.7219864665208329,
+          "random_42_k3": 0.7147672956439441,
+          "random_43_k3": 0.7115173819118082,
+          "random_44_k3": 0.7157299539037537
+        },
+        "random_k3_mean_miou": 0.7140048771531687,
+        "note": "All displayed methods use the same completed images."
+      }
+    },
+    "latency": {
+      "archive": "Downloads/benchmark_all_k3_100_20261007T194714_806084Z (1).zip",
+      "member": "benchmark_all_k3_100_20261007T194714_806084Z/results.json",
+      "summary": {
+        "baseline": {
+          "pooled_miou": 0.6506098676282328,
+          "mean_ms": 79.18051534999904,
+          "median_ms": 65.5056064999826,
+          "p95_ms": 127.64630924971242,
+          "max_peak_gpu_mb": 98.265625,
+          "passes": 1
+        },
+        "adaptive_k1": {
+          "pooled_miou": 0.6750243441847408,
+          "mean_ms": 110.83669050998651,
+          "median_ms": 98.33802400021341,
+          "p95_ms": 171.38027409994265,
+          "max_peak_gpu_mb": 98.265625,
+          "passes": 2
+        },
+        "adaptive_k3": {
+          "pooled_miou": 0.6702191382422134,
+          "mean_ms": 147.4911200600127,
+          "median_ms": 133.02345099987178,
+          "p95_ms": 216.4910950499234,
+          "max_peak_gpu_mb": 98.265625,
+          "passes": 4
+        },
+        "random_42_k3": {
+          "pooled_miou": 0.6771930919094666,
+          "mean_ms": 147.7467780800407,
+          "median_ms": 132.81064950001564,
+          "p95_ms": 224.1819881501442,
+          "max_peak_gpu_mb": 98.265625,
+          "passes": 4
+        },
+        "random_43_k3": {
+          "pooled_miou": 0.679407235015659,
+          "mean_ms": 149.22583939001015,
+          "median_ms": 133.50984249996145,
+          "p95_ms": 220.35773785014499,
+          "max_peak_gpu_mb": 98.265625,
+          "passes": 4
+        },
+        "random_44_k3": {
+          "pooled_miou": 0.6684225841430486,
+          "mean_ms": 146.42418677000478,
+          "median_ms": 134.30830750007772,
+          "p95_ms": 222.57792034986323,
+          "max_peak_gpu_mb": 98.265625,
+          "passes": 4
+        },
+        "sliding": {
+          "pooled_miou": 0.6732427199131381,
+          "mean_ms": 510.2677159900031,
+          "median_ms": 472.00882850006565,
+          "p95_ms": 698.3747093998772,
+          "max_peak_gpu_mb": 98.265625,
+          "passes": 25
+        }
+      }
+    },
+    "threshold_ablation": {
+      "archive": "Downloads/DINOv3_complete_20261008T122013_722899Z.zip",
+      "member": "20261001T181030_523202Z/selector_threshold_ablation_dev50_v1/protocol.json"
+    },
+    "quality_bootstrap_file": "Downloads/paired_bootstrap_k3_1399_20261006T230527_678459Z.json",
+    "latency_bootstrap": {
+      "archive": "Downloads/benchmark_all_k3_100_20261007T194714_806084Z (1).zip",
+      "member": "benchmark_all_k3_100_20261007T194714_806084Z/paired_latency_bootstrap_20261007T204156_744467Z.json"
+    },
+    "classwise_archive": "Downloads/classwise_iou_1399_20261007T203351_459375Z.zip",
+    "benchmark_csv_note": "CSV combines 1399-image quality and 100-image latency; values exported from rounded report, not raw full precision."
+  },
+  "source_archives": [
+    {
+      "path": "Downloads/benchmark_all_k3_100_20261007T194714_806084Z (1).zip",
+      "size_bytes": 31334,
+      "sha256": "8a086ca7751df8b48a635df9682dfd905836bd8582ff2de2c38f0b53407a5e9f",
+      "member_count": 5,
+      "historical_environment_members": []
+    },
+    {
+      "path": "Downloads/benchmark_all_k3_100_20261007T194714_806084Z.zip",
+      "size_bytes": 30452,
+      "sha256": "c9a480c16c8502d8e6af10d8360d27407ee9a41180091f9dd0a908a2d4735be1",
+      "member_count": 4,
+      "historical_environment_members": []
+    },
+    {
+      "path": "Downloads/benchmark_k3_100_20261006T231004_663101Z.zip",
+      "size_bytes": 23908,
+      "sha256": "f07bbde2f232d418c57a30974a93a9334dec8c5ac35c016af1513e2da3c60ce3",
+      "member_count": 3,
+      "historical_environment_members": []
+    },
+    {
+      "path": "Downloads/classwise_iou_1399_20261007T203351_459375Z.zip",
+      "size_bytes": 15740,
+      "sha256": "ca84d4495e18c5d04602a5e1fa70d15d9e2c404234bacba8dc326dfbabd3c997",
+      "member_count": 4,
+      "historical_environment_members": []
+    },
+    {
+      "path": "Downloads/custom_photo_demo_20261008T123108_196389Z.zip",
+      "size_bytes": 14191425,
+      "sha256": "9f626b828d38f4f8a6d82f58134def8531cdfab6dcedb7a7e3dabee85af4c4ea",
+      "member_count": 16,
+      "historical_environment_members": []
+    },
+    {
+      "path": "Downloads/DINOv3_analysis_20261006T204801_022252Z.zip",
+      "size_bytes": 176128,
+      "sha256": "f0458d6084fe37e6084eb36ce0f6528dca9672b09bc035e5c489cc81151bb715",
+      "member_count": 11,
+      "historical_environment_members": []
+    },
+    {
+      "path": "Downloads/DINOv3_benchmark_20261006T213105_637023Z.zip",
+      "size_bytes": 9845468,
+      "sha256": "ced416f384d18d7f69efc61e6a641a22d70ecc4adce112ce5193a17e041fa029",
+      "member_count": 25,
+      "historical_environment_members": []
+    },
+    {
+      "path": "Downloads/DINOv3_bootstrap_20261006T213628_781946Z.zip",
+      "size_bytes": 9866282,
+      "sha256": "03a66a2841d32a1f3ef21e996bbeb6abd4cedf7e7b98fcb3b64cabf55c390f55",
+      "member_count": 27,
+      "historical_environment_members": []
+    },
+    {
+      "path": "Downloads/DINOv3_complete_20261008T122013_722899Z.zip",
+      "size_bytes": 56587515,
+      "sha256": "5d8a3dd4b9fa1e39120e185ecb572382bb904d6045e81831c1c6a3e7d2555685",
+      "member_count": 1530,
+      "historical_environment_members": []
+    },
+    {
+      "path": "Downloads/DINOv3_crop_sizes_20261006T210506_222816Z.zip",
+      "size_bytes": 9047674,
+      "sha256": "9341ab4bd8887ad66803c9015deca50bedd826659feac03c849b022d51848c7f",
+      "member_count": 21,
+      "historical_environment_members": []
+    },
+    {
+      "path": "Downloads/DINOv3_full_voc_progress_1000.zip",
+      "size_bytes": 10056504,
+      "sha256": "bb1bb2ef02415b5bd152fc9be971f179cc37730555369fae6f38672f9ecf5819",
+      "member_count": 31,
+      "historical_environment_members": []
+    },
+    {
+      "path": "Downloads/DINOv3_full_voc_progress_1200.zip",
+      "size_bytes": 15100975,
+      "sha256": "47e4193ac1f0a457af814a32160612358c9b85d359295efad1e14e8e20bf53e4",
+      "member_count": 17,
+      "historical_environment_members": []
+    },
+    {
+      "path": "Downloads/DINOv3_full_voc_progress_1399.zip",
+      "size_bytes": 10130839,
+      "sha256": "e1dc31a505b2284a949a15ac3206f00349934416a811847a248d5189e42074f4",
+      "member_count": 31,
+      "historical_environment_members": []
+    },
+    {
+      "path": "Downloads/DINOv3_full_voc_progress_200.zip",
+      "size_bytes": 9912801,
+      "sha256": "2c34124d7f04538e0529eeb7a46e6f5e10efc8e702031ac7534af2a4c04c7033",
+      "member_count": 31,
+      "historical_environment_members": []
+    },
+    {
+      "path": "Downloads/DINOv3_full_voc_progress_400.zip",
+      "size_bytes": 9949351,
+      "sha256": "ca94e2236d72c0afd3abd32c32b0ee1399cd846fa1e211a97ca7bf17de9ecef7",
+      "member_count": 31,
+      "historical_environment_members": []
+    },
+    {
+      "path": "Downloads/DINOv3_full_voc_progress_600.zip",
+      "size_bytes": 9985377,
+      "sha256": "7f843f2b806f66837445b700c2bed92f7114f602db9e5003fa6f0837927723b4",
+      "member_count": 31,
+      "historical_environment_members": []
+    },
+    {
+      "path": "Downloads/DINOv3_full_voc_progress_800.zip",
+      "size_bytes": 10020575,
+      "sha256": "979b54cd87def49140ac908d061974c65ff90914b6e34213c4dcf5f9d6d5b3cf",
+      "member_count": 31,
+      "historical_environment_members": []
+    },
+    {
+      "path": "Downloads/DINOv3_fusion_20261006T204801_022252Z.zip",
+      "size_bytes": 9022509,
+      "sha256": "e476e03809d300e8c774ddb985be3c435bfce63028b84a255a774fdfaf43c3de",
+      "member_count": 19,
+      "historical_environment_members": []
+    },
+    {
+      "path": "Downloads/DINOv3_holdout_20261006T212410_602431Z.zip",
+      "size_bytes": 9061139,
+      "sha256": "abdd142d874a90e3a20dce5a912f6670aec7a85f751d11c9454c6394b76b69bf",
+      "member_count": 23,
+      "historical_environment_members": []
+    },
+    {
+      "path": "Downloads/DINOv3_padding_20261006T210206_818302Z.zip",
+      "size_bytes": 9029655,
+      "sha256": "4eb2cb172ec149bac395e2be3d3e31811256761833dd5f4fdd950b79eb7eaa4c",
+      "member_count": 20,
+      "historical_environment_members": []
+    },
+    {
+      "path": "Downloads/DINOv3_results_20261006T204801_022252Z.zip",
+      "size_bytes": 176128,
+      "sha256": "f0458d6084fe37e6084eb36ce0f6528dca9672b09bc035e5c489cc81151bb715",
+      "member_count": 11,
+      "historical_environment_members": []
+    },
+    {
+      "path": "Downloads/DINOv3_topk3_progress_1000.zip",
+      "size_bytes": 56167190,
+      "sha256": "9438e6ff0a42004b0f21759edb940f2a8815e6f9a3fea6112f14ef1f8e203ac3",
+      "member_count": 1075,
+      "historical_environment_members": []
+    },
+    {
+      "path": "Downloads/DINOv3_topk3_progress_1200.zip",
+      "size_bytes": 56326163,
+      "sha256": "c3f77f2c4e041156bf681517e632c37fed9e9d99a50a286916a2ffb35469ae37",
+      "member_count": 1275,
+      "historical_environment_members": []
+    },
+    {
+      "path": "Downloads/DINOv3_topk3_progress_1399.zip",
+      "size_bytes": 56484935,
+      "sha256": "58b62ed63729fc28f8b06537457b2ceedd14520415994aa48f312aa1f187e7f8",
+      "member_count": 1474,
+      "historical_environment_members": []
+    },
+    {
+      "path": "Downloads/DINOv3_topk3_progress_200.zip",
+      "size_bytes": 55533906,
+      "sha256": "cf3afb21e2e76ed57bf3e318a8b4e82c0b52f9d78d57c16b2c8128e8caae7242",
+      "member_count": 275,
+      "historical_environment_members": []
+    },
+    {
+      "path": "Downloads/DINOv3_topk3_progress_400.zip",
+      "size_bytes": 55692229,
+      "sha256": "5408499e7465f83264b76c4551ffbddafa55f01f4bd260e4f868764d60d32bfd",
+      "member_count": 475,
+      "historical_environment_members": []
+    },
+    {
+      "path": "Downloads/DINOv3_topk3_progress_600.zip",
+      "size_bytes": 55850500,
+      "sha256": "6e10cc7e6113af9d320a5b12ffbcec3d1103fb07ce5af7a0f434e9753f05a6d6",
+      "member_count": 675,
+      "historical_environment_members": []
+    },
+    {
+      "path": "Downloads/DINOv3_topk3_progress_800.zip",
+      "size_bytes": 56008157,
+      "sha256": "62ce49a29e244fc77d5413c9bd9dba6e68620ccff92e2cb6ccf1090cc61fd517",
+      "member_count": 875,
+      "historical_environment_members": []
+    },
+    {
+      "path": "Downloads/final_demo_index10_20261007T210041_347180Z.zip",
+      "size_bytes": 14486231,
+      "sha256": "933d3743d1eed2cc163622015e0e57498f61061d79472e783354b54d3070b264",
+      "member_count": 17,
+      "historical_environment_members": []
+    },
+    {
+      "path": "Downloads/refinement_diagnosis_20261006T222248_223281Z.zip",
+      "size_bytes": 1698230,
+      "sha256": "5049f452983b553d2fd4fe2b374b3411315534fe5051a5f5ef8b1cb3af5d8e37",
+      "member_count": 4,
+      "historical_environment_members": []
+    },
+    {
+      "path": "Downloads/selector_gallery_20_20261006T221453_694935Z.zip",
+      "size_bytes": 19984287,
+      "sha256": "85a5837d8b018337ebd4758064f84b0417c221002dc4a10dacc9d3b9770200c8",
+      "member_count": 22,
+      "historical_environment_members": []
+    },
+    {
+      "path": "Downloads/selector_threshold_ablation_dev50_v1.zip",
+      "size_bytes": 53342,
+      "sha256": "b92274cc7b10908909ad1ff330b67e449edbb31217e4b5fd8e848e9461f5e6ae",
+      "member_count": 54,
+      "historical_environment_members": []
+    },
+    {
+      "path": "Downloads/topk_comparison_50_20261006T223417_739370Z.zip",
+      "size_bytes": 59796,
+      "sha256": "7d40d4b00398c904eab2a78f200c51aa1c2bfe1aafddcc78a4565a588d076ede",
+      "member_count": 3,
+      "historical_environment_members": []
+    },
+    {
+      "path": "Downloads/topk_fusion_demo_20261006T223108_863157Z.zip",
+      "size_bytes": 506609,
+      "sha256": "df33e14ce5456dd6f3c58dcde485ec2a792f823072e6040949e5394894ef4f8d",
+      "member_count": 3,
+      "historical_environment_members": []
+    },
+    {
+      "path": "Downloads/topk_gallery_20_20261006T231350_145105Z.zip",
+      "size_bytes": 13727043,
+      "sha256": "84a8d54adfaa18d3ea805834a575d1a6d6b2f121b2f0a31ae1dda38a05846316",
+      "member_count": 22,
+      "historical_environment_members": []
+    }
+  ],
+  "source_members": [
+    {
+      "archive": "Downloads/DINOv3_complete_20261008T122013_722899Z.zip",
+      "member": "20261001T181030_523202Z/head_epoch_05.pth",
+      "sha256": "3f82a4f13c35b58ce0541cb12357e72bf58c1bbaa4e3758226820f3fbe945e6f",
+      "size_bytes": 34901
+    },
+    {
+      "archive": "Downloads/DINOv3_complete_20261008T122013_722899Z.zip",
+      "member": "20261001T181030_523202Z/config.json",
+      "sha256": "a9c5caf6c4b4f2b7f6a038755bdd1048f0c414b29a3f89fec8e50f220d8e1ab4",
+      "size_bytes": 574
+    },
+    {
+      "archive": "Downloads/DINOv3_complete_20261008T122013_722899Z.zip",
+      "member": "20261001T181030_523202Z/full_voc_fixed_v1/protocol.json",
+      "sha256": "d84b11c0000cfa9600496b323d6f2c92aafd07f14a19c20c8fbfeb2ddd9e91c3",
+      "size_bytes": 27695
+    },
+    {
+      "archive": "Downloads/DINOv3_complete_20261008T122013_722899Z.zip",
+      "member": "20261001T181030_523202Z/full_voc_topk3_v1/protocol.json",
+      "sha256": "51c1a7421e11c6012e283f55d34f522b9026ad919669ab7a6e8468246f8aa22f",
+      "size_bytes": 13846
+    },
+    {
+      "archive": "Downloads/DINOv3_complete_20261008T122013_722899Z.zip",
+      "member": "20261001T181030_523202Z/adaptive_random_50_20261006T204801_022252Z.json",
+      "sha256": "8c3dea19f31cebf60c27adfcddd457d2b86727feab11777927c71af810adf9f0",
+      "size_bytes": 76193
+    },
+    {
+      "archive": "Downloads/DINOv3_complete_20261008T122013_722899Z.zip",
+      "member": "20261001T181030_523202Z/holdout_split_100_20261006T212410_602431Z.json",
+      "sha256": "7b672e21b61fd4f992a0c88cda67b2b8c6dc35dedc38cae88c107ed84f6b6b7e",
+      "size_bytes": 3336
+    },
+    {
+      "archive": "Downloads/benchmark_all_k3_100_20261007T194714_806084Z (1).zip",
+      "member": "benchmark_all_k3_100_20261007T194714_806084Z/protocol.json",
+      "sha256": "e3bcc854b7c9bd741b9dafb7261350faed2f87f2cc42ac1c6bbf32032399d4e5",
+      "size_bytes": 1698
+    },
+    {
+      "archive": "Downloads/DINOv3_complete_20261008T122013_722899Z.zip",
+      "member": "20261001T181030_523202Z/selector_threshold_ablation_dev50_v1/protocol.json",
+      "sha256": "42e92a4982f2da8da0c232d39e8c0026e6466714d4a2579f8916ebff7dd990f8",
+      "size_bytes": 1658
+    },
+    {
+      "archive": "Downloads/DINOv3_complete_20261008T122013_722899Z.zip",
+      "member": "20261001T181030_523202Z/full_voc_fixed_v1/summary.json",
+      "sha256": "7b121bef417773c400bf4964ac61c9e8fa2d511c5ab259b699acf2993bd35a26",
+      "size_bytes": 497
+    },
+    {
+      "archive": "Downloads/DINOv3_complete_20261008T122013_722899Z.zip",
+      "member": "20261001T181030_523202Z/full_voc_topk3_v1/summary.json",
+      "sha256": "4b100d2c88fc788d68825690ee15d2995ac9f1a389401f2e1a82b42683681623",
+      "size_bytes": 463
+    },
+    {
+      "archive": "Downloads/benchmark_all_k3_100_20261007T194714_806084Z (1).zip",
+      "member": "benchmark_all_k3_100_20261007T194714_806084Z/results.json",
+      "sha256": "0b66d4c8cf6074c80f1460dbc0723b0dc0b5e3917e0fab05fa56ae3bff245ceb",
+      "size_bytes": 3715
+    },
+    {
+      "archive": "Downloads/DINOv3_complete_20261008T122013_722899Z.zip",
+      "member": "20261001T181030_523202Z/full_voc_fixed_v1/per_image_state.npz",
+      "sha256": "c4fe939f59d8e61872d0ffa41241dc3625cfe6d7f642640b030a07516b4dd5b4",
+      "size_bytes": 269560
+    },
+    {
+      "archive": "Downloads/DINOv3_complete_20261008T122013_722899Z.zip",
+      "member": "20261001T181030_523202Z/full_voc_topk3_v1/per_image_state.npz",
+      "sha256": "a87c27df29b36dae3bccd9855181912281345f0afa5f0bb7c913c9e777c15871",
+      "size_bytes": 184793
+    },
+    {
+      "archive": "Downloads/benchmark_all_k3_100_20261007T194714_806084Z (1).zip",
+      "member": "benchmark_all_k3_100_20261007T194714_806084Z/paired_latency_bootstrap_20261007T204156_744467Z.json",
+      "sha256": "8df3af2936e5e872453d602b4193b2e51b730adaffbdd70d4fc8cb60f2c1e1d9",
+      "size_bytes": 1478
+    }
+  ],
+  "source_files": [
+    {
+      "path": "Downloads/paired_bootstrap_k3_1399_20261006T230527_678459Z.json",
+      "size_bytes": 1954,
+      "sha256": "ce7c7733ea8cc5de6fc4ef50e2dcb4b9ec805b09b351295b38d4869c98144de5"
+    },
+    {
+      "path": "Downloads/DINOv3.ipynb",
+      "size_bytes": 16999398,
+      "sha256": "5682889f46caa35f9701ba99efe59136fe9d5f5ee86799a1c3c553d192d3d124"
+    },
+    {
+      "path": "Docs/DINOv3_Final_Deney_Raporu_TR.md",
+      "size_bytes": 20834,
+      "sha256": "6c09c71b8554b8f67c74f72b32c2aedd89daf98a1b45d4183c3f8fc12f23acf2"
+    },
+    {
+      "path": "Deliverables/DINOv3_Method_Comparison.csv",
+      "size_bytes": 479,
+      "sha256": "618d6f431aa9e892de60b47858f7149d5cd1a399e593cd033e1635e099918f95"
+    }
+  ],
+  "checks": {
+    "checkpoint_hash": true,
+    "model_revision": true,
+    "evaluation_methods_same_ids": true,
+    "development_disjoint": true,
+    "validation_union_1449": true,
+    "latency_subset": true,
+    "npz_completed_1399": true
+  },
+  "limitations": [
+    "Original experiment Git commit not recorded.",
+    "Exact training ID list absent.",
+    "Historical environment record is partial.",
+    "ZIP sources are ignored by Git and need separate backup.",
+    "Current config-connected notebook has not yet passed a fresh Colab GPU run."
+  ]
+}

@@ -1,1 +1,7 @@
 /Downloads/
+
+# Yerel bağımlılıklar ve geçici doğrulama çıktıları
+/Artifacts/plot_dependencies/
+/tmp/
+__pycache__/
+*.pyc

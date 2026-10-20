@@ -1,0 +1,2 @@
+# Manifest'teki ham bayt SHA-256 değerlerini checkout sırasında koru.
+Reproducibility/** -text

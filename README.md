@@ -35,6 +35,16 @@ Development grubundaki 50 görüntü konfigürasyon seçimi için kullanıldı v
 
 Tam protokol, ablation, sınıf sonuçları ve sınırlılıklar: [final deney raporu](Docs/DINOv3_Final_Deney_Raporu_TR.md).
 
+### Kalite–maliyet ve final seçim
+
+![Aynı 100 görüntüde kalite–maliyet ve ayrı panelde 1.399 görüntülük kalite](Deliverables/Quality_Cost/quality_cost.png)
+
+Grafiğin A panelinde iki eksen de aynı 100 görüntüye aittir; B paneli yalnızca 1.399 görüntülük kaliteyi gösterir. Ham 100-image confusion matrix ve süre kayıtları arşiv özetleriyle yeniden karşılaştırıldı. Noktalar anlamlılık testi değildir. [Vektör grafik](Deliverables/Quality_Cost/quality_cost.svg), [kaynak veriler ve hash'ler](Deliverables/Quality_Cost/figure_data.json).
+
+**K=3 final yöntem konfigürasyonudur; her koşulda en iyi trade-off değildir.** Aynı 100 görüntüde K=1, K=3'ten hem daha hızlı hem daha yüksek mIoU verdi. Baseline en hızlı; sliding ana değerlendirmede en doğru yöntemdir. [Final konfigürasyon karar tablosu](Deliverables/Final_Config_Decision_TR.md) seçim gerekçelerini ve farklı örneklem sınırlarını açıklar.
+
+Checkpoint ve kaynak arşiv hash'leri, split ID listeleri, seed'ler ve güncel kod snapshot'ı: [deney manifest’i](Reproducibility/experiment_manifest.json) ve [doğrulama kapsamı](Reproducibility/README_TR.md). Geçmiş deneylerin Git commit’i, training ID listesi ve tam ortam dökümü mevcut kaynaklarda eksiktir; güncel Git commit eski deneylerin orijinal sürümü olarak sunulmaz.
+
 ## Colab'da demo çalıştırma
 
 1. [Final demo notebook'unu](Notebooks/DINOv3_Adaptive_Zoom_Final_Demo.ipynb) indir ve Google Colab'da **Dosya → Notebook yükle** ile aç.
@@ -49,6 +59,26 @@ Tam protokol, ablation, sınıf sonuçları ve sınırlılıklar: [final deney r
 Varsayılan demo VOC index 9'u K=3 ile işler. Kendi görüntünde ground truth yoksa doğruluk metrikleri hesaplanmaz. Model yalnızca VOC'nin 21 sınıfını tahmin eder. Bu notebook demo içindir; eğitim ve büyük benchmark deneylerini yeniden çalıştırmaz.
 
 Ayrıntılı hücre sırası ve çıktı tanımları: [demo kullanım kılavuzu](Notebooks/Final_Demo_Kullanim_TR.md).
+
+### Temiz oturumda iki örnek testi
+
+1. [Temiz Colab test notebook'unu](Notebooks/DINOv3_Clean_Colab_Test.ipynb) indirip Colab'a yükle; yeni GPU runtime seç.
+2. Hücreleri **1 bağımlılıklar → 1b config → 2 checkpoint → 3 model → 4 VOC → 5 yardımcılar → 6 test** sırasıyla çalıştır. Setup yeniden başlatma gerektirirse sonrasında yine sırayla devam et.
+3. Kendi checkpoint paketini 2. adımda yükle; Hugging Face girişini 3. adımda tamamla. Gömülü final config varsayılan olarak kullanılır.
+4. Son test hücresi index 9 ve 10'u K=3 ile işler; eski referans skorlarını 1e-4 toleransında karşılaştırır. Ortam sürümleri, checkpoint/config hash'leri, kaynak hücre hash'leri ve çıktı dosyaları `DINOv3_clean_smoke_*.zip` içinde indirilir.
+5. `smoke_report.json` durumunu incele. Hata halinde ulaşılan aşama ve traceback aynı ZIP'te saklanır. Kurulum veya model hücresi daha önce hata verirse test hücresini ayrıca çalıştırarak eksik durum raporu alabilirsin; önceki hücrenin gerçek hata çıktısını da ayrıca koru.
+
+### Doğrulama durumu — 20 Ekim 2026
+
+| Kontrol | Durum |
+|---|---|
+| Config bağlantısı, varsayılan/özel TOML, desteklenmeyen değerlerin reddi | Yerelde geçti |
+| Final ve temiz-test notebook kod hücrelerinin derlenmesi | Yerelde geçti |
+| 1.399 görüntü pooled mIoU'nun kayıtlı matrislerden yeniden hesabı | Summary, final rapor ve CSV ile eşleşti |
+| Aynı 100 görüntüde kalite–maliyet kaynak kontrolü | Yedi yöntemin ham kayıtları özetle eşleşti |
+| Config bağlantılı sürümün yeni Colab GPU oturumunda index 9/10 testi | **Bekliyor; yeni GPU çıktısı henüz doğrulanmadı** |
+
+Önceki index 9/10 demo çıktıları yeni config bağlantılı sürümün clean-run kanıtı değildir. [Kayıtlı mIoU doğrulama raporu](Reproducibility/metrics_verification_TR.md) ve [makine-okunur rapor](Reproducibility/metrics_verification.json).
 
 ## Görsel örnekler
 

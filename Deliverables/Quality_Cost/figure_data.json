@@ -1,0 +1,59 @@
+{
+  "timing_archive": "Downloads/benchmark_all_k3_100_20261007T194714_806084Z (1).zip",
+  "timing_archive_sha256": "8a086ca7751df8b48a635df9682dfd905836bd8582ff2de2c38f0b53407a5e9f",
+  "measurements_member": "benchmark_all_k3_100_20261007T194714_806084Z/measurements.npz",
+  "measurements_sha256": "0b44468d5147faff9f45a5a3d4ba197695f90179dca7d79fcc57f236b0bba510",
+  "timing_100": {
+    "baseline": {
+      "pooled_miou": 0.6506098676282329,
+      "mean_ms": 79.18051534999904,
+      "passes": 1
+    },
+    "adaptive_k1": {
+      "pooled_miou": 0.6750243441847408,
+      "mean_ms": 110.83669050998651,
+      "passes": 2
+    },
+    "adaptive_k3": {
+      "pooled_miou": 0.6702191382422134,
+      "mean_ms": 147.4911200600127,
+      "passes": 4
+    },
+    "random_42_k3": {
+      "pooled_miou": 0.6771930919094666,
+      "mean_ms": 147.7467780800407,
+      "passes": 4
+    },
+    "random_43_k3": {
+      "pooled_miou": 0.6794072350156591,
+      "mean_ms": 149.22583939001015,
+      "passes": 4
+    },
+    "random_44_k3": {
+      "pooled_miou": 0.6684225841430486,
+      "mean_ms": 146.42418677000478,
+      "passes": 4
+    },
+    "sliding": {
+      "pooled_miou": 0.6732427199131381,
+      "mean_ms": 510.2677159900031,
+      "passes": 25
+    },
+    "random_k3_mean": {
+      "pooled_miou": 0.6750076370227248,
+      "mean_ms": 147.7989347466852,
+      "passes": 4
+    }
+  },
+  "quality_1399": {
+    "baseline": 0.7132528530872816,
+    "adaptive_k1": 0.7123846722129334,
+    "adaptive_k3": 0.7219864665208329,
+    "random_k3_mean": 0.7140048771531687,
+    "sliding": 0.7324650975120519
+  },
+  "quality_source": "Reproducibility/metrics_verification.json",
+  "quality_source_sha256": "162be0a06de506c356d5b6c0be77c379e5f47d03b94055023941619f0dd3bd27",
+  "scope": "Panel A same 100-image mIoU and latency; panel B quality only for 1399.",
+  "inference_performed": false
+}
