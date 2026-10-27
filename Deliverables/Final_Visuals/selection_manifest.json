@@ -1,0 +1,210 @@
+{
+  "selection_scope": "Six deliberately selected development examples, not an unbiased evaluation sample.",
+  "selection_rule": "Four improving examples across target classes and two diagnosed failures; not top-gain ranking.",
+  "score_archive": "Downloads/DINOv3_complete_20261008T122013_722899Z.zip",
+  "score_member": "20261001T181030_523202Z/topk_comparison_50_20261006T223417_739370Z/results.json",
+  "score_member_sha256": "591ec1e37b21cd074b454b6d1cf43bbd3accc32f35a697001d82fea9da1f411b",
+  "examples": [
+    {
+      "image_index": 9,
+      "image_id": "2007_000346",
+      "category": "success",
+      "reason_tr": "Şişe/kişi sınırlarında iyileşme; temiz test ham çıktıları mevcut.",
+      "reference_scores": {
+        "baseline": 0.83006642774669,
+        "final": 0.9512478779867622
+      },
+      "delta_points": 12.118145024007221,
+      "expected_k": 3,
+      "expected_passes": 4,
+      "figure": "Deliverables/Final_Visuals/success_index_9_8_panels.png",
+      "source_archive": "Downloads/DINOv3_clean_smoke_20261020T073625_596320Z.zip",
+      "source_archive_sha256": "ac041bbdfc9350d3f7e3b6a9ecd8d0a206c34702985768dd4fe821b5a98466ae",
+      "figure_sha256": "e3f6ceb3780bbc014df81a429d9067ee58a5efbe3640eca190f3a932de26f019",
+      "checks": {
+        "native_mask_scores_recomputed": true,
+        "outside_crop_preserved": true,
+        "crop_coordinates_match": true,
+        "baseline_wrong_pixels": 10264,
+        "final_wrong_pixels": 4536,
+        "corrected_pixels": 6173,
+        "new_wrong_pixels": 445
+      }
+    },
+    {
+      "image_index": 13,
+      "image_id": "2007_000529",
+      "category": "success",
+      "reason_tr": "Tekne hedefi: farklı nesne sınıfında belirgin iyileşme.",
+      "reference_scores": {
+        "baseline": 0.3064520457869805,
+        "final": 0.539280803125718
+      },
+      "delta_points": 23.28287573387375,
+      "expected_k": 3,
+      "expected_passes": 4,
+      "figure": "Deliverables/Final_Visuals/success_index_13_8_panels.png",
+      "source_archive": "Downloads/DINOv3_final_visuals_missing_20261020T074507_633421Z.zip",
+      "source_archive_sha256": "f72ab3ce929a157d4c373112265921e326f8753c8a9e64a23efa7d4e47683568",
+      "figure_sha256": "ac2645295f51667bd8c9a56f43de8c639bc914951d3dfc6b7637f70c705bc8e7",
+      "checks": {
+        "native_mask_scores_recomputed": true,
+        "outside_crop_preserved": true,
+        "crop_coordinates_match": true,
+        "baseline_wrong_pixels": 12019,
+        "final_wrong_pixels": 4473,
+        "corrected_pixels": 7561,
+        "new_wrong_pixels": 15
+      }
+    },
+    {
+      "image_index": 18,
+      "image_id": "2007_000661",
+      "category": "success",
+      "reason_tr": "Bitki hedefi: Top-K ile ilk seçimin dışındaki bölgelere erişim.",
+      "reference_scores": {
+        "baseline": 0.38750551649583204,
+        "final": 0.47031202650772264
+      },
+      "delta_points": 8.28065100118906,
+      "expected_k": 3,
+      "expected_passes": 4,
+      "figure": "Deliverables/Final_Visuals/success_index_18_8_panels.png",
+      "source_archive": "Downloads/DINOv3_final_visuals_missing_20261020T074507_633421Z.zip",
+      "source_archive_sha256": "f72ab3ce929a157d4c373112265921e326f8753c8a9e64a23efa7d4e47683568",
+      "figure_sha256": "bbf4cd7202cfe194e7720998f7b9a45a6d565026b4853ee05438f6c914460ed1",
+      "checks": {
+        "native_mask_scores_recomputed": true,
+        "outside_crop_preserved": true,
+        "crop_coordinates_match": true,
+        "baseline_wrong_pixels": 6805,
+        "final_wrong_pixels": 3121,
+        "corrected_pixels": 4264,
+        "new_wrong_pixels": 580
+      }
+    },
+    {
+      "image_index": 23,
+      "image_id": "2007_000783",
+      "category": "success",
+      "reason_tr": "Binici/kişi hedefi: farklı sahnede iyileşme.",
+      "reference_scores": {
+        "baseline": 0.7100143754346496,
+        "final": 0.8500433918989225
+      },
+      "delta_points": 14.00290164642729,
+      "expected_k": 3,
+      "expected_passes": 4,
+      "figure": "Deliverables/Final_Visuals/success_index_23_8_panels.png",
+      "source_archive": "Downloads/DINOv3_final_visuals_missing_20261020T074507_633421Z.zip",
+      "source_archive_sha256": "f72ab3ce929a157d4c373112265921e326f8753c8a9e64a23efa7d4e47683568",
+      "figure_sha256": "5b2cb9ba70d00612d0a2ce005d4541a7026d82e64a33bc730de2300f32c26c06",
+      "checks": {
+        "native_mask_scores_recomputed": true,
+        "outside_crop_preserved": true,
+        "crop_coordinates_match": true,
+        "baseline_wrong_pixels": 9568,
+        "final_wrong_pixels": 4818,
+        "corrected_pixels": 5657,
+        "new_wrong_pixels": 907
+      }
+    },
+    {
+      "image_index": 10,
+      "image_id": "2007_000452",
+      "category": "failure",
+      "reason_tr": "Sofa bölgesinde yerel sınıf parçalanması ve yeni yanlış pozitifler.",
+      "reference_scores": {
+        "baseline": 0.4658147988040741,
+        "final": 0.32078564141285404
+      },
+      "delta_points": -14.502915739122008,
+      "expected_k": 3,
+      "expected_passes": 4,
+      "figure": "Deliverables/Final_Visuals/failure_index_10_8_panels.png",
+      "source_archive": "Downloads/DINOv3_clean_smoke_20261020T073625_596320Z.zip",
+      "source_archive_sha256": "ac041bbdfc9350d3f7e3b6a9ecd8d0a206c34702985768dd4fe821b5a98466ae",
+      "figure_sha256": "0598b14465ee406c6303c651203665431c8869f2b7eb45d85e1a60b694d4873a",
+      "checks": {
+        "native_mask_scores_recomputed": true,
+        "outside_crop_preserved": true,
+        "crop_coordinates_match": true,
+        "baseline_wrong_pixels": 21253,
+        "final_wrong_pixels": 25704,
+        "corrected_pixels": 5236,
+        "new_wrong_pixels": 9687
+      }
+    },
+    {
+      "image_index": 14,
+      "image_id": "2007_000559",
+      "category": "failure",
+      "reason_tr": "Monitör içeriği ile nesne sınıflarının karıştığı yerel refinement.",
+      "reference_scores": {
+        "baseline": 0.4551665329827177,
+        "final": 0.3773320978912809
+      },
+      "delta_points": -7.783443509143678,
+      "expected_k": 3,
+      "expected_passes": 4,
+      "figure": "Deliverables/Final_Visuals/failure_index_14_8_panels.png",
+      "source_archive": "Downloads/DINOv3_final_visuals_missing_20261020T074507_633421Z.zip",
+      "source_archive_sha256": "f72ab3ce929a157d4c373112265921e326f8753c8a9e64a23efa7d4e47683568",
+      "figure_sha256": "3ea2b7de0cc1cba325e3998e2342fbbf350e2a5d824c496b98010f31a12728d1",
+      "checks": {
+        "native_mask_scores_recomputed": true,
+        "outside_crop_preserved": true,
+        "crop_coordinates_match": true,
+        "baseline_wrong_pixels": 23252,
+        "final_wrong_pixels": 31975,
+        "corrected_pixels": 3612,
+        "new_wrong_pixels": 12335
+      }
+    }
+  ],
+  "oracle_reference": {
+    "image_index": 9,
+    "target_class": 5,
+    "adaptive_k1_box": [
+      0,
+      187,
+      250,
+      375
+    ],
+    "oracle_gt_box": [
+      107,
+      62,
+      245,
+      375
+    ],
+    "source_member": "20261001T181030_523202Z/selector_gallery_20_20261006T221453_694935Z/gallery_metadata.json",
+    "source_member_sha256": "5f7314323d5e0da6b1361c897eee2e0785a22a71eb84767778092df29e1a519f",
+    "comparison_scope": "Selection boxes only; variable area, GT-assisted oracle; not a matched-budget accuracy comparison."
+  },
+  "rendered_indices": [
+    9,
+    10,
+    13,
+    18,
+    23,
+    14
+  ],
+  "pending_indices": [],
+  "status": "complete",
+  "archive_checks": [
+    {
+      "archive": "Downloads/DINOv3_clean_smoke_20261020T073625_596320Z.zip",
+      "sha256": "ac041bbdfc9350d3f7e3b6a9ecd8d0a206c34702985768dd4fe821b5a98466ae",
+      "crc": "PASS",
+      "report_status": "PASS",
+      "checkpoint_config_match": true
+    },
+    {
+      "archive": "Downloads/DINOv3_final_visuals_missing_20261020T074507_633421Z.zip",
+      "sha256": "f72ab3ce929a157d4c373112265921e326f8753c8a9e64a23efa7d4e47683568",
+      "crc": "PASS",
+      "report_status": "PASS",
+      "checkpoint_config_match": true
+    }
+  ]
+}

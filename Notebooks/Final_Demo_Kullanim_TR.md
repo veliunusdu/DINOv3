@@ -2,6 +2,8 @@
 
 Dosya: `DINOv3_Adaptive_Zoom_Final_Demo.ipynb`.
 
+5–10 dakikalık gösterim sırası, konuşma metni ve kayıtlı yedek planı: [Final demo akışı](../Deliverables/DINOv3_Final_Demo_Akisi_TR.md). Akışın hazırlanması, kesintisiz süreli provanın tamamlandığı anlamına gelmez.
+
 ## Temiz oturum kabul testi
 
 İki referans örneğini tek seferde sınamak için `DINOv3_Clean_Colab_Test.ipynb` dosyasını yeni GPU runtime'da aç. Sıra: 1, 1b, 2, 3, 4, 5, 6. Son hücre index 9 ve 10 için inference/export yapar; ortam sürümlerini, config/checkpoint hash'lerini ve referans skor karşılaştırmalarını ZIP'e kaydeder. `smoke_report.json` PASS olmadan yeni GPU testi tamamlandı sayılmaz. FAIL halinde aşama ve traceback kaydedilir; önceki kurulum hücresi hata verdiyse orijinal çıktıyı ayrıca sakla.

@@ -53,7 +53,7 @@
     "sliding": 0.7324650975120519
   },
   "quality_source": "Reproducibility/metrics_verification.json",
-  "quality_source_sha256": "162be0a06de506c356d5b6c0be77c379e5f47d03b94055023941619f0dd3bd27",
+  "quality_source_sha256": "a206107f8e2e364dbc8f3a8e4f52a311af2ab5805bc13b69dd71bf6c9de791bc",
   "scope": "Panel A same 100-image mIoU and latency; panel B quality only for 1399.",
   "inference_performed": false
 }

@@ -1,0 +1,31 @@
+{
+  "status": "PASS",
+  "scope": "Top-K, crop-size and threshold tables matched to saved JSON; section/link checks.",
+  "thesis_path": "Docs/DINOv3_Tez_Yontem_ve_Sonuclar_Taslagi_TR.md",
+  "thesis_sha256": "11803134320191415dead7c55a93530ba7f5765c36537b3a3d64663feb255f03",
+  "source_archive": "Downloads/DINOv3_complete_20261008T122013_722899Z.zip",
+  "source_members": [
+    {
+      "member": "20261001T181030_523202Z/topk_comparison_50_20261006T223417_739370Z/results.json",
+      "sha256": "591ec1e37b21cd074b454b6d1cf43bbd3accc32f35a697001d82fea9da1f411b"
+    },
+    {
+      "member": "20261001T181030_523202Z/crop_size_comparison_50_20261006T210506_222816Z.json",
+      "sha256": "d6048c84ece227f10904e0255f6cc695a3cd011b199b3f02a6c5376f7fcdf16c"
+    },
+    {
+      "member": "20261001T181030_523202Z/selector_threshold_ablation_dev50_v1/results.json",
+      "sha256": "48502a698cde9f4c1808ad460bd76bf5ac2f4a898c6929bcf93f9a8501bc64ee"
+    },
+    {
+      "member": "20261001T181030_523202Z/selector_threshold_ablation_dev50_v1/protocol.json",
+      "sha256": "42e92a4982f2da8da0c232d39e8c0026e6466714d4a2579f8916ebff7dd990f8"
+    }
+  ],
+  "reported_only_results": {
+    "baseline_1449_224": 0.7104,
+    "oracle_development_50": 0.618,
+    "entropy_top20_error_recall_percent": 59.88
+  },
+  "limits": "Early baseline, oracle and pixel entropy numbers are historical reported outputs, not newly recomputed here. No new inference or statistical intervals."
+}

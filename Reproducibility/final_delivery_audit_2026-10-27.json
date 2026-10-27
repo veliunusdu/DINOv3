@@ -1,0 +1,83 @@
+{
+  "date": "2026-10-27",
+  "status": "PASS",
+  "scope": "Saved results, final documents, config and demo consistency; no new inference.",
+  "checks": {
+    "csv_full_precision_rows": 8,
+    "local_links": 90,
+    "notebooks_compile": true,
+    "checkpoint_sha256": true,
+    "historical_code_snapshot_hashes": true,
+    "final_visual_hashes_and_zip_crc": true,
+    "presentation_key_values": true,
+    "thesis_audits_match_current_file": true
+  },
+  "files": [
+    {
+      "path": "README.md",
+      "sha256": "6e999cb15412b055da19695712439f640727a657331d07bf801944e2830c7225"
+    },
+    {
+      "path": "Docs/DINOv3_Tez_Yontem_ve_Sonuclar_Taslagi_TR.md",
+      "sha256": "11803134320191415dead7c55a93530ba7f5765c36537b3a3d64663feb255f03"
+    },
+    {
+      "path": "Docs/DINOv3_Final_Deney_Raporu_TR.md",
+      "sha256": "6c09c71b8554b8f67c74f72b32c2aedd89daf98a1b45d4183c3f8fc12f23acf2"
+    },
+    {
+      "path": "Deliverables/DINOv3_Final_Demo_Akisi_TR.md",
+      "sha256": "5b7b53255e0ba9ada69a0672b39c583bb6bbea6c4cb1625d487ca391b4d1169d"
+    },
+    {
+      "path": "Deliverables/DINOv3_Method_Comparison_Aciklama_TR.md",
+      "sha256": "83eef0d4694f328aaf379c24bea8a8f5d954098b2d3ffe7e7fdaaf782d15a9d4"
+    },
+    {
+      "path": "Deliverables/Final_Config_Decision_TR.md",
+      "sha256": "c2b840f7c3ba7304c96c3aaa285e82ce120d471a6b19f59b7f402a2b710d1ab9"
+    },
+    {
+      "path": "Notebooks/Final_Demo_Kullanim_TR.md",
+      "sha256": "0d565b35ec26c48ac9b5d7b06e06822e3a445cc38b0034d9db36951a905e2bd8"
+    },
+    {
+      "path": "Deliverables/Final_Visuals/README_TR.md",
+      "sha256": "554dd93be41d06a2acf84e434d99afe7ffa554894115aab89b191f322e92af9a"
+    },
+    {
+      "path": "Deliverables/DINOv3_Teslim_Kontrolu_TR.md",
+      "sha256": "038f02902d46cb118ec3d163d3d4ceb1eb66add1e79864d30f3b91aae4832160"
+    },
+    {
+      "path": "Notebooks/DINOv3_Adaptive_Zoom_Final_Demo.ipynb",
+      "sha256": "0b221554b51201ef04b5fea4b74fd0537d4925920a617963e804049c09432f69"
+    },
+    {
+      "path": "Notebooks/DINOv3_Clean_Colab_Test.ipynb",
+      "sha256": "d1fd03f922a60ecc74a691a4a477d030fb80608cf6969a0247240fc14e2973af"
+    },
+    {
+      "path": "Config/DINOv3_Final_Config.toml",
+      "sha256": "2588dfd2391f05335a3d9f37822d3653d64af4ece8706243e8913429d6a0403b"
+    },
+    {
+      "path": "Deliverables/DINOv3_Method_Comparison.csv",
+      "sha256": "e7c458369325e0ff6dd635155a0209f960467adb253bb797e75e48f122793618"
+    },
+    {
+      "path": "Deliverables/Quality_Cost/figure_data.json",
+      "sha256": "54e7e12ce7137d4d503c251474292f7b3831616934d15a12dedf73eb1996ae2e"
+    },
+    {
+      "path": "Deliverables/DINOv3_Savunma_Sunumu_TR.pptx",
+      "sha256": "5241615ca2f29759a3755a92b4b272ff66100a24e56b48402e44d1d80adf937f"
+    }
+  ],
+  "limits": [
+    "Timed spoken demo rehearsal awaits the user.",
+    "Thesis artifact is a methods/results chapter draft, not a completed university-formatted thesis.",
+    "Historical training commit and complete training ID list are unavailable.",
+    "Backup is local, not an off-site copy."
+  ]
+}

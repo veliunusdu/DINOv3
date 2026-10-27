@@ -1,0 +1,23 @@
+{
+  "status": "PASS",
+  "date": "2026-10-27",
+  "thesis_sha256": "11803134320191415dead7c55a93530ba7f5765c36537b3a3d64663feb255f03",
+  "checks": {
+    "quality_rows_1399": 8,
+    "same_cohort_runtime_rows_100": 7,
+    "relative_cost_rows": 5,
+    "raw_100_confusions_and_latencies_recomputed": true,
+    "latency_ids_match": true,
+    "cohort_separation_present": true,
+    "relative_cost_is_mean_latency_ratio": true,
+    "figure_and_source_hashes": true,
+    "local_links": true
+  },
+  "sources": {
+    "quality": "Reproducibility/metrics_verification.json",
+    "timing_archive": "Downloads/benchmark_all_k3_100_20261007T194714_806084Z (1).zip",
+    "timing_archive_sha256": "8a086ca7751df8b48a635df9682dfd905836bd8582ff2de2c38f0b53407a5e9f",
+    "figure_data_sha256": "54e7e12ce7137d4d503c251474292f7b3831616934d15a12dedf73eb1996ae2e"
+  },
+  "scope": "No inference, retraining, timing or bootstrap rerun. Raw measurement aggregates checked; existing bootstrap intervals retained."
+}

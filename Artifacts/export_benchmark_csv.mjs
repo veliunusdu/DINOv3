@@ -2,28 +2,26 @@ import fs from 'node:fs/promises';
 import assert from 'node:assert/strict';
 import { Workbook } from 'file:///C:/Users/veliu/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/node_modules/@oai/artifact-tool/dist/artifact_tool.mjs';
 
-// Read the final report, not an older benchmark session.
+// Use verified full-precision results; round only the exported display values.
 const root='C:/Codes/Projects/DINOv3';
-const report=await fs.readFile(`${root}/Docs/DINOv3_Final_Deney_Raporu_TR.md`,'utf8');
-const quality=report.split('## Ana doğruluk değerlendirmesi — 1.399 görüntü')[1].split('## Son süre benchmark')[0];
-const timing=report.split('## Son süre benchmark')[1].split('## ')[0];
-function rows(section){return section.split('\n').filter(l=>l.startsWith('|')).map(l=>l.split('|').slice(1,-1).map(v=>v.trim()));}
-const q=new Map(rows(quality).filter(r=>r.length===3).map(r=>[r[0],r]));
-const t=new Map(rows(timing).filter(r=>r.length===7).map(r=>[r[0],r]));
-const num=s=>Number(s.replace(',','.'));
+const quality=JSON.parse(await fs.readFile(`${root}/Reproducibility/metrics_verification.json`,'utf8'));
+assert.equal(quality.status,'PASS');
+const timing=JSON.parse(await fs.readFile(`${root}/Deliverables/Quality_Cost/figure_data.json`,'utf8')).timing_100;
+const keys={'Baseline':'baseline','Sliding':'sliding','Adaptive K=1':'adaptive_k1','Adaptive K=3':'adaptive_k3',
+  'Random K=3 three-seed mean':'random_k3_mean',...Object.fromEntries([42,43,44].map(s=>[`Random ${s} K=3`,`random_${s}_k3`]))};
 const specs=[['Baseline',0,'n.a.'],['Sliding',25,112],['Random 42 K=3',3,112],['Random 43 K=3',3,112],['Random 44 K=3',3,112],['Random K=3 three-seed mean',3,112],['Adaptive K=1',1,112],['Adaptive K=3',3,112]];
 const seeds=['Random 42 K=3','Random 43 K=3','Random 44 K=3'];
 const mean=(a)=>a.reduce((x,y)=>x+y,0)/a.length;
-const baseIoU=num(q.get('Baseline')[1]),baseMs=num(t.get('Baseline')[2]);
+const baseIoU=quality.pooled_miou.baseline,baseMs=timing.baseline.mean_ms;
 const header=['Method','K','Crop Size','mIoU','Delta mIoU','Inference Time','Extra Inference','Relative Cost'];
 const matrix=[header];
 for(const [method,k,crop] of specs){
   const summary=method==='Random K=3 three-seed mean';
-  const miou=summary?mean(seeds.map(s=>num(q.get(s)[1]))):num(q.get(method)[1]);
-  const ms=summary?mean(seeds.map(s=>num(t.get(s)[2]))):num(t.get(method)[2]);
-  const passes=summary?4:Number(t.get(method)[6]);
+  const miou=quality.pooled_miou[keys[method]];
+  const ms=summary?mean(seeds.map(s=>timing[keys[s]].mean_ms)):timing[keys[method]].mean_ms;
+  const passes=timing[keys[method]].passes;
   assert(Number.isFinite(miou)&&Number.isFinite(ms)&&Number.isInteger(passes));
-  if(!summary) assert.equal(passes,Number(q.get(method)[2]));
+  assert.equal(passes,method==='Baseline'?1:method==='Sliding'?25:k+1);
   matrix.push([method==='Sliding'?'Sliding-window':method,k,crop,miou.toFixed(4),((miou-baseIoU)*100).toFixed(2),ms.toFixed(1),passes-1,(ms/baseMs).toFixed(4)]);
 }
 assert.equal(matrix.length,9);assert.equal(matrix[1][6],0);

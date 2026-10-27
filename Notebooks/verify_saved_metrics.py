@@ -98,7 +98,7 @@ def verify():
     for row in rows:
         name = csv_mapping[row["Method"]]
         assert abs(scores[name]-float(row["mIoU"])) <= DISPLAY_TOL
-        assert abs((scores[name]-scores["baseline"])*100-float(row["Delta mIoU"])) <= 0.0100000001
+        assert abs((scores[name]-scores["baseline"])*100-float(row["Delta mIoU"])) <= 0.0050000001
     report = (ROOT / "Docs/DINOv3_Final_Deney_Raporu_TR.md").read_text(encoding="utf-8")
     section = report.split("## Ana doğruluk değerlendirmesi — 1.399 görüntü")[1].split("## Son süre benchmark")[0]
     labels = {"Baseline":"baseline","Adaptive K=1":"adaptive_k1","Adaptive K=3":"adaptive_k3",
@@ -129,7 +129,7 @@ def verify():
              "", "| Yöntem | Yeniden hesaplanan mIoU | Baseline farkı (puan) |", "|---|---:|---:|"]
     for name in ["baseline","adaptive_k1","adaptive_k3","random_42_k3","random_43_k3","random_44_k3","random_k3_mean","sliding"]:
         lines.append(f"| {name} | {scores[name]:.10f} | {(scores[name]-scores['baseline'])*100:+.4f} |")
-    lines += ["", "Arşiv summary dosyalarıyla tam hassasiyet karşılaştırması 1e-12 toleransında geçti. Final rapor ve CSV'nin dört ondalıklı mIoU değerleri yuvarlama toleransında eşleşti. CSV delta değerleri yuvarlatılmış rapordan üretildiği için tam hassasiyetli delta ile küçük yuvarlama farkı olabilir.",
+    lines += ["", "Arşiv summary dosyalarıyla tam hassasiyet karşılaştırması 1e-12 toleransında geçti. Final rapor ve CSV'nin dört ondalıklı mIoU değerleri yuvarlama toleransında eşleşti. CSV delta değerleri tam hassasiyetli sonuçlardan hesaplanıp iki ondalık yüzde puanla gösterilir.",
               "", "İki state dosyasının görüntü indeksleri, tamamlanma işaretleri, method listeleri ve yöntem başına geçerli piksel sayıları kontrol edildi. Random mean üç seed'in ayrı mIoU değerlerinin ortalamasıdır; ensemble değildir.",
               "", "**0,7104 ile karşılaştırma yapılmadı:** bu değer ayrı 1.449 görüntü/224×224 değerlendirmesine aittir. Bootstrap güven aralıkları ve süre ölçümleri bu görevde yeniden hesaplanmadı.",
               "", "Kaynak üyeleri ve hash'ler `metrics_verification.json` içinde. Tekrar çalıştırmak için proje kökünde `python Notebooks/verify_saved_metrics.py` kullan; NumPy ve yerel kaynak arşiv gerekir."]

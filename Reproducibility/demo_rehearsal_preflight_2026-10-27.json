@@ -1,0 +1,46 @@
+{
+  "date": "2026-10-27",
+  "preflight_status": "PASS",
+  "timed_rehearsal_status": "awaiting_user_run",
+  "actual_duration_seconds": null,
+  "live_colab_state": "not_checked_in_this_turn",
+  "files": [
+    {
+      "path": "Deliverables/DINOv3_Final_Demo_Akisi_TR.md",
+      "sha256": "5b7b53255e0ba9ada69a0672b39c583bb6bbea6c4cb1625d487ca391b4d1169d",
+      "size_bytes": 8899
+    },
+    {
+      "path": "Deliverables/Final_Visuals/success_index_9_8_panels.png",
+      "sha256": "e3f6ceb3780bbc014df81a429d9067ee58a5efbe3640eca190f3a932de26f019",
+      "size_bytes": 2156625,
+      "dimensions": [
+        4000,
+        2000
+      ]
+    },
+    {
+      "path": "Deliverables/Final_Visuals/failure_index_10_8_panels.png",
+      "sha256": "0598b14465ee406c6303c651203665431c8869f2b7eb45d85e1a60b694d4873a",
+      "size_bytes": 1724618,
+      "dimensions": [
+        4000,
+        2000
+      ]
+    },
+    {
+      "path": "Deliverables/Quality_Cost/quality_cost.png",
+      "sha256": "63e38ca0c3e037036a4a9cfef42d9878404d3942ec389380fc1df257afa25ae1",
+      "size_bytes": 264364,
+      "dimensions": [
+        3300,
+        1496
+      ]
+    },
+    {
+      "path": "Deliverables/DINOv3_Method_Comparison.csv",
+      "sha256": "e7c458369325e0ff6dd635155a0209f960467adb253bb797e75e48f122793618",
+      "size_bytes": 479
+    }
+  ]
+}

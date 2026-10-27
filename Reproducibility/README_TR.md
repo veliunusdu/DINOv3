@@ -16,7 +16,7 @@ Config bağlantılı temiz Colab testi index 9 ve 10 için PASS olarak doğrulan
 
 ## Önemli sınırlar
 
-Güncel Git HEAD, geçmiş deneylerin çalıştırıldığı commit değildir. Config bağlantılı güncel kod henüz commit edilmemiştir; bu nedenle exact dosya kopyaları ve hash’leri saklandı. Eski notebook’un hash’i de kayıtlıdır ancak bütün deneylerin eksiksiz orijinal kod sürümü olduğu iddia edilmez.
+Güncel Git HEAD, geçmiş deneylerin çalıştırıldığı commit değildir. 13 Ekim manifest’i oluşturulduğunda config bağlantılı kod henüz commit edilmemişti; o andaki dosya kopyaları ve hash’leri tarihsel snapshot olarak saklandı. Bu ifade bugünkü Git durumunu anlatmaz. Güncel teslim için [27 Ekim kontrol raporunu](../Deliverables/DINOv3_Teslim_Kontrolu_TR.md) kullan. Eski notebook’un hash’i de kayıtlıdır ancak bütün deneylerin eksiksiz orijinal kod sürümü olduğu iddia edilmez.
 
 Training 1.464 görüntünün tam ID listesi incelenen arşivlerde bulunmadı. Bu alan `null` olarak işaretlendi; tahminle doldurulmadı. Tarihsel ortamdan Tesla T4, Torch ve Transformers sürümleri timing protokolünden doğrulandı; Python/CUDA/torchvision ve tam pip freeze bu kaynakta mevcut değil. Yerel manifest üreticisinin sürümleri Colab ortamı olarak gösterilmez.
 

@@ -1,0 +1,37 @@
+{
+  "status": "PASS",
+  "date": "2026-10-27",
+  "scope": "Document/config values, saved split relations, pure coordinate functions, training metadata and clean-run environment; no new GPU inference.",
+  "thesis_sha256": "11803134320191415dead7c55a93530ba7f5765c36537b3a3d64663feb255f03",
+  "sources": [
+    {
+      "path": "Config/DINOv3_Final_Config.toml",
+      "sha256": "2588dfd2391f05335a3d9f37822d3653d64af4ece8706243e8913429d6a0403b"
+    },
+    {
+      "path": "Notebooks/adaptive_zoom_demo.py",
+      "sha256": "a5df815c65a94307089bdd0408dbdaa42a723db1a3b964bc0752c56d3d5895c6"
+    },
+    {
+      "path": "Reproducibility/historical_model_config.json",
+      "sha256": "016175b188429b291958d9d69bc3e969bc6b741236dca74ea9392185e5ad7235"
+    },
+    {
+      "path": "Reproducibility/clean_colab_verification_2026-10-20.json",
+      "sha256": "17ca0a81c8a548b40c17265ea6fbe75b9287134f87e7fb77a6925ebcb4e437ce"
+    },
+    {
+      "path": "Reproducibility/experiment_manifest.json",
+      "sha256": "02e0b37f27c4b28d6675af07320b50e0e876a3ed071169a76340b429286ba61e"
+    }
+  ],
+  "checks": {
+    "final_config": true,
+    "split_counts_and_relations": true,
+    "coordinate_examples": true,
+    "environment": true,
+    "recorded_training_metadata": true,
+    "limitations_present": true,
+    "local_links": true
+  }
+}

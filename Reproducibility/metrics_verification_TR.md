@@ -15,7 +15,7 @@ Kapsam: aynı sıradaki 1.399 görüntü, 21 sınıf ve background dahil. Native
 | random_k3_mean | 0.7140048772 | +0.0752 |
 | sliding | 0.7324650975 | +1.9212 |
 
-Arşiv summary dosyalarıyla tam hassasiyet karşılaştırması 1e-12 toleransında geçti. Final rapor ve CSV'nin dört ondalıklı mIoU değerleri yuvarlama toleransında eşleşti. CSV delta değerleri yuvarlatılmış rapordan üretildiği için tam hassasiyetli delta ile küçük yuvarlama farkı olabilir.
+Arşiv summary dosyalarıyla tam hassasiyet karşılaştırması 1e-12 toleransında geçti. Final rapor ve CSV'nin dört ondalıklı mIoU değerleri yuvarlama toleransında eşleşti. CSV delta değerleri tam hassasiyetli sonuçlardan hesaplanıp iki ondalık yüzde puanla gösterilir.
 
 İki state dosyasının görüntü indeksleri, tamamlanma işaretleri, method listeleri ve yöntem başına geçerli piksel sayıları kontrol edildi. Random mean üç seed'in ayrı mIoU değerlerinin ortalamasıdır; ensemble değildir.
 

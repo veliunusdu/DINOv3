@@ -1,6 +1,6 @@
 {
   "status": "PASS",
-  "created_at": "2026-10-20T10:16:55.127116+03:00",
+  "created_at": "2026-10-27T11:19:08.319771+03:00",
   "images": 1399,
   "classes": 21,
   "metric": "sum image confusion matrices, class IoU mean, background included",
@@ -145,7 +145,7 @@
     }
   ],
   "archive_sha256": "5d8a3dd4b9fa1e39120e185ecb572382bb904d6045e81831c1c6a3e7d2555685",
-  "script_sha256": "beea8534b865120f375980c5e3749df560b41733af8fc53ace5dc5b9d152df83",
+  "script_sha256": "e07ce0bd3c4303ab1eb37ca436e478d4cc3cbbdc408992ea22990b00271eb47e",
   "checks": {
     "same_ordered_image_indices": true,
     "same_image_ids": true,

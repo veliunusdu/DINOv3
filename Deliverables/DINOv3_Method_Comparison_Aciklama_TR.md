@@ -1,6 +1,6 @@
 # Yöntem karşılaştırması CSV açıklaması
 
-Bu tablo, tamamlanmış deneylerin `Docs/DINOv3_Final_Deney_Raporu_TR.md` dosyasındaki raporlanmış değerlerinden üretildi. Yeni inference yapılmadı. Ham kayıtların tam hassasiyetli değerleri yerine raporda gösterilen yuvarlatılmış değerler kullanıldı; hesaplanan fark ve oranlar da bu hassasiyete tabidir.
+Bu tablo, kayıtlı confusion matrix'lerden doğrulanmış tam hassasiyetli kalite değerleri (`Reproducibility/metrics_verification.json`) ve ham 100 görüntülük süre kayıtlarından doğrulanmış ortalamalar (`Deliverables/Quality_Cost/figure_data.json`) kullanılarak üretildi. Farklar ve oranlar yuvarlanmamış değerlerden hesaplanır; yalnızca CSV'ye yazılırken yuvarlanır. Yeni inference yapılmadı.
 
 - **mIoU:** 1.399 VOC2012 validation görüntüsünde, orijinal çözünürlükte pooled mIoU. Background dahil, ignore=255. 50 development görüntüsü hariçtir.
 - **Delta mIoU:** baseline'a göre fark, **yüzde puan**. `(mIoU − baseline mIoU) × 100`.

@@ -84,6 +84,8 @@ Ayrıntılı hücre sırası ve çıktı tanımları: [demo kullanım kılavuzu]
 
 ## Görsel örnekler
 
+**Final görsel paketi:** [dört başarı ve iki failure örneği](Deliverables/Final_Visuals/README_TR.md), her biri 4000×2000 piksel sekiz panelli düzende; ayrıca [Oracle–Adaptive seçim referansı](Deliverables/Final_Visuals/oracle_vs_adaptive_index_9.png). Panel sırası: input, GT, baseline, baseline error map, entropy, Top-K kutuları, second-pass ve final fusion. Örnekler development grubundan amaçlı seçildi; bağımsız değerlendirme değildir. Kaynaklar ve maskelerden skor kontrolü [görsel manifest’inde](Deliverables/Final_Visuals/selection_manifest.json) kayıtlıdır.
+
 ### İyileşen örnek
 
 VOC index 9: image mIoU **0,8301 → 0,9512**, K=3 ve toplam 4 geçiş.
@@ -97,6 +99,8 @@ VOC index 10: image mIoU **0,4658 → 0,3208**. Belirsiz bölgenin seçilmesi, y
 ![Index 10: second-pass tahminlerinin final segmentasyonu kötüleştirdiği örnek](Artifacts/Thesis_Figures/voc_index10_failure_k3.png)
 
 ## Depo içeriği
+
+[27 Ekim final teslim kontrolü](Deliverables/DINOv3_Teslim_Kontrolu_TR.md), güncel dosyaları, sayısal karşılaştırmayı ve yedekleme yöntemini listeler. [Demo anlatım sırası](Deliverables/DINOv3_Final_Demo_Akisi_TR.md) hazırdır; [süreli prova kaydı](Deliverables/DINOv3_Demo_Prova_Kaydi_TR.md) henüz gerçek bir prova süresi içermez. Tez dosyası yöntem/sonuç bölüm taslağıdır.
 
 | Konum | İçerik |
 |---|---|

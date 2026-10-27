@@ -1,0 +1,69 @@
+{
+  "scope": "Six eight-panel scientific figures, one oracle reference, captions and source provenance.",
+  "files": [
+    {
+      "name": "failure_index_10_8_panels.png",
+      "sha256": "0598b14465ee406c6303c651203665431c8869f2b7eb45d85e1a60b694d4873a",
+      "size_bytes": 1724618
+    },
+    {
+      "name": "failure_index_14_8_panels.png",
+      "sha256": "3ea2b7de0cc1cba325e3998e2342fbbf350e2a5d824c496b98010f31a12728d1",
+      "size_bytes": 1984155
+    },
+    {
+      "name": "oracle_vs_adaptive_index_9.png",
+      "sha256": "c075251d33cb8cb87226991c10244a544dd0319218e0803bd7729bd517e006c9",
+      "size_bytes": 1758636
+    },
+    {
+      "name": "README_TR.md",
+      "sha256": "554dd93be41d06a2acf84e434d99afe7ffa554894115aab89b191f322e92af9a",
+      "size_bytes": 4237
+    },
+    {
+      "name": "selection_manifest.json",
+      "sha256": "db559e52fb1bc6658c73d1122be6a37f18df485b1abcb65d74789a936dadeb35",
+      "size_bytes": 8256
+    },
+    {
+      "name": "success_index_13_8_panels.png",
+      "sha256": "ac2645295f51667bd8c9a56f43de8c639bc914951d3dfc6b7637f70c705bc8e7",
+      "size_bytes": 1382812
+    },
+    {
+      "name": "success_index_18_8_panels.png",
+      "sha256": "bbf4cd7202cfe194e7720998f7b9a45a6d565026b4853ee05438f6c914460ed1",
+      "size_bytes": 1708226
+    },
+    {
+      "name": "success_index_23_8_panels.png",
+      "sha256": "5b2cb9ba70d00612d0a2ce005d4541a7026d82e64a33bc730de2300f32c26c06",
+      "size_bytes": 3217115
+    },
+    {
+      "name": "success_index_9_8_panels.png",
+      "sha256": "e3f6ceb3780bbc014df81a429d9067ee58a5efbe3640eca190f3a932de26f019",
+      "size_bytes": 2156625
+    }
+  ],
+  "plotting_versions": {
+    "numpy": "2.5.4"
+  },
+  "source_archives_required_for_regeneration": [
+    {
+      "archive": "Downloads/DINOv3_clean_smoke_20261020T073625_596320Z.zip",
+      "sha256": "ac041bbdfc9350d3f7e3b6a9ecd8d0a206c34702985768dd4fe821b5a98466ae",
+      "crc": "PASS",
+      "report_status": "PASS",
+      "checkpoint_config_match": true
+    },
+    {
+      "archive": "Downloads/DINOv3_final_visuals_missing_20261020T074507_633421Z.zip",
+      "sha256": "f72ab3ce929a157d4c373112265921e326f8753c8a9e64a23efa7d4e47683568",
+      "crc": "PASS",
+      "report_status": "PASS",
+      "checkpoint_config_match": true
+    }
+  ]
+}
