@@ -1,126 +1,95 @@
-# DINOv3 Adaptive Zoom
+DINOv3 Adaptive Zoom: Uncertainty-Guided Semantic Segmentation
+A graduation project exploring whether uncertainty-guided local reprocessing can improve semantic segmentation while using fewer model passes than dense sliding-window inference.
 
-DINOv3 tabanlı semantik segmentasyonda, global tahminin belirsiz bölgelerini otomatik seçip yakınlaştırarak yeniden işleyen bitirme projesi. Deneyler Google Colab üzerinde Tesla T4 ile VOC2012 verisinde yürütüldü.
+This project builds on a frozen DINOv3 visual backbone and a trained semantic-segmentation head. It identifies uncertain regions in a global prediction, reprocesses selected crops at a higher effective resolution, and fuses local predictions with the original result.
+Research scope: This is an experimental project, not a new foundation model. The reported numbers are project-specific measurements on Pascal VOC 2012 validation images, not benchmark figures from the DINOv3 paper.
 
-## Yöntem
+Research question
+Can we allocate additional inference computation to the most uncertain image regions instead of applying exhaustive sliding-window processing across the entire image?
+Method
+1. Global pass: Resize the input to 224 × 224 and obtain 21-class segmentation logits.
+2. Uncertainty estimation: Compute pixelwise entropy from softmax probabilities, normalized by log(21).
+3. Region selection: Rank candidate windows by mean entropy and select up to K crops using an intersection-over-union (IoU) suppression threshold.
+4. Local reprocessing: Extract corresponding patches from the original RGB image, resize to the model input size, and run the same model again.
+5. Logit fusion: Keep global logits outside selected regions; use locally refined logits inside them, averaging overlapping local predictions.
+The selector does not use ground-truth masks at inference time.
 
-1. Görüntüyü 224×224 boyutunda işleyerek global logits üret.
-2. Softmax olasılıklarından `log(21)` ile normalize edilmiş entropy haritası hesapla.
-3. Aday crop'ları ortalama entropy skoruna göre sırala ve IoU filtresiyle Top-K seç.
-4. Seçilen bölgeleri **orijinal RGB görüntüden** al, model giriş boyutuna getir ve aynı modelle yeniden işle.
-5. Yerel logits'i orijinal koordinatlara taşı. Crop dışında global logits'i koru, crop içinde yerel logits kullan, örtüşmelerde yerel logits'lerin ortalamasını al.
+Default final configuration: K=3, crop size 112 on the 224 × 224 selection map, stride 28, box IoU threshold 0.30, padding 0. Because of overlap suppression, fewer than K regions may be selected.
+Model and experimental setup
+Item	Setup
+Visual backbone	Frozen facebook/dinov3-vits16-pretrain-lvd1689m
+Segmentation head	21-class 1 × 1 convolution, trained for 5 epochs on the VOC2012 training split
+Dataset	Pascal VOC 2012
+Main evaluation	1,399 validation images, excluding a separate 50-image development group
+Primary quality metric	Pooled mean Intersection over Union (mIoU), including background, with ignore label 255
+Timing	100 images from the main evaluation group, measured in the same session
+Environment	Google Colab with NVIDIA Tesla T4
 
-Selector inference sırasında ground truth kullanmaz. Model, dondurulmuş `facebook/dinov3-vits16-pretrain-lvd1689m` backbone ve VOC2012 train grubunda 5 epoch eğitilmiş 21 sınıflı 1×1 convolution head kullanır. Demo sırasında yeniden eğitim yapılmaz.
 
-Varsayılan seçim: **K=3, crop=112, stride=28, kutu IoU eşiği=0,30, padding=0**. Crop boyutu 224×224 seçim haritasındaki pencere boyutudur. Gerçek seçim sayısı IoU filtresinden sonra K'dan az olabilir.
+Evaluation caveat: The main group is previously examined validation data, not a held-out untouched test set. The 50-image development group was used to choose the configuration and excluded from the main evaluation.
+Results
+Method	Pooled mIoU ↑	Average time (ms/image) ↓	Backbone passes
+Global baseline	0.7133	79.2	1
+Adaptive, K=1	0.7124	110.8	2
+Adaptive, K=3 (selected configuration)	0.7220	147.5	4
+Random, K=3 (mean across seeds 42/43/44)	0.7140	147.8	4 per seed
+Sliding-window	0.7325	510.3	25
 
-## Sonuçlar
 
-| Yöntem | Pooled mIoU | Ortalama süre (ms/görüntü) | Backbone geçişi |
-|---|---:|---:|---:|
-| Baseline | 0,7133 | 79,2 | 1 |
-| Adaptive K=1 | 0,7124 | 110,8 | 2 |
-| Adaptive K=3 | 0,7220 | 147,5 | 4 |
-| Random K=3, üç seed ortalaması | 0,7140 | 147,8 | Her seed için 4 |
-| Sliding-window | 0,7325 | 510,3 | 25 |
+Key observations
+- Adaptive K=3 exceeded the global baseline by 0.87 percentage points of pooled mIoU; its 95% paired-bootstrap interval was [−0.14, +1.96] points, so superiority over the baseline is not established.
+- Adaptive K=3 exceeded the random K=3 strategy by 0.80 percentage points; 95% paired-bootstrap interval [+0.29, +1.33] points.
+- Sliding-window had 1.05 percentage points higher mIoU than Adaptive K=3; 95% paired-bootstrap interval for Adaptive minus Sliding was [−1.51, −0.58] points.
+- On the 100-image timing set, sequential, non-optimized sliding-window inference was 3.46× slower than Adaptive K=3 (95% interval [3.33×, 3.62×]). This is a measured implementation-level comparison, not a FLOPs or hardware-independent efficiency claim.
+Important: K=3 was the selected final configuration, not the best option under every possible objective. In the matched 100-image quality–cost comparison, K=1 was both faster and more accurate than K=3. The baseline was fastest; sliding-window achieved the highest pooled mIoU in the main evaluation.
 
-**mIoU 1.399 görüntüde**, orijinal çözünürlükte, background dahil ve ignore=255 ile hesaplandı. **Süre aynı oturumdaki 100 görüntüde** ölçüldü. Bu 100 görüntü ana değerlendirme grubunun içindedir. Random ortalaması 42/43/44 seed sonuçlarının ortalamasıdır, prediction ensemble değildir.
+The three-seed random result is an average of separate runs, not an ensemble. Equal crop counts do not imply equal image-area coverage.
+Qualitative analysis
+Selected examples illustrate both improvements and failure modes:
+- VOC index 9: Per-image mIoU improved from 0.8301 to 0.9512 with K=3.
+- VOC index 10: Per-image mIoU decreased from 0.4658 to 0.3208 with K=3.
+High uncertainty can indicate difficult content, but selecting an uncertain region does not guarantee that the local prediction is more accurate. The showcased examples were purposefully chosen from the development data and should not be interpreted as an independent evaluation.
 
-- K=3 − random K=3: **+0,80 yüzde puan**, %95 paired bootstrap aralığı **[+0,29; +1,33]**.
-- K=3 − baseline: **+0,87 puan**, aralık **[−0,14; +1,96]**. Baseline'a üstünlük kesinleşmedi.
-- K=3 − sliding: **−1,05 puan**, aralık **[−1,51; −0,58]**. Sliding daha yüksek doğruluk sağladı.
-- Süre benchmark'ında sliding/K=3 oranı **3,46×**, aralık **[3,33; 3,62]**. Sliding sıralı, optimize edilmemiş uygulamadır.
+See Artifacts/Thesis_Figures/ for comparison figures and Docs/ for the detailed experimental report and limitations.
+Repository structure
+DINOv3/
+├── Artifacts/         # Example visualizations and reviewed outputs
+├── Config/            # Configuration-related materials
+├── Deliverables/      # Comparison tables, CSVs, and presentation materials
+├── Docs/              # Experimental report, thesis draft, and supporting documentation
+├── Notebooks/         # Colab demo and supporting notebook material
+├── Reproducibility/   # Experiment records and validation evidence
+└── README.md
+Running the demo in Google Colab
+1. Open the final demo notebook in Notebooks/ in Google Colab and select a T4 GPU runtime.
+2. Run the dependency-installation cells, followed by the final configuration cell.
+3. Upload the separately archived experiment/checkpoint ZIP when prompted.
+4. Authenticate with Hugging Face if required to access the DINOv3 backbone.
+5. Run model initialization and the VOC example setup.
+6. Choose the default VOC example or set SOURCE="upload" to run the demo on your own JPG/PNG image.
+7. Execute inference and download the resulting output ZIP.
+For custom configuration, the notebook accepts a TOML file at /content/DINOv3_Final_Config.toml. The final demo validates the selected configuration and checkpoint information.
 
-Development grubundaki 50 görüntü konfigürasyon seçimi için kullanıldı ve ana değerlendirmeden çıkarıldı. Ana grup daha önce incelenmiş validation verisidir; dokunulmamış test seti değildir. Aynı crop sayısı, adaptive ve random yöntemlerinin aynı görüntü alanını kapsadığı anlamına gelmez. Yerel işleme bazı görüntüleri kötüleştirebilir.
+Availability limitation: The trained segmentation-head checkpoint and large experiment archives are not published in this Git repository. Therefore, cloning this repository alone is not sufficient to reproduce the trained model's outputs. The necessary checkpoint archive must be provided separately. On images without ground-truth labels, the demo produces predictions but cannot report accuracy. The model predicts only the 21 Pascal VOC classes.
 
-Tam protokol, ablation, sınıf sonuçları ve sınırlılıklar: [final deney raporu](Docs/DINOv3_Final_Deney_Raporu_TR.md).
+See the usage guide in Notebooks/ and the reproducibility notes in Reproducibility/ for the exact notebook-cell order and verification scope.
+Reproducibility and verification
+The project documentation includes configuration/checkpoint hashes, archived evaluation summaries, split identifiers, seed information, and clean-session smoke-test evidence. As documented in the repository on 20 October 2026, a two-image clean Colab test reproduced stored outputs for VOC indices 9 and 10, and recorded environment/configuration information.
 
-### Kalite–maliyet ve final seçim
-
-![Aynı 100 görüntüde kalite–maliyet ve ayrı panelde 1.399 görüntülük kalite](Deliverables/Quality_Cost/quality_cost.png)
-
-Grafiğin A panelinde iki eksen de aynı 100 görüntüye aittir; B paneli yalnızca 1.399 görüntülük kaliteyi gösterir. Ham 100-image confusion matrix ve süre kayıtları arşiv özetleriyle yeniden karşılaştırıldı. Noktalar anlamlılık testi değildir. [Vektör grafik](Deliverables/Quality_Cost/quality_cost.svg), [kaynak veriler ve hash'ler](Deliverables/Quality_Cost/figure_data.json).
-
-**K=3 final yöntem konfigürasyonudur; her koşulda en iyi trade-off değildir.** Aynı 100 görüntüde K=1, K=3'ten hem daha hızlı hem daha yüksek mIoU verdi. Baseline en hızlı; sliding ana değerlendirmede en doğru yöntemdir. [Final konfigürasyon karar tablosu](Deliverables/Final_Config_Decision_TR.md) seçim gerekçelerini ve farklı örneklem sınırlarını açıklar.
-
-Checkpoint ve kaynak arşiv hash'leri, split ID listeleri, seed'ler ve güncel kod snapshot'ı: [deney manifest’i](Reproducibility/experiment_manifest.json) ve [doğrulama kapsamı](Reproducibility/README_TR.md). Geçmiş deneylerin Git commit’i, training ID listesi ve tam ortam dökümü mevcut kaynaklarda eksiktir; güncel Git commit eski deneylerin orijinal sürümü olarak sunulmaz.
-
-## Colab'da demo çalıştırma
-
-1. [Final demo notebook'unu](Notebooks/DINOv3_Adaptive_Zoom_Final_Demo.ipynb) indir ve Google Colab'da **Dosya → Notebook yükle** ile aç.
-2. Çalışma zamanı türünü **T4 GPU** olarak seç.
-3. Hücreleri sırayla çalıştır: bağımlılıklar, deney ZIP'ini geri yükleme, Hugging Face giriş işlemi ve model yükleme.
-   Bağımlılıklardan sonra **1b Final config** hücresini çalıştır. [Açıklamalı TOML](Config/DINOv3_Final_Config.toml) notebook'a gömülüdür; kendi config'in için dosyayı `/content/DINOv3_Final_Config.toml` yoluna yükle. K, crop size, stride, minimum entropy ve overlap eşiği bu dosyadan okunur. Kullanılan config çıktı ZIP'lerine eklenir; checkpoint hash'i ve model revision doğrulanır.
-4. VOC örneği için veri hücresini çalıştır. Kendi JPG/PNG görüntün için demo hücresinde `SOURCE="upload"` seç.
-5. Demo hücresini çalıştır ve üretilen sonuç ZIP'ini indir. Oturum sonunda tam yedek hücresini de çalıştır.
-
-**Gerekli checkpoint bu Git deposunda bulunmuyor.** Checkpoint içeren deney paketi, örneğin `DINOv3_complete_20261008T122013_722899Z.zip`, ayrıca temin edilip notebook'a yüklenmelidir. Paket için bu depoda bir indirme bağlantısı yayımlanmadı. Yalnızca bu depoyu klonlamak eğitilmiş head'i sağlamaz. Hugging Face hesabının kullanılan backbone'a erişimi olması gerekir.
-
-Varsayılan demo VOC index 9'u K=3 ile işler. Kendi görüntünde ground truth yoksa doğruluk metrikleri hesaplanmaz. Model yalnızca VOC'nin 21 sınıfını tahmin eder. Bu notebook demo içindir; eğitim ve büyük benchmark deneylerini yeniden çalıştırmaz.
-
-Ayrıntılı hücre sırası ve çıktı tanımları: [demo kullanım kılavuzu](Notebooks/Final_Demo_Kullanim_TR.md).
-
-### Temiz oturumda iki örnek testi
-
-1. [Temiz Colab test notebook'unu](Notebooks/DINOv3_Clean_Colab_Test.ipynb) indirip Colab'a yükle; yeni GPU runtime seç.
-2. Hücreleri **1 bağımlılıklar → 1b config → 2 checkpoint → 3 model → 4 VOC → 5 yardımcılar → 6 test** sırasıyla çalıştır. Setup yeniden başlatma gerektirirse sonrasında yine sırayla devam et.
-3. Kendi checkpoint paketini 2. adımda yükle; Hugging Face girişini 3. adımda tamamla. Gömülü final config varsayılan olarak kullanılır.
-4. Son test hücresi index 9 ve 10'u K=3 ile işler; eski referans skorlarını 1e-4 toleransında karşılaştırır. Ortam sürümleri, checkpoint/config hash'leri, kaynak hücre hash'leri ve çıktı dosyaları `DINOv3_clean_smoke_*.zip` içinde indirilir.
-5. `smoke_report.json` durumunu incele. Hata halinde ulaşılan aşama ve traceback aynı ZIP'te saklanır. Kurulum veya model hücresi daha önce hata verirse test hücresini ayrıca çalıştırarak eksik durum raporu alabilirsin; önceki hücrenin gerçek hata çıktısını da ayrıca koru.
-
-### Doğrulama durumu — 20 Ekim 2026
-
-| Kontrol | Durum |
-|---|---|
-| Config bağlantısı, varsayılan/özel TOML, desteklenmeyen değerlerin reddi | Yerelde geçti |
-| Final ve temiz-test notebook kod hücrelerinin derlenmesi | Yerelde geçti |
-| 1.399 görüntü pooled mIoU'nun kayıtlı matrislerden yeniden hesabı | Summary, final rapor ve CSV ile eşleşti |
-| Aynı 100 görüntüde kalite–maliyet kaynak kontrolü | Yedi yöntemin ham kayıtları özetle eşleşti |
-| Config bağlantılı sürümün yeni Colab GPU oturumunda index 9/10 testi | **20 Ekim: PASS; iki örnek, ortam/config ve çıktı hash'leri doğrulandı** |
-
-20 Ekim temiz testinde index 9: **0,8301 → 0,9512**, index 10: **0,4658 → 0,3208**; her ikisi de kayıtlı referansla eşleşti. ZIP CRC ve 32 çıktı hash'i, config anlamı, checkpoint kimliği ve pipeline hücre hash'leri kontrol edildi. Skorlar export edilmiş maskelerden ayrıca yeniden hesaplandı. Ortam: Python 3.13.15, Torch 2.11.0+cu130, Transformers 5.17.0, Tesla T4. Bu iki görüntülük test, eğitim veya büyük benchmark tekrarını ifade etmez. [Temiz Colab test raporu](Reproducibility/clean_colab_verification_2026-10-20_TR.md), [makine-okunur kanıt](Reproducibility/clean_colab_verification_2026-10-20.json).
-
-[Kayıtlı mIoU doğrulama raporu](Reproducibility/metrics_verification_TR.md) ve [makine-okunur rapor](Reproducibility/metrics_verification.json).
-
-## Görsel örnekler
-
-**Final görsel paketi:** [dört başarı ve iki failure örneği](Deliverables/Final_Visuals/README_TR.md), her biri 4000×2000 piksel sekiz panelli düzende; ayrıca [Oracle–Adaptive seçim referansı](Deliverables/Final_Visuals/oracle_vs_adaptive_index_9.png). Panel sırası: input, GT, baseline, baseline error map, entropy, Top-K kutuları, second-pass ve final fusion. Örnekler development grubundan amaçlı seçildi; bağımsız değerlendirme değildir. Kaynaklar ve maskelerden skor kontrolü [görsel manifest’inde](Deliverables/Final_Visuals/selection_manifest.json) kayıtlıdır.
-
-### İyileşen örnek
-
-VOC index 9: image mIoU **0,8301 → 0,9512**, K=3 ve toplam 4 geçiş.
-
-![Index 9: baseline, entropy, seçilen crop'lar ve final segmentasyon](Artifacts/Thesis_Figures/voc_index9_success_k3.png)
-
-### Kötüleşen örnek
-
-VOC index 10: image mIoU **0,4658 → 0,3208**. Belirsiz bölgenin seçilmesi, yerel tahminin doğru olmasını garanti etmez.
-
-![Index 10: second-pass tahminlerinin final segmentasyonu kötüleştirdiği örnek](Artifacts/Thesis_Figures/voc_index10_failure_k3.png)
-
-## Depo içeriği
-
-[27 Ekim final teslim kontrolü](Deliverables/DINOv3_Teslim_Kontrolu_TR.md), güncel dosyaları, sayısal karşılaştırmayı ve yedekleme yöntemini listeler. [Demo anlatım sırası](Deliverables/DINOv3_Final_Demo_Akisi_TR.md) hazırdır; [süreli prova kaydı](Deliverables/DINOv3_Demo_Prova_Kaydi_TR.md) henüz gerçek bir prova süresi içermez. Tez dosyası yöntem/sonuç bölüm taslağıdır.
-
-| Konum | İçerik |
-|---|---|
-| `Notebooks/` | Final Colab demo, Python yardımcıları ve kullanım kılavuzu |
-| `Docs/` | Final deney raporu, tez yöntem/sonuç taslağı ve roadmap belgeleri |
-| `Deliverables/` | Yöntem karşılaştırması CSV, açıklaması ve Türkçe savunma sunumu |
-| `Artifacts/Thesis_Figures/` | Başarı, hata ve özel görüntü demo görselleri |
-| `Artifacts/*_review/` | Selector ve refinement görsel incelemeleri |
-| `Artifacts/presentation_build/` | Sunum üretim kaynakları ve doğrulama çıktıları |
-
-CSV: [yöntem karşılaştırması](Deliverables/DINOv3_Method_Comparison.csv) ve [kolon/birim açıklaması](Deliverables/DINOv3_Method_Comparison_Aciklama_TR.md). `Delta mIoU` yüzde puandır, `Inference Time` ms/görüntüdür, `Relative Cost` baseline'a göre süre oranıdır; FLOPs değildir.
-
-Sunum: [10 slaytlık Türkçe savunma sunumu](Deliverables/DINOv3_Savunma_Sunumu_TR.pptx). Tez taslağı: [yöntem ve sonuçlar](Docs/DINOv3_Tez_Yontem_ve_Sonuclar_Taslagi_TR.md).
-
-`Downloads/` Git takibinden çıkarılmıştır. Checkpoint ve büyük deney ZIP'leri ayrı yedekte tutulmalıdır. Eski ara raporlardaki değerler yerine güncel final raporu esas alınmalıdır.
-
-## DINOv3 ve veri kaynakları
-
-- [DINOv3 teknik raporu](https://arxiv.org/abs/2508.10104)
-- [DINOv3 resmî deposu](https://github.com/facebookresearch/dinov3)
-- [VOC2012 resmî sayfası](https://www.robots.ox.ac.uk/~vgg/projects/pascal/VOC/voc2012/)
-
-Bu depodaki deney sonuçları proje kapsamında ölçülmüştür; DINOv3 yayınının benchmark sonuçları değildir. Model ve veri kullanımı için ilgili kaynakların lisans ve erişim koşulları geçerlidir.
+This does not mean the original model training or the entire large-scale benchmark was independently rerun in that smoke test. Some historical training identifiers, the original experiment's Git revision, and a complete historical environment manifest are unavailable. The current repository revision should not be represented as the exact source revision used for older experiments.
+Limitations and future work
+- Mixed outcomes: Local refinement can improve or worsen individual masks.
+- No demonstrated baseline superiority: The paired-bootstrap interval for the K=3 versus baseline difference includes zero.
+- Accuracy–latency trade-off: Sliding-window is more accurate in the main evaluation but slower in the measured implementation.
+- Dataset and selection bias: Configuration selection used validation data; the main evaluation is not a previously untouched test set.
+- Artifact availability: Model checkpoints are not publicly included in the repository.
+Promising follow-ups include better confidence-aware fusion, improved region-selection criteria, comparisons on additional datasets, and an independently held-out evaluation.
+References and attribution
+- DINOv3 official repository
+- DINOv3 technical report
+- Pascal VOC dataset
+DINOv3 and Pascal VOC were developed by their respective authors. This repository presents a separate project-specific adaptive inference pipeline and its measured experiments. Please check the original model and dataset licenses and access requirements before reuse.
+Author
+Veli Ünuşdu
+Computer Engineering — Manisa Celal Bayar University
+GitHub profile
