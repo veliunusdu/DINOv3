@@ -1,126 +1,126 @@
 # DINOv3 Adaptive Zoom
 
-DINOv3 tabanlı semantik segmentasyonda, global tahminin belirsiz bölgelerini otomatik seçip yakınlaştırarak yeniden işleyen bitirme projesi. Deneyler Google Colab üzerinde Tesla T4 ile VOC2012 verisinde yürütüldü.
+A graduation project that extends DINOv3-based semantic segmentation by automatically identifying uncertain regions in the global prediction and re-processing them at higher resolution (adaptive zoom). Experiments were conducted on Google Colab with a Tesla T4 GPU using the VOC2012 dataset.
 
-## Yöntem
+## Method
 
-1. Görüntüyü 224×224 boyutunda işleyerek global logits üret.
-2. Softmax olasılıklarından `log(21)` ile normalize edilmiş entropy haritası hesapla.
-3. Aday crop'ları ortalama entropy skoruna göre sırala ve IoU filtresiyle Top-K seç.
-4. Seçilen bölgeleri **orijinal RGB görüntüden** al, model giriş boyutuna getir ve aynı modelle yeniden işle.
-5. Yerel logits'i orijinal koordinatlara taşı. Crop dışında global logits'i koru, crop içinde yerel logits kullan, örtüşmelerde yerel logits'lerin ortalamasını al.
+1. Process the image at 224×224 to obtain global logits.
+2. Compute a normalized entropy map from softmax probabilities using `log(21)` as the normalization factor.
+3. Rank candidate crops by their mean entropy score and select the Top-K after applying an IoU filter.
+4. Crop the selected regions from the **original RGB image**, resize them to the model's input size, and re-process them with the same model.
+5. Map local logits back to the original coordinate space. Outside crops, retain global logits; inside crops, replace with local logits; in overlapping regions, average the local logits.
 
-Selector inference sırasında ground truth kullanmaz. Model, dondurulmuş `facebook/dinov3-vits16-pretrain-lvd1689m` backbone ve VOC2012 train grubunda 5 epoch eğitilmiş 21 sınıflı 1×1 convolution head kullanır. Demo sırasında yeniden eğitim yapılmaz.
+The selector does not use ground truth during inference. The model uses a frozen `facebook/dinov3-vits16-pretrain-lvd1689m` backbone and a 21-class 1×1 convolution head trained for 5 epochs on the VOC2012 training set. No retraining occurs during the demo.
 
-Varsayılan seçim: **K=3, crop=112, stride=28, kutu IoU eşiği=0,30, padding=0**. Crop boyutu 224×224 seçim haritasındaki pencere boyutudur. Gerçek seçim sayısı IoU filtresinden sonra K'dan az olabilir.
+Default configuration: **K=3, crop=112, stride=28, box IoU threshold=0.30, padding=0**. The crop size is the window size on the 224×224 selection map. The actual number of selected crops may be fewer than K after IoU filtering.
 
-## Sonuçlar
+## Results
 
-| Yöntem | Pooled mIoU | Ortalama süre (ms/görüntü) | Backbone geçişi |
+| Method | Pooled mIoU | Mean time (ms/image) | Backbone passes |
 |---|---:|---:|---:|
-| Baseline | 0,7133 | 79,2 | 1 |
-| Adaptive K=1 | 0,7124 | 110,8 | 2 |
-| Adaptive K=3 | 0,7220 | 147,5 | 4 |
-| Random K=3, üç seed ortalaması | 0,7140 | 147,8 | Her seed için 4 |
-| Sliding-window | 0,7325 | 510,3 | 25 |
+| Baseline | 0.7133 | 79.2 | 1 |
+| Adaptive K=1 | 0.7124 | 110.8 | 2 |
+| Adaptive K=3 | 0.7220 | 147.5 | 4 |
+| Random K=3, mean of three seeds | 0.7140 | 147.8 | 4 per seed |
+| Sliding-window | 0.7325 | 510.3 | 25 |
 
-**mIoU 1.399 görüntüde**, orijinal çözünürlükte, background dahil ve ignore=255 ile hesaplandı. **Süre aynı oturumdaki 100 görüntüde** ölçüldü. Bu 100 görüntü ana değerlendirme grubunun içindedir. Random ortalaması 42/43/44 seed sonuçlarının ortalamasıdır, prediction ensemble değildir.
+**mIoU is computed over 1,399 images** at original resolution, including background, with ignore=255. **Timing is measured on 100 images** from the same session. Those 100 images are a subset of the main evaluation set. The random mean is averaged across seeds 42/43/44 — not an ensemble of predictions.
 
-- K=3 − random K=3: **+0,80 yüzde puan**, %95 paired bootstrap aralığı **[+0,29; +1,33]**.
-- K=3 − baseline: **+0,87 puan**, aralık **[−0,14; +1,96]**. Baseline'a üstünlük kesinleşmedi.
-- K=3 − sliding: **−1,05 puan**, aralık **[−1,51; −0,58]**. Sliding daha yüksek doğruluk sağladı.
-- Süre benchmark'ında sliding/K=3 oranı **3,46×**, aralık **[3,33; 3,62]**. Sliding sıralı, optimize edilmemiş uygulamadır.
+- K=3 − random K=3: **+0.80 percentage points**, 95% paired bootstrap interval **[+0.29; +1.33]**.
+- K=3 − baseline: **+0.87 pp**, interval **[−0.14; +1.96]**. Superiority over baseline is not confirmed.
+- K=3 − sliding: **−1.05 pp**, interval **[−1.51; −0.58]**. Sliding-window achieves higher accuracy.
+- Timing benchmark sliding/K=3 ratio: **3.46×**, interval **[3.33; 3.62]**. The sliding-window implementation is sequential and unoptimized.
 
-Development grubundaki 50 görüntü konfigürasyon seçimi için kullanıldı ve ana değerlendirmeden çıkarıldı. Ana grup daha önce incelenmiş validation verisidir; dokunulmamış test seti değildir. Aynı crop sayısı, adaptive ve random yöntemlerinin aynı görüntü alanını kapsadığı anlamına gelmez. Yerel işleme bazı görüntüleri kötüleştirebilir.
+50 development-set images were used for configuration selection and excluded from the main evaluation. The main evaluation set is previously inspected validation data — it is **not** a held-out test set. Equal crop counts do not mean that adaptive and random methods cover the same image regions. Local re-processing can degrade some images.
 
-Tam protokol, ablation, sınıf sonuçları ve sınırlılıklar: [final deney raporu](Docs/DINOv3_Final_Deney_Raporu_TR.md).
+Full protocol, ablations, per-class results, and limitations: [final experiment report](Docs/DINOv3_Final_Deney_Raporu_TR.md).
 
-### Kalite–maliyet ve final seçim
+### Quality–cost trade-off and final selection
 
-![Aynı 100 görüntüde kalite–maliyet ve ayrı panelde 1.399 görüntülük kalite](Deliverables/Quality_Cost/quality_cost.png)
+![Quality–cost on the same 100 images (panel A) and 1,399-image quality (panel B)](Deliverables/Quality_Cost/quality_cost.png)
 
-Grafiğin A panelinde iki eksen de aynı 100 görüntüye aittir; B paneli yalnızca 1.399 görüntülük kaliteyi gösterir. Ham 100-image confusion matrix ve süre kayıtları arşiv özetleriyle yeniden karşılaştırıldı. Noktalar anlamlılık testi değildir. [Vektör grafik](Deliverables/Quality_Cost/quality_cost.svg), [kaynak veriler ve hash'ler](Deliverables/Quality_Cost/figure_data.json).
+Panel A uses both axes from the same 100 images; panel B shows only the 1,399-image quality. Raw 100-image confusion matrices and timing records were cross-checked against archive summaries. Data points do not constitute a significance test. [Vector graphic](Deliverables/Quality_Cost/quality_cost.svg), [source data and hashes](Deliverables/Quality_Cost/figure_data.json).
 
-**K=3 final yöntem konfigürasyonudur; her koşulda en iyi trade-off değildir.** Aynı 100 görüntüde K=1, K=3'ten hem daha hızlı hem daha yüksek mIoU verdi. Baseline en hızlı; sliding ana değerlendirmede en doğru yöntemdir. [Final konfigürasyon karar tablosu](Deliverables/Final_Config_Decision_TR.md) seçim gerekçelerini ve farklı örneklem sınırlarını açıklar.
+**K=3 is the final method configuration; it is not the best trade-off in every scenario.** On the same 100 images, K=1 achieved both higher mIoU and faster inference than K=3. Baseline is the fastest; sliding-window achieves the highest accuracy in the main evaluation. The [final configuration decision table](Deliverables/Final_Config_Decision_TR.md) documents the rationale and different sample-size boundaries.
 
-Checkpoint ve kaynak arşiv hash'leri, split ID listeleri, seed'ler ve güncel kod snapshot'ı: [deney manifest’i](Reproducibility/experiment_manifest.json) ve [doğrulama kapsamı](Reproducibility/README_TR.md). Geçmiş deneylerin Git commit’i, training ID listesi ve tam ortam dökümü mevcut kaynaklarda eksiktir; güncel Git commit eski deneylerin orijinal sürümü olarak sunulmaz.
+Checkpoint and source archive hashes, split ID lists, seeds, and the current code snapshot: [experiment manifest](Reproducibility/experiment_manifest.json) and [validation scope](Reproducibility/README_TR.md). The Git commit of historical experiments, training ID lists, and full environment dumps are not available in current sources; the current Git commit is not presented as the original version of past experiments.
 
-## Colab'da demo çalıştırma
+## Running the Demo on Colab
 
-1. [Final demo notebook'unu](Notebooks/DINOv3_Adaptive_Zoom_Final_Demo.ipynb) indir ve Google Colab'da **Dosya → Notebook yükle** ile aç.
-2. Çalışma zamanı türünü **T4 GPU** olarak seç.
-3. Hücreleri sırayla çalıştır: bağımlılıklar, deney ZIP'ini geri yükleme, Hugging Face giriş işlemi ve model yükleme.
-   Bağımlılıklardan sonra **1b Final config** hücresini çalıştır. [Açıklamalı TOML](Config/DINOv3_Final_Config.toml) notebook'a gömülüdür; kendi config'in için dosyayı `/content/DINOv3_Final_Config.toml` yoluna yükle. K, crop size, stride, minimum entropy ve overlap eşiği bu dosyadan okunur. Kullanılan config çıktı ZIP'lerine eklenir; checkpoint hash'i ve model revision doğrulanır.
-4. VOC örneği için veri hücresini çalıştır. Kendi JPG/PNG görüntün için demo hücresinde `SOURCE="upload"` seç.
-5. Demo hücresini çalıştır ve üretilen sonuç ZIP'ini indir. Oturum sonunda tam yedek hücresini de çalıştır.
+1. Download the [final demo notebook](Notebooks/DINOv3_Adaptive_Zoom_Final_Demo.ipynb) and open it in Google Colab via **File → Upload notebook**.
+2. Set the runtime type to **T4 GPU**.
+3. Run cells in order: dependencies, restore experiment ZIP, Hugging Face login, and model loading.  
+   After dependencies, run the **1b Final config** cell. The [annotated TOML](Config/DINOv3_Final_Config.toml) is embedded in the notebook; for a custom config, upload the file to `/content/DINOv3_Final_Config.toml`. K, crop size, stride, minimum entropy, and overlap threshold are read from this file. The config used is included in output ZIPs; checkpoint hash and model revision are verified.
+4. Run the data cell for a VOC example. For your own JPG/PNG image, set `SOURCE="upload"` in the demo cell.
+5. Run the demo cell and download the resulting output ZIP. Run the full-backup cell at the end of the session as well.
 
-**Gerekli checkpoint bu Git deposunda bulunmuyor.** Checkpoint içeren deney paketi, örneğin `DINOv3_complete_20261008T122013_722899Z.zip`, ayrıca temin edilip notebook'a yüklenmelidir. Paket için bu depoda bir indirme bağlantısı yayımlanmadı. Yalnızca bu depoyu klonlamak eğitilmiş head'i sağlamaz. Hugging Face hesabının kullanılan backbone'a erişimi olması gerekir.
+> **The required checkpoint is not included in this repository.** The experiment package containing the checkpoint — e.g., `DINOv3_complete_20261008T122013_722899Z.zip` — must be obtained separately and uploaded to the notebook. No download link is published in this repository. Cloning this repository alone does **not** provide the trained head. Your Hugging Face account must have access to the backbone used.
 
-Varsayılan demo VOC index 9'u K=3 ile işler. Kendi görüntünde ground truth yoksa doğruluk metrikleri hesaplanmaz. Model yalnızca VOC'nin 21 sınıfını tahmin eder. Bu notebook demo içindir; eğitim ve büyük benchmark deneylerini yeniden çalıştırmaz.
+The default demo processes VOC index 9 with K=3. If your image has no ground truth, accuracy metrics will not be computed. The model predicts only VOC's 21 classes. This notebook is for demonstration only; it does not re-run training or large-scale benchmark experiments.
 
-Ayrıntılı hücre sırası ve çıktı tanımları: [demo kullanım kılavuzu](Notebooks/Final_Demo_Kullanim_TR.md).
+Detailed cell order and output definitions: [demo usage guide](Notebooks/Final_Demo_Kullanim_TR.md).
 
-### Temiz oturumda iki örnek testi
+### Two-sample clean-session test
 
-1. [Temiz Colab test notebook'unu](Notebooks/DINOv3_Clean_Colab_Test.ipynb) indirip Colab'a yükle; yeni GPU runtime seç.
-2. Hücreleri **1 bağımlılıklar → 1b config → 2 checkpoint → 3 model → 4 VOC → 5 yardımcılar → 6 test** sırasıyla çalıştır. Setup yeniden başlatma gerektirirse sonrasında yine sırayla devam et.
-3. Kendi checkpoint paketini 2. adımda yükle; Hugging Face girişini 3. adımda tamamla. Gömülü final config varsayılan olarak kullanılır.
-4. Son test hücresi index 9 ve 10'u K=3 ile işler; eski referans skorlarını 1e-4 toleransında karşılaştırır. Ortam sürümleri, checkpoint/config hash'leri, kaynak hücre hash'leri ve çıktı dosyaları `DINOv3_clean_smoke_*.zip` içinde indirilir.
-5. `smoke_report.json` durumunu incele. Hata halinde ulaşılan aşama ve traceback aynı ZIP'te saklanır. Kurulum veya model hücresi daha önce hata verirse test hücresini ayrıca çalıştırarak eksik durum raporu alabilirsin; önceki hücrenin gerçek hata çıktısını da ayrıca koru.
+1. Download the [clean Colab test notebook](Notebooks/DINOv3_Clean_Colab_Test.ipynb) and upload it to Colab; select a new GPU runtime.
+2. Run cells in order: **1 dependencies → 1b config → 2 checkpoint → 3 model → 4 VOC → 5 helpers → 6 test**. If setup requires a restart, continue in the same order afterward.
+3. Upload your checkpoint package in step 2; complete the Hugging Face login in step 3. The embedded final config is used by default.
+4. The final test cell processes indices 9 and 10 with K=3 and compares against stored reference scores within a 1e-4 tolerance. Environment versions, checkpoint/config hashes, source cell hashes, and output files are downloaded in `DINOv3_clean_smoke_*.zip`.
+5. Inspect the `smoke_report.json` status. On failure, the reached stage and traceback are stored in the same ZIP. If a setup or model cell previously failed, running the test cell separately still yields a partial status report; preserve the actual error output from the failing cell separately.
 
-### Doğrulama durumu — 20 Ekim 2026
+### Verification status — 20 October 2026
 
-| Kontrol | Durum |
+| Check | Status |
 |---|---|
-| Config bağlantısı, varsayılan/özel TOML, desteklenmeyen değerlerin reddi | Yerelde geçti |
-| Final ve temiz-test notebook kod hücrelerinin derlenmesi | Yerelde geçti |
-| 1.399 görüntü pooled mIoU'nun kayıtlı matrislerden yeniden hesabı | Summary, final rapor ve CSV ile eşleşti |
-| Aynı 100 görüntüde kalite–maliyet kaynak kontrolü | Yedi yöntemin ham kayıtları özetle eşleşti |
-| Config bağlantılı sürümün yeni Colab GPU oturumunda index 9/10 testi | **20 Ekim: PASS; iki örnek, ortam/config ve çıktı hash'leri doğrulandı** |
+| Config linking, default/custom TOML, rejection of unsupported values | Passed locally |
+| Compilation of final and clean-test notebook code cells | Passed locally |
+| Re-computation of 1,399-image pooled mIoU from saved matrices | Matched summary, final report, and CSV |
+| Quality–cost source verification on the same 100 images | Raw records for seven methods matched summary |
+| Index 9/10 test in a new Colab GPU session with the config-linked version | **20 Oct: PASS; two samples, environment/config and output hashes verified** |
 
-20 Ekim temiz testinde index 9: **0,8301 → 0,9512**, index 10: **0,4658 → 0,3208**; her ikisi de kayıtlı referansla eşleşti. ZIP CRC ve 32 çıktı hash'i, config anlamı, checkpoint kimliği ve pipeline hücre hash'leri kontrol edildi. Skorlar export edilmiş maskelerden ayrıca yeniden hesaplandı. Ortam: Python 3.13.15, Torch 2.11.0+cu130, Transformers 5.17.0, Tesla T4. Bu iki görüntülük test, eğitim veya büyük benchmark tekrarını ifade etmez. [Temiz Colab test raporu](Reproducibility/clean_colab_verification_2026-10-20_TR.md), [makine-okunur kanıt](Reproducibility/clean_colab_verification_2026-10-20.json).
+In the 20 October clean test — index 9: **0.8301 → 0.9512**, index 10: **0.4658 → 0.3208**; both matched stored references. ZIP CRC, 32 output hashes, config semantics, checkpoint identity, and pipeline cell hashes were checked. Scores were independently recomputed from exported masks. Environment: Python 3.13.15, Torch 2.11.0+cu130, Transformers 5.17.0, Tesla T4. This two-image test does not imply reproducibility of training or large-scale benchmarks. [Clean Colab test report](Reproducibility/clean_colab_verification_2026-10-20_TR.md), [machine-readable evidence](Reproducibility/clean_colab_verification_2026-10-20.json).
 
-[Kayıtlı mIoU doğrulama raporu](Reproducibility/metrics_verification_TR.md) ve [makine-okunur rapor](Reproducibility/metrics_verification.json).
+[Saved mIoU verification report](Reproducibility/metrics_verification_TR.md) and [machine-readable report](Reproducibility/metrics_verification.json).
 
-## Görsel örnekler
+## Visual Examples
 
-**Final görsel paketi:** [dört başarı ve iki failure örneği](Deliverables/Final_Visuals/README_TR.md), her biri 4000×2000 piksel sekiz panelli düzende; ayrıca [Oracle–Adaptive seçim referansı](Deliverables/Final_Visuals/oracle_vs_adaptive_index_9.png). Panel sırası: input, GT, baseline, baseline error map, entropy, Top-K kutuları, second-pass ve final fusion. Örnekler development grubundan amaçlı seçildi; bağımsız değerlendirme değildir. Kaynaklar ve maskelerden skor kontrolü [görsel manifest’inde](Deliverables/Final_Visuals/selection_manifest.json) kayıtlıdır.
+**Final visual package:** [four success and two failure examples](Deliverables/Final_Visuals/README_TR.md), each rendered as an 8-panel 4000×2000 px layout; plus an [Oracle–Adaptive selection reference](Deliverables/Final_Visuals/oracle_vs_adaptive_index_9.png). Panel order: input, GT, baseline, baseline error map, entropy, Top-K boxes, second-pass, and final fusion. Examples were purposively selected from the development set and do not constitute an independent evaluation. Source and mask score verification is recorded in the [visual manifest](Deliverables/Final_Visuals/selection_manifest.json).
 
-### İyileşen örnek
+### Improving example
 
-VOC index 9: image mIoU **0,8301 → 0,9512**, K=3 ve toplam 4 geçiş.
+VOC index 9: image mIoU **0.8301 → 0.9512**, K=3, 4 passes total.
 
-![Index 9: baseline, entropy, seçilen crop'lar ve final segmentasyon](Artifacts/Thesis_Figures/voc_index9_success_k3.png)
+![Index 9: baseline, entropy, selected crops, and final segmentation](Artifacts/Thesis_Figures/voc_index9_success_k3.png)
 
-### Kötüleşen örnek
+### Degrading example
 
-VOC index 10: image mIoU **0,4658 → 0,3208**. Belirsiz bölgenin seçilmesi, yerel tahminin doğru olmasını garanti etmez.
+VOC index 10: image mIoU **0.4658 → 0.3208**. Selecting an uncertain region does not guarantee that the local prediction will be correct.
 
-![Index 10: second-pass tahminlerinin final segmentasyonu kötüleştirdiği örnek](Artifacts/Thesis_Figures/voc_index10_failure_k3.png)
+![Index 10: example where second-pass predictions degrade the final segmentation](Artifacts/Thesis_Figures/voc_index10_failure_k3.png)
 
-## Depo içeriği
+## Repository Contents
 
-[27 Ekim final teslim kontrolü](Deliverables/DINOv3_Teslim_Kontrolu_TR.md), güncel dosyaları, sayısal karşılaştırmayı ve yedekleme yöntemini listeler. [Demo anlatım sırası](Deliverables/DINOv3_Final_Demo_Akisi_TR.md) hazırdır; [süreli prova kaydı](Deliverables/DINOv3_Demo_Prova_Kaydi_TR.md) henüz gerçek bir prova süresi içermez. Tez dosyası yöntem/sonuç bölüm taslağıdır.
+The [27 October final delivery checklist](Deliverables/DINOv3_Teslim_Kontrolu_TR.md) lists current files, numerical cross-checks, and the backup method. A [demo narration script](Deliverables/DINOv3_Final_Demo_Akisi_TR.md) is available; the [timed rehearsal log](Deliverables/DINOv3_Demo_Prova_Kaydi_TR.md) does not yet contain an actual rehearsal duration. The thesis document is a method/results section draft.
 
-| Konum | İçerik |
+| Location | Contents |
 |---|---|
-| `Notebooks/` | Final Colab demo, Python yardımcıları ve kullanım kılavuzu |
-| `Docs/` | Final deney raporu, tez yöntem/sonuç taslağı ve roadmap belgeleri |
-| `Deliverables/` | Yöntem karşılaştırması CSV, açıklaması ve Türkçe savunma sunumu |
-| `Artifacts/Thesis_Figures/` | Başarı, hata ve özel görüntü demo görselleri |
-| `Artifacts/*_review/` | Selector ve refinement görsel incelemeleri |
-| `Artifacts/presentation_build/` | Sunum üretim kaynakları ve doğrulama çıktıları |
+| `Notebooks/` | Final Colab demo, Python helpers, and usage guide |
+| `Docs/` | Final experiment report, thesis method/results draft, and roadmap documents |
+| `Deliverables/` | Method comparison CSV with description, and Turkish defense presentation |
+| `Artifacts/Thesis_Figures/` | Success, failure, and custom-image demo visuals |
+| `Artifacts/*_review/` | Selector and refinement visual reviews |
+| `Artifacts/presentation_build/` | Presentation production sources and verification outputs |
 
-CSV: [yöntem karşılaştırması](Deliverables/DINOv3_Method_Comparison.csv) ve [kolon/birim açıklaması](Deliverables/DINOv3_Method_Comparison_Aciklama_TR.md). `Delta mIoU` yüzde puandır, `Inference Time` ms/görüntüdür, `Relative Cost` baseline'a göre süre oranıdır; FLOPs değildir.
+CSV: [method comparison](Deliverables/DINOv3_Method_Comparison.csv) and [column/unit description](Deliverables/DINOv3_Method_Comparison_Aciklama_TR.md). `Delta mIoU` is in percentage points, `Inference Time` in ms/image, `Relative Cost` is the time ratio relative to baseline — **not** FLOPs.
 
-Sunum: [10 slaytlık Türkçe savunma sunumu](Deliverables/DINOv3_Savunma_Sunumu_TR.pptx). Tez taslağı: [yöntem ve sonuçlar](Docs/DINOv3_Tez_Yontem_ve_Sonuclar_Taslagi_TR.md).
+Presentation: [10-slide Turkish defense presentation](Deliverables/DINOv3_Savunma_Sunumu_TR.pptx). Thesis draft: [method and results](Docs/DINOv3_Tez_Yontem_ve_Sonuclar_Taslagi_TR.md).
 
-`Downloads/` Git takibinden çıkarılmıştır. Checkpoint ve büyük deney ZIP'leri ayrı yedekte tutulmalıdır. Eski ara raporlardaki değerler yerine güncel final raporu esas alınmalıdır.
+`Downloads/` is excluded from Git tracking. Checkpoints and large experiment ZIPs must be kept in a separate backup. For numerical results, always refer to the current final report rather than intermediate reports.
 
-## DINOv3 ve veri kaynakları
+## DINOv3 and Data Sources
 
-- [DINOv3 teknik raporu](https://arxiv.org/abs/2508.10104)
-- [DINOv3 resmî deposu](https://github.com/facebookresearch/dinov3)
-- [VOC2012 resmî sayfası](https://www.robots.ox.ac.uk/~vgg/projects/pascal/VOC/voc2012/)
+- [DINOv3 technical report](https://arxiv.org/abs/2508.10104)
+- [DINOv3 official repository](https://github.com/facebookresearch/dinov3)
+- [VOC2012 official page](https://www.robots.ox.ac.uk/~vgg/projects/pascal/VOC/voc2012/)
 
-Bu depodaki deney sonuçları proje kapsamında ölçülmüştür; DINOv3 yayınının benchmark sonuçları değildir. Model ve veri kullanımı için ilgili kaynakların lisans ve erişim koşulları geçerlidir.
+Experimental results in this repository were measured within the scope of this project and do not represent benchmark results from the DINOv3 publication. The license and access terms of the respective sources apply to model and data usage.
