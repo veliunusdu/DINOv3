@@ -1,4 +1,5 @@
-# DINOv3 Adaptive Zoom
+DINOv3 Adaptive Zoom: Uncertainty-Guided Semantic Segmentation
+A graduation project exploring whether uncertainty-guided local reprocessing can improve semantic segmentation while using fewer model passes than dense sliding-window inference.
 
 A graduation project that extends DINOv3-based semantic segmentation by automatically identifying uncertain regions in the global prediction and re-processing them at higher resolution (adaptive zoom). Experiments were conducted on Google Colab with a Tesla T4 GPU using the VOC2012 dataset.
 
